@@ -4,7 +4,10 @@
 	"description": "react components for esri-leaflet",
 	"main": "build/index.js",
 	"scripts": {
-		"build": "webpack"
+		"build:webpack": "webpack",
+		"build:babel": "npm run clean && npm run transpile",
+		"transpile": "./node_modules/.bin/babel src --out-dir build",
+		"clean": "rimraf build"
 	},
 	"repository": {
 		"type": "git",
@@ -29,15 +32,15 @@
 		"react-leaflet": "^3.0.0-beta.4"
 	},
 	"devDependencies": {
+		"@babel/cli": "^7.11.6",
 		"@babel/core": "^7.11.6",
 		"@babel/plugin-proposal-class-properties": "^7.10.4",
 		"@babel/preset-env": "^7.11.5",
-		"babel-cli": "^6.26.0",
-		"babel-core": "^6.26.3",
 		"babel-loader": "^8.1.0",
 		"babel-plugin-transform-object-rest-spread": "^6.26.0",
 		"babel-plugin-transform-react-jsx": "^6.24.1",
 		"babel-preset-env": "^1.7.0",
+		"rimraf": "^3.0.2",
 		"webpack": "^4.44.1",
 		"webpack-cli": "^3.3.12"
 	},

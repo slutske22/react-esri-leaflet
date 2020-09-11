@@ -1,0 +1,48 @@
+{
+	"name": "react-esri-leaflet",
+	"version": "0.1.0",
+	"description": "react components for esri-leaflet",
+	"main": "build/index.js",
+	"scripts": {
+		"build": "webpack"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/slutske22/react-esri-leaflet.git"
+	},
+	"keywords": [
+		"react",
+		"react-leaflet",
+		"esri-leaflet"
+	],
+	"author": "Seth Lutske",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/slutske22/react-esri-leaflet/issues"
+	},
+	"homepage": "https://github.com/slutske22/react-esri-leaflet#readme",
+	"peerDependencies": {
+		"esri-leaflet": "^2.5.0",
+		"leaflet": "^1.7.1",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1",
+		"react-leaflet": "^3.0.0-beta.4"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.11.6",
+		"@babel/plugin-proposal-class-properties": "^7.10.4",
+		"@babel/preset-env": "^7.11.5",
+		"babel-cli": "^6.26.0",
+		"babel-core": "^6.26.3",
+		"babel-loader": "^8.1.0",
+		"babel-plugin-transform-object-rest-spread": "^6.26.0",
+		"babel-plugin-transform-react-jsx": "^6.24.1",
+		"babel-preset-env": "^1.7.0",
+		"webpack": "^4.44.1",
+		"webpack-cli": "^3.3.12"
+	},
+	"dependencies": {
+		"@react-leaflet/core": "^1.0.0-beta.5",
+		"esri-leaflet-geocoder": "^2.3.3"
+	}
+}

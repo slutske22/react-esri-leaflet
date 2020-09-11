@@ -12,6 +12,12 @@
 
 react-esri-leaflet is a small collection of components that allows you to quickly and easily bring esri-leaflet components into your react-leaflet application.
 
+## Requirements
+
+Requires react-leaflet version ^3.0.0, which is still in beta at this time.  
+
+(Support for react-leaflet version 2 not currently available, though you may find what you need in my [react-leaflet-custom-components](https://github.com/slutske22/react-leaflet-custom-components#esrileafletlayer) repo.)
+
 ## Installation
 
 To use these components you must install certain dependencies yourself:
@@ -45,3 +51,8 @@ react-esri-leaflet offers the following components:
 - &lt;TiledMapLayer /&gt;
 - &lt;ImageMapLayer /&gt;
 - &lt;DynamicMapLayer /&gt;
+- &lt;EsriLeafletGeoSearch /&gt;
+
+## Use
+
+

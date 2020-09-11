@@ -2,11 +2,12 @@
    <img src="/assets/react-logo.png" width="80px">&nbsp;&nbsp;&nbsp;&nbsp;
    <img src="/assets/esri-logo.png" width="80px">&nbsp;&nbsp;&nbsp;&nbsp;
    <img src="/assets/leaflet-logo.png" width="80px">
+   <h1 align="center">react-esri-leaflet</h1>
 </p>
 
-# react-esri-leaflet
-
-react-esri-leaflet is a small collection of components that allows you to quickly and easily bring esri-leaflet components into your react-leaflet application.
+<p align="center">
+   <i>quickly and easily bring esri-leaflet components into your react-leaflet application</i>
+</p>
 
 ## [:eyes: Demo :eyes: ](https://codesandbox.io/s/react-esri-leaflet-example-n15yn) ##
 

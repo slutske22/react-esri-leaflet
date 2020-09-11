@@ -117,7 +117,7 @@ const Map = () => {
          center={center}>
 
          <FeatureLayer
-            where={`Population > ${minPopulation}`}
+            where={`Population > '${minPopulation}'`}
             url={featureLayerURL} />
 
          <button

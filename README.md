@@ -8,7 +8,7 @@
 
 react-esri-leaflet is a small collection of components that allows you to quickly and easily bring esri-leaflet components into your react-leaflet application.
 
-## [:eyes: Demo:eyes: ](https://codesandbox.io/s/react-esri-leaflet-example-n15yn) ##
+## [:eyes: Demo :eyes: ](https://codesandbox.io/s/react-esri-leaflet-example-n15yn) ##
 
 ## Requirements
 
@@ -32,7 +32,7 @@ npm i react-esri-leaflet
 
 ## Using esri-leaflet Plugins
 
-If you want to use any of the esri-leaflet plugins, you must first install their underlying packages.  For example, to use the `<EsriLeafletGeoSearch />` component, you must first install the underlying `esri-leaflet-geocoder:
+If you want to use any of the esri-leaflet plugins, you must first install their underlying packages.  For example, to use the `<EsriLeafletGeoSearch />` component, you must first install the underlying `esri-leaflet-geocoder`:
 
 ````javscript
 npm i esri-leaflet-geocoder
@@ -90,15 +90,15 @@ All react-esri-leaflet layers inherit their props from the underlying esri-leafl
 
 ### BasemapLayer
 
-| prop | type   | description                                                     |
-|------|--------|-----------------------------------------------------------------|
-| name | string | One of the [esri accepted baselayer names](https://esri.github.io/esri-leaflet/api-reference/layers/basemap-layer.html) |
+| prop | type   | description                                                     |  required | 
+|------|--------|-----------------------------------------------------------------|-----------|
+| name | string | One of the [esri accepted baselayer names](https://esri.github.io/esri-leaflet/api-reference/layers/basemap-layer.html) | yes | 
 
 ### EsriLeafletGeoSearch
 
-| prop     | type     | description                                                     |
-|----------|----------|-----------------------------------------------------------------|
-| onResult | function(results) | fires when geosearch returns results, takes the [results event](https://esri.github.io/esri-leaflet/api-reference/controls/geosearch.html#events) as an argument, |
+| prop     | type     | description                                                     | required | 
+|----------|----------|-----------------------------------------------------------------|----------|
+| onResult | function(results) | fires when geosearch returns results, takes the [results event](https://esri.github.io/esri-leaflet/api-reference/controls/geosearch.html#events) as an argument | no |
 
 ## Methods
 

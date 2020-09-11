@@ -87,7 +87,7 @@ const Map = () => {
 
 ## Props
 
-All react-esri-leaflet layers inherit their props from the underlying esri-leaflet layer options.  You can find the options for each esri-leaflet layer [in their documentation](https://esri.github.io/esri-leaflet/api-reference/#layers).  However, certain options are available or necessary for react-esri-leaflet components:
+All react-esri-leaflet components inherit their props from the underlying esri-leaflet component options.  You can find the options for each esri-leaflet layer [in their documentation](https://esri.github.io/esri-leaflet/api-reference/#layers).  However, certain options are available or necessary for react-esri-leaflet components:
 
 ### BasemapLayer
 

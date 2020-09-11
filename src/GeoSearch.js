@@ -13,7 +13,12 @@ const EsriLeafletGeoSearch = (props) => {
 				: null,
 		};
 
-		const GeoSearch = new ELG.Geosearch(searchOptions);
+      const GeoSearch = new ELG.Geosearch(searchOptions);
+
+      if (this.props.onResult){
+         GeoSearch.addEventListener('results', this.props.onResult)
+      }
+      
 		GeoSearch.addTo(map);
 
 		return () => {

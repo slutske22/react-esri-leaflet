@@ -1,16 +1,14 @@
-# react-esri-leaflet
-
 <p align="center">
    <img src="/assets/react-logo.png" width="80px">&nbsp;&nbsp;&nbsp;&nbsp;
    <img src="/assets/esri-logo.png" width="80px">&nbsp;&nbsp;&nbsp;&nbsp;
    <img src="/assets/leaflet-logo.png" width="80px">
 </p>
 
-## react-leaflet components for esri-leaflet
-*Easily use esri-leaflet components in your react-leaflet application*
-<hr>
+# react-esri-leaflet
 
 react-esri-leaflet is a small collection of components that allows you to quickly and easily bring esri-leaflet components into your react-leaflet application.
+
+## [:eyes: Demo:eyes: ](https://codesandbox.io/s/react-esri-leaflet-example-n15yn) ##
 
 ## Requirements
 
@@ -55,4 +53,80 @@ react-esri-leaflet offers the following components:
 
 ## Use
 
+Import any of the components and use them in a `<MapContainer />`:
 
+````javascript
+import React from 'react'
+import { MapContainer } from 'react-leaflet'
+import { BasemapLayer, FeatureLayer, EsriLeafletGeoSearch } from 'react-esri-leaflet'
+
+const Map = () => {
+
+   return (
+      <MapContainer
+         zoom={zoom}
+         center={center}>
+
+         <BasemapLayer 
+            name="DarkGray" />
+
+         <FeatureLayer 
+            url={featureLayerURL} />
+
+         <EsriLeafletGeoSearch
+            useMapBounds={false}
+            position="topright" />
+
+      </MapContainer>
+   )
+
+}
+
+````
+
+## Props
+
+All react-esri-leaflet layers inherit their props from the underlying esri-leaflet layer options.  You can find the options for each esri-leaflet layer [in their documentation](https://esri.github.io/esri-leaflet/api-reference/#layers).  However, certain options are available or necessary for react-esri-leaflet components:
+
+### BasemapLayer
+
+| prop | type   | description                                                     |
+|------|--------|-----------------------------------------------------------------|
+| name | string | One of the [esri accepted baselayer names](https://esri.github.io/esri-leaflet/api-reference/layers/basemap-layer.html) |
+
+### EsriLeafletGeoSearch
+
+| prop     | type     | description                                                     |
+|----------|----------|-----------------------------------------------------------------|
+| onResult | function(results) | fires when geosearch returns results, takes the [results event](https://esri.github.io/esri-leaflet/api-reference/controls/geosearch.html#events) as an argument, |
+
+## Methods
+
+Many of the methods on esri-leaflet layers can be handled through react props.  For example, a `<FeatureLayer />` accepts the `where` prop, which applies a server side filter on the features in the layer.  Using vanilla esri-leaflet, the `getWhere` and `setWhere` methods are available on the layer.  With react-esri-leaflet, you can manage the setting and getting of many layer properties with react:
+
+````javascript
+
+const Map = () => {
+
+   const [minPopulation, setMinpopulation] = useState(1000)
+
+   return (
+      <MapContainer
+         zoom={zoom}
+         center={center}>
+
+         <FeatureLayer
+            where={`Population > ${minPopulation}`}
+            url={featureLayerURL} />
+
+         <button
+            onClick={() => setMinpopulation(5000)}>
+            Set min population to 5000
+         </button>
+
+      </MapContainer>
+   )
+
+}
+
+````

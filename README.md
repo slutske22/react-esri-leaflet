@@ -31,11 +31,11 @@ with all of your underlying packages installed,
 npm i react-esri-leaflet
 ```
 
-## Using esri-leaflet Plugins
+### Using esri-leaflet Plugins
 
 If you want to use any of the esri-leaflet plugins, you must first install their underlying packages and any associated css. Each plugin has its own requirements, which you can find in the esri-leaflet docs.
 
-### `<EsriLeafletGeoSearch />`
+#### `<EsriLeafletGeoSearch />`
 
 You must first install the underlying `esri-leaflet-geocoder`:
 
@@ -45,7 +45,7 @@ npm i esri-leaflet-geocoder
 
 You will also need to include the css in your html header, as explained [in the esri-leaflet-geocoder documentation](https://github.com/Esri/esri-leaflet-geocoder). You can then use the <EsriLeafletGeoSearch /> component. See the Use section for examples.
 
-### `<HeatmapLayer />`
+#### `<HeatmapLayer />`
 
 First install the underlying dependencies:
 
@@ -59,40 +59,40 @@ react-esri-leaflet offers the following components:
 
 Native Components:
 
--  &lt;BasemapLayer /&gt;
--  &lt;FeatureLayer /&gt;
--  &lt;TiledMapLayer /&gt;
--  &lt;ImageMapLayer /&gt;
--  &lt;DynamicMapLayer /&gt;
+- &lt;BasemapLayer /&gt;
+- &lt;FeatureLayer /&gt;
+- &lt;TiledMapLayer /&gt;
+- &lt;ImageMapLayer /&gt;
+- &lt;DynamicMapLayer /&gt;
 
 Plugins:
 
--  &lt;EsriLeafletGeoSearch /&gt;
--  &lt;HeatmapLayer /&gt;
+- &lt;EsriLeafletGeoSearch /&gt;
+- &lt;HeatmapLayer /&gt;
 
 ## Use
 
 Import any of the components and use them in a `<MapContainer />`:
 
 ```javascript
-import React from 'react';
-import { MapContainer } from 'react-leaflet';
+import React from "react";
+import { MapContainer } from "react-leaflet";
 import {
-	BasemapLayer,
-	FeatureLayer,
-	EsriLeafletGeoSearch,
-} from 'react-esri-leaflet';
+  BasemapLayer,
+  FeatureLayer,
+  EsriLeafletGeoSearch,
+} from "react-esri-leaflet";
 
 const Map = () => {
-	return (
-		<MapContainer zoom={zoom} center={center}>
-			<BasemapLayer name="DarkGray" />
+  return (
+    <MapContainer zoom={zoom} center={center}>
+      <BasemapLayer name="DarkGray" />
 
-			<FeatureLayer url={featureLayerURL} />
+      <FeatureLayer url={featureLayerURL} />
 
-			<EsriLeafletGeoSearch useMapBounds={false} position="topright" />
-		</MapContainer>
-	);
+      <EsriLeafletGeoSearch useMapBounds={false} position="topright" />
+    </MapContainer>
+  );
 };
 ```
 
@@ -139,20 +139,20 @@ Many of the methods on esri-leaflet layers can be handled through react props. F
 
 ```javascript
 const Map = () => {
-	const [minPopulation, setMinpopulation] = useState(1000);
+  const [minPopulation, setMinpopulation] = useState(1000);
 
-	return (
-		<MapContainer zoom={zoom} center={center}>
-			<FeatureLayer
-				where={`Population > '${minPopulation}'`}
-				url={featureLayerURL}
-			/>
+  return (
+    <MapContainer zoom={zoom} center={center}>
+      <FeatureLayer
+        where={`Population > '${minPopulation}'`}
+        url={featureLayerURL}
+      />
 
-			<button onClick={() => setMinpopulation(5000)}>
-				Set min population to 5000
-			</button>
-		</MapContainer>
-	);
+      <button onClick={() => setMinpopulation(5000)}>
+        Set min population to 5000
+      </button>
+    </MapContainer>
+  );
 };
 ```
 
@@ -162,24 +162,24 @@ Other methods on esri-leaflet components are less related to presentational logi
 
 ```javascript
 const Map = () => {
-	const featureLayerRef = useRef();
+  const featureLayerRef = useRef();
 
-	const queryFeature = () => {
-		featureLayerRef
-			.query()
-			.within(latlngbounds)
-			.where("Direction = 'WEST'")
-			.run(function (error, featureCollection) {
-				console.log(featureCollection);
-			});
-	};
+  const queryFeature = () => {
+    featureLayerRef
+      .query()
+      .within(latlngbounds)
+      .where("Direction = 'WEST'")
+      .run(function (error, featureCollection) {
+        console.log(featureCollection);
+      });
+  };
 
-	return (
-		<MapContainer zoom={zoom} center={center}>
-			<FeatureLayer ref={featureLayerRef} url={featureLayerURL} />
+  return (
+    <MapContainer zoom={zoom} center={center}>
+      <FeatureLayer ref={featureLayerRef} url={featureLayerURL} />
 
-			<button onClick={queryFeature}>Run a Query</button>
-		</MapContainer>
-	);
+      <button onClick={queryFeature}>Run a Query</button>
+    </MapContainer>
+  );
 };
 ```

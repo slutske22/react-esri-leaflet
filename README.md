@@ -112,6 +112,12 @@ Events can be accessed in the same way as described in the [react-leaflet docume
     loading: () => console.log('featurelayer loading'),
     load: () => console.log('featurelayer loaded')
   }} />
+  
+<EsriLeafletGeoSearch  
+  position="topright" 
+  eventHandlers={{
+    results: r => console.log(r)
+  }} />
 ````
 
 ## Methods

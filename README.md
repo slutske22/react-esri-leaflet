@@ -101,6 +101,19 @@ All react-esri-leaflet components inherit their props from the underlying esri-l
 |----------|----------|-----------------------------------------------------------------|----------|
 | onResult | function(results) | fires when geosearch returns results, takes the [results event](https://esri.github.io/esri-leaflet/api-reference/controls/geosearch.html#events) as an argument | no |
 
+## Events
+
+Events can be accessed in the same way as described in the [react-leaflet documentation](https://react-leaflet-v3.now.sh/docs/api-components#evented-behavior), using the `eventHandlers` prop.  All events are inherited from their underlying esri-leaflet component.  For example:
+
+````javascript
+<FeatureLayer 
+  url={freaturelayerURL} 
+  eventHandlers={{
+    loading: () => console.log('featurelayer loading'),
+    load: () => console.log('featurelayer loaded')
+  }} />
+````
+
 ## Methods
 
 Many of the methods on esri-leaflet layers can be handled through react props.  For example, a `<FeatureLayer />` accepts the `where` prop, which applies a server side filter on the features in the layer.  Using vanilla esri-leaflet, the `getWhere` and `setWhere` methods are available on the layer.  With react-esri-leaflet, you can manage the setting and getting of many layer properties with react:

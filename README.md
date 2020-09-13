@@ -116,7 +116,9 @@ Events can be accessed in the same way as described in the [react-leaflet docume
 <EsriLeafletGeoSearch  
   position="topright" 
   eventHandlers={{
-    results: r => console.log(r)
+    requeststart: () => console.log('Started request...'),
+    requestend: () => console.log('Ended request...'),
+    results: (r) => console.log(r)
   }} />
 ````
 

@@ -1,32 +1,26 @@
-import React, { useEffect } from 'react';
-import { useMap } from 'react-leaflet';
+import { createControlComponent } from '@react-leaflet/core';
 import * as ELG from 'esri-leaflet-geocoder';
 
-const EsriLeafletGeoSearch = (props) => {
-	const map = useMap();
+const createGeoSearch = (props) => {
+	const searchOptions = {
+		...props,
+		providers: props.providers
+			? props.providers.map((provider) => ELG[provider]())
+			: null,
+	};
 
-	useEffect(() => {
-		const searchOptions = {
-			...props,
-			providers: props.providers
-				? props.providers.map((provider) => ELG[provider]())
-				: null,
-		};
+	const geoSearch = new ELG.Geosearch(searchOptions);
 
-      const GeoSearch = new ELG.Geosearch(searchOptions);
+	if (props.eventHandlers) {
+		const events = Object.keys(props.eventHandlers);
+		events.forEach((event) => {
+			geoSearch.on(event, props.eventHandlers[event]);
+		});
+	}
 
-      if (this.props.onResult){
-         GeoSearch.addEventListener('results', this.props.onResult)
-      }
-      
-		GeoSearch.addTo(map);
-
-		return () => {
-			GeoSearch.remove();
-		};
-	}, [map, props]);
-
-	return null;
+	return geoSearch;
 };
 
-export default EsriLeafletGeoSearch;
+const GeoSearch = createControlComponent(createGeoSearch);
+
+export default GeoSearch;

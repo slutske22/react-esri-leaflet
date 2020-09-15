@@ -26,10 +26,12 @@
 	"homepage": "https://github.com/slutske22/react-esri-leaflet#readme",
 	"peerDependencies": {
 		"esri-leaflet": "^2.5.0",
+		"esri-leaflet-cluster": "^2.1.0",
 		"esri-leaflet-geocoder": "^2.3.3",
 		"esri-leaflet-heatmap": "^2.0.0",
 		"leaflet": "^1.7.1",
 		"leaflet.heat": "^0.2.0",
+		"leaflet.markercluster": "^1.4.1",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
 		"react-leaflet": "^3.0.0-beta.4"
@@ -48,8 +50,6 @@
 		"webpack-cli": "^3.3.12"
 	},
 	"dependencies": {
-		"@react-leaflet/core": "^1.0.0-beta.5",
-		"esri-leaflet-cluster": "^2.1.0",
-		"leaflet.markercluster": "^1.4.1"
+		"@react-leaflet/core": "^1.0.0-beta.5"
 	}
 }

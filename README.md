@@ -99,6 +99,7 @@ import {
 } from "react-esri-leaflet";
 
 const Map = () => {
+
   return (
 
     <MapContainer zoom={zoom} center={center}>
@@ -112,6 +113,7 @@ const Map = () => {
     </MapContainer>
 
   );
+  
 };
 ```
 
@@ -158,6 +160,7 @@ Many of the methods on esri-leaflet layers can be handled through react props. F
 
 ```javascript
 const Map = () => {
+
   const [minPopulation, setMinpopulation] = useState(1000);
 
   return (
@@ -174,6 +177,7 @@ const Map = () => {
 
     </MapContainer>
   );
+
 };
 ```
 
@@ -207,6 +211,6 @@ const Map = () => {
     </MapContainer>
 
   );
-  
+
 };
 ```

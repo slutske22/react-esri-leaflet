@@ -43,7 +43,7 @@ You must first install the underlying `esri-leaflet-geocoder`:
 npm i esri-leaflet-geocoder
 ```
 
-You will also need to include the css in your html header, as explained [in the esri-leaflet-geocoder documentation](https://github.com/Esri/esri-leaflet-geocoder). You can then use the <EsriLeafletGeoSearch /> component. See the Use section for examples.
+You will also need to include the css in your html header, as explained [in the esri-leaflet-geocoder documentation](https://github.com/Esri/esri-leaflet-geocoder). You can then use the `<EsriLeafletGeoSearch />` component. See the Use section for examples.
 
 #### `<HeatmapLayer />`
 
@@ -52,6 +52,18 @@ First install the underlying dependencies:
 ```javscript
 npm i leaflet.heat esri-leaflet-heatmap
 ```
+
+You can then use the `<HeatmapLayer />` component.
+
+#### `<ClusterLayer />`
+
+First install the underlying dependencies:
+
+```javscript
+npm i leaflet.markercluster esri-leaflet-cluster
+```
+
+You can then use the `<ClusterLayer />` component.
 
 ## Components
 
@@ -69,6 +81,7 @@ Plugins:
 
 - &lt;EsriLeafletGeoSearch /&gt;
 - &lt;HeatmapLayer /&gt;
+- &lt;ClusterLayer /&gt;
 
 ## Use
 

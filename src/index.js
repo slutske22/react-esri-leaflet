@@ -6,6 +6,7 @@ import ImageMapLayer from './ImageMapLayer';
 import DynamicMapLayer from './DynamicMapLayer';
 import TiledMapLayer from './TiledMapLayer';
 import HeatmapLayer from './HeatmapLayer';
+import ClusterLayer from './ClusterLayer';
 
 export {
 	EsriLeafletLayer,
@@ -16,4 +17,5 @@ export {
 	DynamicMapLayer,
 	TiledMapLayer,
 	HeatmapLayer,
+	ClusterLayer,
 };

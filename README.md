@@ -100,13 +100,17 @@ import {
 
 const Map = () => {
   return (
+
     <MapContainer zoom={zoom} center={center}>
+
       <BasemapLayer name="DarkGray" />
 
       <FeatureLayer url={featureLayerURL} />
 
       <EsriLeafletGeoSearch useMapBounds={false} position="topright" />
+
     </MapContainer>
+
   );
 };
 ```
@@ -158,6 +162,7 @@ const Map = () => {
 
   return (
     <MapContainer zoom={zoom} center={center}>
+
       <FeatureLayer
         where={`Population > '${minPopulation}'`}
         url={featureLayerURL}
@@ -166,6 +171,7 @@ const Map = () => {
       <button onClick={() => setMinpopulation(5000)}>
         Set min population to 5000
       </button>
+
     </MapContainer>
   );
 };
@@ -177,6 +183,7 @@ Other methods on esri-leaflet components are less related to presentational logi
 
 ```javascript
 const Map = () => {
+
   const featureLayerRef = useRef();
 
   const queryFeature = () => {
@@ -190,11 +197,16 @@ const Map = () => {
   };
 
   return (
+
     <MapContainer zoom={zoom} center={center}>
+
       <FeatureLayer ref={featureLayerRef} url={featureLayerURL} />
 
       <button onClick={queryFeature}>Run a Query</button>
+
     </MapContainer>
+
   );
+  
 };
 ```

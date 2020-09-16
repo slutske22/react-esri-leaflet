@@ -17,7 +17,7 @@
 
 Requires react-leaflet version ^3.0.0, which is still in beta at this time.
 
-(Support for react-leaflet version 2 not currently available, though you may find what you need in my [react-leaflet-custom-components](https://github.com/slutske22/react-leaflet-custom-components#esrileafletlayer) repo.)
+(Support for react-leaflet version 2 currently in development. See the `src/v2` folder for a peek.)
 
 ## Installation
 
@@ -67,6 +67,8 @@ npm i leaflet.markercluster esri-leaflet-cluster
 
 You can then use the `<ClusterLayer />` component.
 
+**Note: Support for Vector Layer and Vector Basemap not available, as even esri does not recommend using these in production applications.  Open an issue if you have a dire need for these.
+
 ## Components
 
 react-esri-leaflet offers the following components:
@@ -113,7 +115,7 @@ const Map = () => {
     </MapContainer>
 
   );
-  
+
 };
 ```
 
@@ -213,4 +215,12 @@ const Map = () => {
   );
 
 };
-```
+````
+
+## Alternatives
+
+Esri also offers [react-arcgis](https://github.com/Esri/react-arcgis), which is a react wrapper for the ArcGIS Javascript API.
+
+## License
+
+GNU General Public License v3.0

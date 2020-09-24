@@ -217,6 +217,65 @@ const Map = () => {
 };
 ````
 
+## Using Authenticated Layers
+
+Any esri layers that require authentication accept a `token` prop.  A react-esri-leaflet layer that requires a `token` should be conditionally rendered based on the availability of the token.  For example, a typical token getting function is as follows:
+
+````Javascript
+async function authenticateEsri(client_id, client_secret, expiration) {
+
+  const authservice = "https://www.arcgis.com/sharing/rest/oauth2/token";
+  const url = `${authservice}?client_id=${client_id}&client_secret=${client_secret}&grant_type=client_credentials&expiration=${expiration}`;
+
+  let token;
+
+  await fetch(url, {
+    method: "POST"
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      token = res.access_token;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+
+  return token;
+
+}
+````
+
+On component mount, you can call this function, save the token to state, and conditionally render the layer based on the state variable:
+
+````Javascript
+const Map = (props) => {
+
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    async function getToken() {
+      const token = await authenticateEsri();
+      setToken(token);
+    }
+    getToken();
+  }, []);
+
+  return (
+    <MapContainer zoom center>
+
+      {token && (
+        <ImageMapLayer
+          token={token}
+          url="https://landscape6.arcgis.com/arcgis/rest/services/World_Land_Cover_30m_BaseVue_2013/ImageServer"
+        />
+      )}
+
+    </MapContainer>
+  );
+  
+};
+````
+
 ## Alternatives
 
 Esri also offers [react-arcgis](https://github.com/Esri/react-arcgis), which is a react wrapper for the ArcGIS Javascript API.

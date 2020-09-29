@@ -8,7 +8,7 @@
       "transpile": "npm run transpile:main && npm run transpile:plugins",
       "transpile:main": "./node_modules/.bin/babel src --out-dir build",
       "transpile:plugins": "./node_modules/.bin/babel src-plugins --out-dir plugins",
-      "clean": "rimraf build",
+      "clean": "rimraf build && rimraf plugins",
       "checkoutput": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz"
    },
    "files": [

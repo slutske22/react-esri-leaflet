@@ -1,0 +1,6 @@
+src
+src-plugins
+.gitignore
+.babelrc
+.prettierignore
+webpack.config.js

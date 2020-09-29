@@ -41,7 +41,7 @@ If you want to use any of the esri-leaflet plugins, you must first install their
 import EsriLeafletGeoSearch from "react-esri-leaflet/plugins/EsriLeafletGeoSearch";
 ````
 
-#### `<EsriLeafletGeoSearch />`
+#### `EsriLeafletGeoSearch`
 
 You must first install the underlying `esri-leaflet-geocoder`:
 
@@ -51,7 +51,7 @@ npm i esri-leaflet-geocoder
 
 You will also need to include the css in your html header, as explained [in the esri-leaflet-geocoder documentation](https://github.com/Esri/esri-leaflet-geocoder). You can then use the `<EsriLeafletGeoSearch />` component. See the Use section for examples.
 
-#### `<HeatmapLayer />`
+#### `HeatmapLayer`
 
 First install the underlying dependencies:
 
@@ -61,7 +61,7 @@ npm i leaflet.heat esri-leaflet-heatmap
 
 You can then use the `<HeatmapLayer />` component.
 
-#### `<ClusterLayer />`
+#### `ClusterLayer`
 
 First install the underlying dependencies:
 

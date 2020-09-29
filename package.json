@@ -11,6 +11,11 @@
       "clean": "rimraf build",
       "checkoutput": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz"
    },
+   "files": [
+      "/build",
+      "/plugins",
+      "/assets"
+   ],
    "repository": {
       "type": "git",
       "url": "git+https://github.com/slutske22/react-esri-leaflet.git"

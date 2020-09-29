@@ -35,7 +35,11 @@ npm i react-esri-leaflet
 
 ### Using esri-leaflet Plugins
 
-If you want to use any of the esri-leaflet plugins, you must first install their underlying packages and any associated css. Each plugin has its own requirements, which you can find in the esri-leaflet docs.
+If you want to use any of the esri-leaflet plugins, you must first install their underlying packages and any associated css. Each plugin has its own requirements, which you can find in the esri-leaflet docs.  Plugins are imported not from the main package, but from the `/plugins/<PluginName>` subfolder, like this:
+
+````javascript
+import EsriLeafletGeoSearch from "react-esri-leaflet/plugins/EsriLeafletGeoSearch";
+````
 
 #### `<EsriLeafletGeoSearch />`
 
@@ -94,11 +98,8 @@ Import any of the components and use them in a `<MapContainer />`:
 ```javascript
 import React from "react";
 import { MapContainer } from "react-leaflet";
-import {
-  BasemapLayer,
-  FeatureLayer,
-  EsriLeafletGeoSearch,
-} from "react-esri-leaflet";
+import { BasemapLayer, FeatureLayer } from "react-esri-leaflet";
+import EsriLeafletGeoSearch from "react-esri-leaflet/plugins/GeoSearch";
 
 const Map = () => {
 

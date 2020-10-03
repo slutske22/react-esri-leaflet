@@ -1,7 +1,7 @@
 <p align="center">
-   <img src="/assets/react-logo.png" width="80px">&nbsp;&nbsp;&nbsp;&nbsp;
-   <img src="/assets/esri-logo.png" width="80px">&nbsp;&nbsp;&nbsp;&nbsp;
-   <img src="/assets/leaflet-logo.png" width="80px">
+   <img src="https://raw.githubusercontent.com/slutske22/react-esri-leaflet/HEAD/assets/react-logo.png" width="80px">&nbsp;&nbsp;&nbsp;&nbsp;
+   <img src="https://raw.githubusercontent.com/slutske22/react-esri-leaflet/HEAD/assets/esri-logo.png" width="80px">&nbsp;&nbsp;&nbsp;&nbsp;
+   <img src="https://raw.githubusercontent.com/slutske22/react-esri-leaflet/HEAD/assets/leaflet-logo.png" width="80px">
    <h1 align="center">react-esri-leaflet</h1>
 </p>
 

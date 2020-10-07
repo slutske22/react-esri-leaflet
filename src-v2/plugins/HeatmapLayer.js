@@ -1,18 +1,13 @@
 import { withLeaflet, MapLayer } from 'react-leaflet';
 import * as EL from 'esri-leaflet';
+import 'leaflet.heat';
+import Heatmap from 'esri-leaflet-heatmap';
 
-class EsriLeafletLayer extends MapLayer {
+class HeatmapLayer extends MapLayer {
 	createLeafletElement(props) {
-		var layer;
-
-		switch (props.layerType) {
-			case 'basemapLayer':
-				layer = new EL.basemapLayer(props.name, { ...props });
-				break;
-
-			default:
-				layer = new EL[props.layerType]({ ...props });
-		}
+		const layer = new Heatmap.featureLayer({
+			...props,
+		});
 
 		if (props.eventHandlers) {
 			const events = Object.keys(props.eventHandlers);
@@ -30,4 +25,4 @@ class EsriLeafletLayer extends MapLayer {
 	}
 }
 
-export default withLeaflet(EsriLeafletLayer);
+export default withLeaflet(HeatmapLayer);

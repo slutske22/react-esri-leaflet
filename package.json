@@ -5,10 +5,11 @@
 	"main": "build/index.js",
 	"scripts": {
 		"build": "npm run clean && npm run transpile",
-		"transpile": "npm run transpile:main && npm run transpile:plugins",
+		"transpile": "npm run transpile:main && npm run transpile:plugins && npm run transpile:v2",
 		"transpile:main": "./node_modules/.bin/babel src --out-dir build",
 		"transpile:plugins": "./node_modules/.bin/babel src-plugins --out-dir plugins",
-		"clean": "rimraf build && rimraf plugins",
+		"transpile:v2": "./node_modules/.bin/babel src-v2 --out-dir v2",
+		"clean": "rimraf build && rimraf plugins && rimraf v2",
 		"checkoutput": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz"
 	},
 	"files": [

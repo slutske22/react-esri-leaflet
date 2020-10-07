@@ -5,7 +5,9 @@ class GeoSearch extends MapControl {
 	createLeafletElement(props) {
 		const searchOptions = {
 			...props,
-			providers: props.providers.map((provider) => ELG[provider]()),
+			providers: props.providers
+				? props.providers.map((provider) => ELG[provider]())
+				: null,
 		};
 
 		const GeoSearch = new ELG.Geosearch(searchOptions);

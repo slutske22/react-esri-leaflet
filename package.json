@@ -15,7 +15,8 @@
 	"files": [
 		"/build",
 		"/plugins",
-		"/assets"
+		"/assets",
+		"/v2"
 	],
 	"repository": {
 		"type": "git",

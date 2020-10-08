@@ -142,7 +142,7 @@ Events can be accessed in the same way as described in the [react-leaflet docume
 
 ```javascript
 <FeatureLayer
-  url={freaturelayerURL}
+  url={'featureLayerURL'}
   eventHandlers={{
     loading: () => console.log('featurelayer loading'),
     load: () => console.log('featurelayer loaded')
@@ -279,7 +279,19 @@ const Map = (props) => {
 
 ## Alternatives
 
-Esri also offers [react-arcgis](https://github.com/Esri/react-arcgis), which is a react wrapper for the ArcGIS Javascript API.
+You don't necesarily need an esri-leaflet component to bring esri layers into leaflet.  You can use an esri service url with a react-leaflet `TileLayer`.  For example:
+
+````javascript
+<TileLayer url="https://server.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/{z}/{y}/{x}">
+````
+is equivalent to
+
+````javascript
+<Basemap name="Oceans">
+````
+
+
+Esri also offers [react-arcgis](https://github.com/Esri/react-arcgis), which is a react wrapper for the ArcGIS Javascript API, but that takes you outside the realm of leaflet.
 
 ## License
 

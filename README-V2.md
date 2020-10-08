@@ -128,19 +128,13 @@ All react-esri-leaflet components inherit their props from the underlying esri-l
 | ---- | ------ | ----------------------------------------------------------------------------------------------------------------------- | -------- |
 | name | string | One of the [esri accepted baselayer names](https://esri.github.io/esri-leaflet/api-reference/layers/basemap-layer.html) | yes      |
 
-### EsriLeafletGeoSearch
-
-| prop     | type              | description                                                                                                                                                      | required |
-| -------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| onResult | function(results) | fires when geosearch returns results, takes the [results event](https://esri.github.io/esri-leaflet/api-reference/controls/geosearch.html#events) as an argument | no       |
-
 ## Events
 
-Events can be accessed in the same way as described in the [react-leaflet documentation](https://react-leaflet-v3.now.sh/docs/api-components#evented-behavior), using the `eventHandlers` prop. All events are inherited from their underlying esri-leaflet component. For example:
+Events can be accessed in the same way as described in the [react-leaflet v3 documentation](https://react-leaflet-v3.now.sh/docs/api-components#evented-behavior), using the `eventHandlers` prop. This programming pattern is borrowed from react-leaflet v3, and takes the place of all `on<Event>` props that are common in react-leaflet v2. All events are inherited from their underlying esri-leaflet component. For example:
 
 ```javascript
 <FeatureLayer
-  url={freaturelayerURL}
+  url={'featureLayerURL'}
   eventHandlers={{
     loading: () => console.log('featurelayer loading'),
     load: () => console.log('featurelayer loaded')
@@ -268,7 +262,23 @@ const MapComponent = (props) => {
 
 ## Alternatives
 
-Esri also offers [react-arcgis](https://github.com/Esri/react-arcgis), which is a react wrapper for the ArcGIS Javascript API.
+You don't necesarily need an esri-leaflet component to bring esri layers into leaflet.  You can use an esri service url with a react-leaflet `TileLayer`.  For example:
+
+````javascript
+<TileLayer url="https://server.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/{z}/{y}/{x}">
+````
+is equivalent to
+
+````javascript
+<Basemap name="Oceans">
+````
+
+
+Esri also offers [react-arcgis](https://github.com/Esri/react-arcgis), which is a react wrapper for the ArcGIS Javascript API, but that takes you outside the realm of leaflet.
+
+## Limitations / Known Issues
+
+Currently the V2 version of react-esri-leaflet layers is not playing nice with a `<LayersControl>` component.  Regardless of the state of the `LayersControl`, all layers are added to the map at component mount, and the `LayersControl` itself is empty.  This issue does not occur when using the v3 version.  If you have any insight as to why this is happening, please let me know with an issue / PR.  For now, the [example codesandbox](https://codesandbox.io/s/react-esri-leaflet-v2-ysrb8) uses a [custom layers control](https://codesandbox.io/s/react-esri-leaflet-v2-ysrb8?file=/src/CustomLayersControl.js).  I encourage you to switch over to react-leaflet v3 if you can.
 
 ## License
 

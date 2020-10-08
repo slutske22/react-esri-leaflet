@@ -10,7 +10,7 @@
 
 <p align="center">
    <i>quickly and easily bring esri-leaflet components into your react-leaflet application</i>
-   <h2 align="center"><a href="https://codesandbox.io/s/react-esri-leaflet-example-n15yn">&#128064; Demo &#128064;</a></h2>
+   <h2 align="center"><a href="https://codesandbox.io/s/react-esri-leaflet-v2-ysrb8">&#128064; Demo for V2 &#128064;</a></h2>
 </p>
 
 <h2 align="center">Instructions for use with react-leaflet V2</h2>

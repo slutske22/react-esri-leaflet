@@ -194,7 +194,7 @@ const Map = () => {
   const featureLayerRef = useRef();
 
   const queryFeature = () => {
-    featureLayerRef
+    featureLayerRef.current
       .query()
       .within(latlngbounds)
       .where("Direction = 'WEST'")

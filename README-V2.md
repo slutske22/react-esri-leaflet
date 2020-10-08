@@ -183,7 +183,7 @@ const MapComponent = () => {
   const featureLayerRef = useRef();
 
   const queryFeature = () => {
-      featureLayerRef
+      featureLayerRef.current.leafletElement
         .query()
         .within(latlngbounds)
         .where("Direction = 'WEST'")

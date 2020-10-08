@@ -17,7 +17,7 @@
 
 ## Requirements
 
-Requires react-leaflet version ^2.0.0.  The instructions in this README are specific to using react-esri-leaflet with react-leaflet version 2.  For use with the more modern react-leaflet v2, check out the [main readme](https://github.com/slutske22/react-esri-leaflet).
+Requires react-leaflet version ^2.0.0.  The instructions in this README are specific to using react-esri-leaflet with react-leaflet version 2.  For use with the more modern react-leaflet v3, check out the [main readme](https://github.com/slutske22/react-esri-leaflet).
 
 ## Installation
 

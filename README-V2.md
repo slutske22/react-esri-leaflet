@@ -13,11 +13,11 @@
    <h2 align="center"><a href="https://codesandbox.io/s/react-esri-leaflet-example-n15yn">&#128064; Demo &#128064;</a></h2>
 </p>
 
+<h2 align="center">Instructions for use with react-leaflet V2</h2>
+
 ## Requirements
 
-Requires react-leaflet version ^3.0.0, which is still in beta at this time.
-
-For use with react-leaflet version 2, see the [V2 README](https://github.com/slutske22/react-esri-leaflet/blob/master/README-V2.md).
+Requires react-leaflet version ^2.0.0.  The instructions in this README are specific to using react-esri-leaflet with react-leaflet version 2.  For use with the more modern react-leaflet v2, check out the [main readme](https://github.com/slutske22/react-esri-leaflet).
 
 ## Installation
 
@@ -33,13 +33,19 @@ with all of your underlying packages installed,
 npm i react-esri-leaflet
 ```
 
-### Using esri-leaflet Plugins
-
-If you want to use any of the esri-leaflet plugins, you must first install their underlying packages and any associated css. Each plugin has its own requirements, which you can find in the esri-leaflet docs.  Plugins are imported not from the main package, but from the `/plugins/<PluginName>` subfolder, like this:
+To import components for use with react-leaflet version 2, you must use the `/v2` suffix in the import:
 
 ````javascript
-import EsriLeafletGeoSearch from "react-esri-leaflet/plugins/EsriLeafletGeoSearch";
+import { FeatureLayer, BasemapLayer } from 'react-esri-leaflet/v2'
 ````
+
+### Using esri-leaflet Plugins
+
+If you want to use any of the esri-leaflet plugins, you must first install their underlying packages and any associated css. Each plugin has its own requirements, which you can find in the esri-leaflet docs. Plugins are imported not from the main package, but from the `v2/plugins/<PluginName>` subfolder, like this:
+
+```javascript
+import EsriLeafletGeoSearch from 'react-esri-leaflet/v2/plugins/EsriLeafletGeoSearch';
+```
 
 #### `EsriLeafletGeoSearch`
 
@@ -71,7 +77,7 @@ npm i leaflet.markercluster esri-leaflet-cluster
 
 You can then use the `<ClusterLayer />` component.
 
-**Note: Support for Vector Layer and Vector Basemap not available, as even esri does not recommend using these in production applications.  Open an issue if you have a dire need for these.
+\*\*Note: Support for Vector Layer and Vector Basemap not available, as even esri does not recommend using these in production applications. Open an issue if you have a dire need for these.
 
 ## Components
 
@@ -79,44 +85,36 @@ react-esri-leaflet offers the following components:
 
 Native Components:
 
-- &lt;BasemapLayer /&gt;
-- &lt;FeatureLayer /&gt;
-- &lt;TiledMapLayer /&gt;
-- &lt;ImageMapLayer /&gt;
-- &lt;DynamicMapLayer /&gt;
+-  &lt;BasemapLayer /&gt;
+-  &lt;FeatureLayer /&gt;
+-  &lt;TiledMapLayer /&gt;
+-  &lt;ImageMapLayer /&gt;
+-  &lt;DynamicMapLayer /&gt;
 
 Plugins:
 
-- &lt;EsriLeafletGeoSearch /&gt;
-- &lt;HeatmapLayer /&gt;
-- &lt;ClusterLayer /&gt;
+-  &lt;EsriLeafletGeoSearch /&gt;
+-  &lt;HeatmapLayer /&gt;
+-  &lt;ClusterLayer /&gt;
 
 ## Use
 
-Import any of the components and use them in a `<MapContainer />`:
+Import any of the components and use them in a `<Map />`:
 
 ```javascript
-import React from "react";
-import { MapContainer } from "react-leaflet";
-import { BasemapLayer, FeatureLayer } from "react-esri-leaflet";
-import EsriLeafletGeoSearch from "react-esri-leaflet/plugins/GeoSearch";
+import React from 'react';
+import { Map } from 'react-leaflet/v2';
+import { BasemapLayer, FeatureLayer } from 'react-esri-leaflet/v2';
+import EsriLeafletGeoSearch from 'react-esri-leaflet/v2/plugins/GeoSearch';
 
-const Map = () => {
-
+const MapComponent = () => {
   return (
-
-    <MapContainer zoom={zoom} center={center}>
-
+    <Map zoom={zoom} center={center}>
       <BasemapLayer name="DarkGray" />
-
       <FeatureLayer url={featureLayerURL} />
-
       <EsriLeafletGeoSearch useMapBounds={false} position="topright" />
-
-    </MapContainer>
-
+    </Map>
   );
-
 };
 ```
 
@@ -162,12 +160,11 @@ Events can be accessed in the same way as described in the [react-leaflet docume
 Many of the methods on esri-leaflet layers can be handled through react props. For example, a `<FeatureLayer />` accepts the `where` prop, which applies a server side filter on the features in the layer. Using vanilla esri-leaflet, the `getWhere` and `setWhere` methods are available on the layer. With react-esri-leaflet, you can manage the setting and getting of many layer properties with react:
 
 ```javascript
-const Map = () => {
-
+const MapComponent = () => {
   const [minPopulation, setMinpopulation] = useState(1000);
 
   return (
-    <MapContainer zoom={zoom} center={center}>
+    <Map zoom={zoom} center={center}>
 
       <FeatureLayer
         where={`Population > '${minPopulation}'`}
@@ -178,9 +175,8 @@ const Map = () => {
         Set min population to 5000
       </button>
 
-    </MapContainer>
+    </Map>
   );
-
 };
 ```
 
@@ -189,40 +185,33 @@ In this way, you can 'get' or 'set' your prop by accessing the state variable us
 Other methods on esri-leaflet components are less related to presentational logic, and more related to analysis or interacting with the root dataset. For example, calling `query` or `eachFeature` on a featureLayer will not affect the presentation logic. In this sense, all methods not directly affecting the presentational logic of your layers (read: everything but the setters and getters) should be accessed by getting a `ref` to the underlying esri-leaflet layer. For example:
 
 ```javascript
-const Map = () => {
-
+const MapComponent = () => {
   const featureLayerRef = useRef();
 
   const queryFeature = () => {
-    featureLayerRef
-      .query()
-      .within(latlngbounds)
-      .where("Direction = 'WEST'")
-      .run(function (error, featureCollection) {
-        console.log(featureCollection);
-      });
+      featureLayerRef
+        .query()
+        .within(latlngbounds)
+        .where("Direction = 'WEST'")
+        .run(function (error, featureCollection) {
+          console.log(featureCollection);
+        });
   };
 
   return (
-
-    <MapContainer zoom={zoom} center={center}>
-
+    <Map zoom={zoom} center={center}>
       <FeatureLayer ref={featureLayerRef} url={featureLayerURL} />
-
       <button onClick={queryFeature}>Run a Query</button>
-
-    </MapContainer>
-
+    </Map>
   );
-
 };
-````
+```
 
 ## Using Authenticated Layers
 
-Any esri layers that require authentication accept a `token` prop.  A react-esri-leaflet layer that requires a `token` should be conditionally rendered based on the availability of the token.  For example, a typical token getting function is as follows:
+Any esri layers that require authentication accept a `token` prop. A react-esri-leaflet layer that requires a `token` should be conditionally rendered based on the availability of the token. For example, a typical token getting function is as follows:
 
-````Javascript
+```Javascript
 async function authenticateEsri(client_id, client_secret, expiration) {
 
   const authservice = "https://www.arcgis.com/sharing/rest/oauth2/token";
@@ -244,12 +233,12 @@ async function authenticateEsri(client_id, client_secret, expiration) {
   return token;
 
 }
-````
+```
 
 On component mount, you can call this function, save the token to state, and conditionally render the layer based on the state variable:
 
-````Javascript
-const Map = (props) => {
+```Javascript
+const MapComponent = (props) => {
 
   const [token, setToken] = useState(null);
 
@@ -262,7 +251,7 @@ const Map = (props) => {
   }, []);
 
   return (
-    <MapContainer zoom center>
+    <Map zoom center>
 
       {token && (
         <ImageMapLayer
@@ -271,11 +260,11 @@ const Map = (props) => {
         />
       )}
 
-    </MapContainer>
+    </Map>
   );
-  
+
 };
-````
+```
 
 ## Alternatives
 

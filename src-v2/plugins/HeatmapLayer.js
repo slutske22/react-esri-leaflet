@@ -23,6 +23,10 @@ class HeatmapLayer extends MapLayer {
 		const { map } = this.props.leaflet;
 		this.leafletElement.addTo(map);
 	}
+
+	componentWillUnmount() {
+		this.leafletElement.remove();
+	}
 }
 
 export default withLeaflet(HeatmapLayer);

@@ -1,11 +1,18 @@
-// import * as EL from 'esri-leaflet';
 import React from 'react';
-// import { renderIntoDocument } from 'react-dom/test-utils';
+import { MapContainer } from 'react-leaflet';
+import * as EL from 'esri-leaflet';
+import { render } from '@testing-library/react';
 
-// import { BasemapLayer } from '../src/BasemapLayer';
+import BasemapLayer from '../src/BasemapLayer';
 
 describe('BasemapLayer', () => {
 	it('adds a esri-leaflet basemap to the map', () => {
-		console.log('inside basemap test');
+		const { container } = render(
+			<MapContainer center={[0, 0]} zoom={10}>
+				<BasemapLayer name="Oceans" />
+			</MapContainer>
+		);
+
+		expect(container).toMatchSnapshot();
 	});
 });

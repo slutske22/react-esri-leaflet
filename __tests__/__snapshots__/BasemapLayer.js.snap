@@ -1,0 +1,136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BasemapLayer adds a esri-leaflet basemap to the map 1`] = `
+<div>
+  <div
+    class="leaflet-container leaflet-grab leaflet-touch-drag"
+    style="position: relative;"
+    tabindex="0"
+  >
+    <div
+      class="leaflet-pane leaflet-map-pane"
+      style="left: 0px; top: 0px;"
+    >
+      <div
+        class="leaflet-pane leaflet-tile-pane"
+      >
+        <div
+          class="leaflet-layer "
+          style="z-index: 1;"
+        >
+          <div
+            class="leaflet-tile-container leaflet-zoom-animated"
+            style="z-index: 16; left: 0px; top: 0px;"
+          >
+            <img
+              alt=""
+              class="leaflet-tile"
+              role="presentation"
+              src="http://server.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/10/511/511"
+              style="width: 256px; height: 256px; left: -256px; top: -256px;"
+            />
+            <img
+              alt=""
+              class="leaflet-tile"
+              role="presentation"
+              src="http://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/10/511/512"
+              style="width: 256px; height: 256px; left: 0px; top: -256px;"
+            />
+            <img
+              alt=""
+              class="leaflet-tile"
+              role="presentation"
+              src="http://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/10/512/511"
+              style="width: 256px; height: 256px; left: -256px; top: 0px;"
+            />
+            <img
+              alt=""
+              class="leaflet-tile"
+              role="presentation"
+              src="http://server.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/10/512/512"
+              style="width: 256px; height: 256px; left: 0px; top: 0px;"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="leaflet-pane leaflet-shadow-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-overlay-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-marker-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-tooltip-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-popup-pane"
+      />
+    </div>
+    <div
+      class="leaflet-control-container"
+    >
+      <div
+        class="leaflet-top leaflet-left"
+      >
+        <div
+          class="leaflet-control-zoom leaflet-bar leaflet-control"
+        >
+          <a
+            aria-label="Zoom in"
+            class="leaflet-control-zoom-in"
+            href="#"
+            role="button"
+            title="Zoom in"
+          >
+            +
+          </a>
+          <a
+            aria-label="Zoom out"
+            class="leaflet-control-zoom-out"
+            href="#"
+            role="button"
+            title="Zoom out"
+          >
+            −
+          </a>
+        </div>
+      </div>
+      <div
+        class="leaflet-top leaflet-right"
+      />
+      <div
+        class="leaflet-bottom leaflet-left"
+      />
+      <div
+        class="leaflet-bottom leaflet-right"
+      >
+        <div
+          class="leaflet-control-attribution leaflet-control esri-truncated-attribution:hover esri-truncated-attribution"
+        >
+          <a
+            href="http://leafletjs.com"
+            title="A JS library for interactive maps"
+          >
+            Leaflet
+          </a>
+           | Powered by 
+          <a
+            href="https://www.esri.com"
+          >
+            Esri
+          </a>
+           | 
+          <span
+            class="esri-dynamic-attribution"
+          >
+            USGS, NOAA
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

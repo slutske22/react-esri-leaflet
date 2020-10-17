@@ -11,7 +11,7 @@
 		"transpile:v2": "./node_modules/.bin/babel src-v2 --out-dir v2",
 		"clean": "rimraf build && rimraf plugins && rimraf v2",
 		"checkoutput": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz",
-		"test": "BABEL_ENV=development NODE_ENV=test jest"
+		"test": "BABEL_ENV=development NODE_ENV=test jest --runInBand"
 	},
 	"files": [
 		"/build",

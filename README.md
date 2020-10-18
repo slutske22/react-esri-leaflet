@@ -13,6 +13,13 @@
    <h2 align="center"><a href="https://codesandbox.io/s/react-esri-leaflet-example-n15yn">&#128064; Demo &#128064;</a></h2>
 </p>
 
+[![Build Status](https://travis-ci.org/slutske22/react-esri-leaflet.svg?branch=master)](https://travis-ci.org/slutske22/react-esri-leaflet)
+[![npm version](https://badge.fury.io/js/react-esri-leaflet.svg)](https://badge.fury.io/js/react-esri-leaflet)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
+
+
+
 ## Requirements
 
 Requires react-leaflet version ^3.0.0, which is still in beta at this time.

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FeatureLayer adds an esri-leaflet featurelayer to the map 1`] = `
+exports[`DynamicMapLayer creates the same layer every time 1`] = `
 <div>
   <div
     class="leaflet-container leaflet-grab leaflet-touch-drag"

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BasemapLayer creates the same layer every time 1`] = `
+exports[`TiledMapLayer creates the same layer every time 1`] = `
 <div>
   <div
     class="leaflet-container leaflet-grab leaflet-touch-drag"
@@ -20,34 +20,30 @@ exports[`BasemapLayer creates the same layer every time 1`] = `
         >
           <div
             class="leaflet-tile-container leaflet-zoom-animated"
-            style="z-index: 16; left: 0px; top: 0px;"
+            style="z-index: 18; left: 0px; top: 0px;"
           >
             <img
               alt=""
               class="leaflet-tile"
-              role="presentation"
-              src="http://server.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/10/511/511"
+              src="https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_WUI_2010_01/MapServer/tile/10/511/511"
               style="width: 256px; height: 256px; left: -256px; top: -256px;"
             />
             <img
               alt=""
               class="leaflet-tile"
-              role="presentation"
-              src="http://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/10/511/512"
+              src="https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_WUI_2010_01/MapServer/tile/10/511/512"
               style="width: 256px; height: 256px; left: 0px; top: -256px;"
             />
             <img
               alt=""
               class="leaflet-tile"
-              role="presentation"
-              src="http://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/10/512/511"
+              src="https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_WUI_2010_01/MapServer/tile/10/512/511"
               style="width: 256px; height: 256px; left: -256px; top: 0px;"
             />
             <img
               alt=""
               class="leaflet-tile"
-              role="presentation"
-              src="http://server.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/10/512/512"
+              src="https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_WUI_2010_01/MapServer/tile/10/512/512"
               style="width: 256px; height: 256px; left: 0px; top: 0px;"
             />
           </div>
@@ -122,12 +118,6 @@ exports[`BasemapLayer creates the same layer every time 1`] = `
           >
             Esri
           </a>
-           | 
-          <span
-            class="esri-dynamic-attribution"
-          >
-            USGS, NOAA
-          </span>
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BasemapLayer creates the same layer every time 1`] = `
+exports[`ImageMapLayer creates the same layer every time 1`] = `
 <div>
   <div
     class="leaflet-container leaflet-grab leaflet-touch-drag"
@@ -13,52 +13,21 @@ exports[`BasemapLayer creates the same layer every time 1`] = `
     >
       <div
         class="leaflet-pane leaflet-tile-pane"
-      >
-        <div
-          class="leaflet-layer "
-          style="z-index: 1;"
-        >
-          <div
-            class="leaflet-tile-container leaflet-zoom-animated"
-            style="z-index: 16; left: 0px; top: 0px;"
-          >
-            <img
-              alt=""
-              class="leaflet-tile"
-              role="presentation"
-              src="http://server.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/10/511/511"
-              style="width: 256px; height: 256px; left: -256px; top: -256px;"
-            />
-            <img
-              alt=""
-              class="leaflet-tile"
-              role="presentation"
-              src="http://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/10/511/512"
-              style="width: 256px; height: 256px; left: 0px; top: -256px;"
-            />
-            <img
-              alt=""
-              class="leaflet-tile"
-              role="presentation"
-              src="http://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/10/512/511"
-              style="width: 256px; height: 256px; left: -256px; top: 0px;"
-            />
-            <img
-              alt=""
-              class="leaflet-tile"
-              role="presentation"
-              src="http://server.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/10/512/512"
-              style="width: 256px; height: 256px; left: 0px; top: 0px;"
-            />
-          </div>
-        </div>
-      </div>
+      />
       <div
         class="leaflet-pane leaflet-shadow-pane"
       />
       <div
         class="leaflet-pane leaflet-overlay-pane"
-      />
+      >
+        <img
+          alt=""
+          class="leaflet-image-layer"
+          crossorigin=""
+          src="https://landsat.arcgis.com/arcgis/rest/services/Landsat/PS/ImageServer/exportImage?bbox=0%2C0%2C0%2C0&size=0%2C0&format=jpgpng&transparent=true&bboxSR=3857&imageSR=3857&f=image"
+          style="z-index: 1; opacity: 0; left: 0px; top: 0px; width: 0px; height: 0px;"
+        />
+      </div>
       <div
         class="leaflet-pane leaflet-marker-pane"
       />
@@ -122,12 +91,6 @@ exports[`BasemapLayer creates the same layer every time 1`] = `
           >
             Esri
           </a>
-           | 
-          <span
-            class="esri-dynamic-attribution"
-          >
-            USGS, NOAA
-          </span>
         </div>
       </div>
     </div>

@@ -1,23 +1,23 @@
 import React from 'react';
 import { MapContainer } from 'react-leaflet';
-import { BasemapLayer as VanillaBL } from 'esri-leaflet';
+import { TiledMapLayer as VanillaTL } from 'esri-leaflet';
 import { render } from '@testing-library/react';
 
-import BasemapLayer from '../src/BasemapLayer';
+import TiledMapLayer from '../src/TiledMapLayer';
 
-describe('BasemapLayer', () => {
+describe('TiledMapLayer', () => {
 	//
-	it('creates an instance of esri-leaflet basemapLayer and adds it to the map', () => {
+	it('creates an instance of esri-leaflet tiledMapLayer and adds it to the map', () => {
 		render(
 			<MapContainer
 				whenCreated={(map) => {
 					const addedLayer = Object.values(map._layers)[0];
-					expect(addedLayer).toBeInstanceOf(VanillaBL);
+					expect(addedLayer).toBeInstanceOf(VanillaTL);
 				}}
 				center={[32, -117]}
 				zoom={6}
 			>
-				<BasemapLayer name="Oceans" />
+				<TiledMapLayer url="https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_WUI_2010_01/MapServer" />
 			</MapContainer>
 		);
 	});
@@ -25,7 +25,7 @@ describe('BasemapLayer', () => {
 	it('creates the same layer every time', () => {
 		const { container } = render(
 			<MapContainer center={[0, 0]} zoom={10}>
-				<BasemapLayer name="Oceans" />
+				<TiledMapLayer url="https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_WUI_2010_01/MapServer" />
 			</MapContainer>
 		);
 

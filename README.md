@@ -22,7 +22,7 @@
 
 ## Requirements
 
-Requires react-leaflet version ^3.0.0, which is still in beta at this time.
+Requires react-leaflet version ^3.0.0.
 
 For use with react-leaflet version 2, see the [V2 README](https://github.com/slutske22/react-esri-leaflet/blob/master/README-V2.md).
 

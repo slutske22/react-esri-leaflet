@@ -18,11 +18,13 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 
+## NOTE:
 
+With the new [ArcGIS Platform Launch](https://www.esri.com/about/newsroom/announcements/esri-launches-arcgis-platform/), there are many breaking changes to esri-leaflet.  I will update this package for esri-leaflet v3 compatibility soon.
 
 ## Requirements
 
-Requires react-leaflet version ^3.0.0.
+Requires react-leaflet version ^3 and esri-leaflet v2^.
 
 For use with react-leaflet version 2, see the [V2 README](https://github.com/slutske22/react-esri-leaflet/blob/master/README-V2.md).
 

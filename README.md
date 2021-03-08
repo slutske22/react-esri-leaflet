@@ -20,7 +20,7 @@
 
 ## NOTE:
 
-With the new [ArcGIS Platform Launch](https://www.esri.com/about/newsroom/announcements/esri-launches-arcgis-platform/), there are many breaking changes to esri-leaflet.  I will update this package for esri-leaflet v3 compatibility soon.
+With the new [ArcGIS Platform Launch](https://www.esri.com/about/newsroom/announcements/esri-launches-arcgis-platform/), there are many breaking changes to esri-leaflet, and we are [still waiting](https://github.com/Esri/esri-leaflet/issues/1262) on official esri-leaflet v3 documentation to come out.  I will update this package for esri-leaflet v3 compatibility as soon as possible.
 
 ## Requirements
 

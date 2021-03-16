@@ -33,7 +33,7 @@ For use with react-leaflet version 2, see the [V2 README](https://github.com/slu
 To use these components you must install certain dependencies yourself:
 
 ```javascript
-npm i react react-dom leaflet react-leaflet esri-leaflet
+npm i react react-dom leaflet react-leaflet esri-leaflet@^2
 ```
 
 with all of your underlying packages installed,
@@ -55,7 +55,7 @@ import EsriLeafletGeoSearch from "react-esri-leaflet/plugins/EsriLeafletGeoSearc
 You must first install the underlying `esri-leaflet-geocoder`:
 
 ```javscript
-npm i esri-leaflet-geocoder
+npm i esri-leaflet-geocoder@^2
 ```
 
 You will also need to include the css in your html header, as explained [in the esri-leaflet-geocoder documentation](https://github.com/Esri/esri-leaflet-geocoder). You can then use the `<EsriLeafletGeoSearch />` component. See the Use section for examples.

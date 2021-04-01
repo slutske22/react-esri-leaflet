@@ -2,3 +2,5 @@ node_modules
 build
 v2
 /plugins
+
+.env

@@ -1,18 +1,32 @@
 import React from 'react';
-import { MapContainer, LayersControl } from 'react-leaflet';
+import { MapContainer, LayersControl } from '../../node_modules/react-leaflet';
+
+// import {
+// 	BasemapLayer,
+// 	FeatureLayer,
+// 	DynamicMapLayer,
+// 	TiledMapLayer,
+// 	ImageMapLayer,
+// } from 'react-esri-leaflet';
+
+// import EsriLeafletGeoSearch from 'react-esri-leaflet/plugins/EsriLeafletGeoSearch';
+// import HeatmapLayer from 'react-esri-leaflet/plugins/HeatmapLayer';
+// import ClusterLayer from 'react-esri-leaflet/plugins/ClusterLayer';
+
 import {
 	BasemapLayer,
 	FeatureLayer,
 	DynamicMapLayer,
 	TiledMapLayer,
 	ImageMapLayer,
-} from 'react-esri-leaflet';
+} from '../../build';
 
-import EsriLeafletGeoSearch from 'react-esri-leaflet/plugins/EsriLeafletGeoSearch';
-import HeatmapLayer from 'react-esri-leaflet/plugins/HeatmapLayer';
-import ClusterLayer from 'react-esri-leaflet/plugins/ClusterLayer';
+import EsriLeafletGeoSearch from '../../plugins/EsriLeafletGeoSearch';
+import HeatmapLayer from '../../plugins/HeatmapLayer';
+import ClusterLayer from '../../plugins/ClusterLayer';
 
 const Map = (props) => {
+	// console.log(process.env.ARCGIS_API_KEY);
 	return (
 		<MapContainer id="mapId" zoom={7} center={[39.759, -88.157]}>
 			<LayersControl position="topleft" collapsed={false}>

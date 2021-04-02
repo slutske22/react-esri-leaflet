@@ -4,3 +4,6 @@ v2
 /plugins
 
 .env
+.envv
+.envvv
+.DS_Store

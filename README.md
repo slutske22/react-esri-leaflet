@@ -15,6 +15,7 @@
 
 [![Build Status](https://travis-ci.org/slutske22/react-esri-leaflet.svg?branch=master)](https://travis-ci.org/slutske22/react-esri-leaflet)
 [![npm version](https://badge.fury.io/js/react-esri-leaflet.svg)](https://badge.fury.io/js/react-esri-leaflet)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/db56e8d8a5df46e4b4d7fccea442c387)](https://www.codacy.com/gh/slutske22/react-esri-leaflet/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=slutske22/react-esri-leaflet&amp;utm_campaign=Badge_Grade)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 

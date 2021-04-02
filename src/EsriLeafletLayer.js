@@ -16,7 +16,7 @@ const createEsriLayer = (props, context) => {
 	return { instance, context };
 };
 
-const updateEsriLayer = (instance, props, prevProps) => {
+export const updateEsriLayer = (instance, props, prevProps) => {
 	// basic layer setters for any leaflet layer:
 	if (prevProps.url !== props.url) {
 		if (instance.setUrl) instance.setUrl(props.url);

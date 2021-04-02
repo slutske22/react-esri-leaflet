@@ -2,23 +2,31 @@ import { createControlComponent } from '@react-leaflet/core';
 import * as ELG from 'esri-leaflet-geocoder';
 
 const createGeoSearch = (props) => {
-   const searchOptions = {
-      ...props,
-      providers: props.providers
-         ? props.providers.map((provider) => ELG[provider]())
-         : null,
-   };
+	let { providers } = props;
 
-   const geoSearch = new ELG.Geosearch(searchOptions);
+	providers = Object.keys(providers).map((provider) => {
+		if (Object.keys(providers[provider]).length > 0) {
+			return ELG[provider](providers[provider]);
+		} else {
+			return ELG[provider]();
+		}
+	});
 
-   if (props.eventHandlers) {
-      const events = Object.keys(props.eventHandlers);
-      events.forEach((event) => {
-         geoSearch.on(event, props.eventHandlers[event]);
-      });
-   }
+	const searchOptions = {
+		...props,
+		providers,
+	};
 
-   return geoSearch;
+	const geoSearch = new ELG.Geosearch(searchOptions);
+
+	if (props.eventHandlers) {
+		const events = Object.keys(props.eventHandlers);
+		events.forEach((event) => {
+			geoSearch.on(event, props.eventHandlers[event]);
+		});
+	}
+
+	return geoSearch;
 };
 
 const EsriLeafletGeoSearch = createControlComponent(createGeoSearch);

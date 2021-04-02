@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
 	MapContainer,
 	LayersControl,
@@ -38,7 +38,7 @@ const MapEvents = () => {
 	return null;
 };
 
-const Map = () => {
+const Map = ({ apikey }) => {
 	return (
 		<MapContainer
 			id="mapId"
@@ -63,10 +63,9 @@ const Map = () => {
 					/>
 				</LayersControl.BaseLayer>
 				<LayersControl.BaseLayer name="Vector Basemap Layer (token required)">
-					<VectorBasemapLayer
-						name="ArcGIS:Streets"
-						token={process.env.ARCGIS_API_KEY}
-					/>
+					{apikey && (
+						<VectorBasemapLayer name="ArcGIS:Streets" token={apikey} />
+					)}
 				</LayersControl.BaseLayer>
 				<LayersControl.Overlay name="Esri Feature Layer">
 					<FeatureLayer
@@ -97,9 +96,14 @@ const Map = () => {
 			<EsriLeafletGeoSearch
 				position="topleft"
 				useMapBounds={false}
+				placeholder={
+					apikey
+						? 'Search for places or addresses'
+						: 'Enter an API key in the upper right corner'
+				}
 				providers={{
 					arcgisOnlineProvider: {
-						apikey: process.env.ARCGIS_API_KEY,
+						apikey,
 					},
 					featureLayerProvider: {
 						url:
@@ -121,6 +125,7 @@ const Map = () => {
 					requestend: () => console.log('Ended request...'),
 					results: (r) => console.log(r),
 				}}
+				key={apikey}
 			/>
 		</MapContainer>
 	);

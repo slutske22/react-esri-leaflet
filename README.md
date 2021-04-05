@@ -211,20 +211,42 @@ All react-esri-leaflet components inherit their props from the underlying esri-l
     <td style="font-weight: bold; color: red;">yes</td>
   </tr>
   <tr>
-    <td style="vertical-align: top;"><b>EsriLeafletGeoSearch</b></td>
-    <td style="vertical-align: top;">providers</td>
-    <td style="vertical-align: top;">object</td>
-    <td>
-      An object defining the providers to be used for the geosearch component.  The object keys are the names of one of the <a href="https://esri.github.io/esri-leaflet/api-reference/controls/geosearch.html#providers">possible providers</a>, and the values are objects containing the options to configure that provider.
-    </td>
-    <td style="vertical-align: top; font-weight: bold; color: red;">yes</td>
-  </tr>
-  <tr>
     <td><b>EsriLeafletGeoSearch</b></td>
     <td>onResult</td>
     <td>function(results)</td>
     <td>fires when geosearch returns results, takes the <a href="https://esri.github.io/esri-leaflet/api-reference/controls/geosearch.html#events">results event</a> as an argument</td>
     <td>no</td>
+  </tr>
+  <tr>
+    <td style="vertical-align: top;"><b>EsriLeafletGeoSearch</b></td>
+    <td style="vertical-align: top;">providers</td>
+    <td style="vertical-align: top;">object</td>
+    <td>
+      An object defining the providers to be used for the geosearch component.  The object keys are the names of one of the <a href="https://esri.github.io/esri-leaflet/api-reference/controls/geosearch.html#providers">possible providers</a>, and the values are objects containing the options to configure that provider.  See below for an example.
+    </td>
+    <td style="vertical-align: top; font-weight: bold; color: red;">yes</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td colspan="4">
+
+```javascript
+<EsriLeafletGeoSearch 
+  providers={{
+    arcgisOnlineProvider: {
+      token: your_token,
+      label: "ArcGIS Online Results",
+      maxResults: 10
+    },
+    featureLayerProvider: {
+      url: feature_layer_url,
+      label: 'Featurelayer Provider Results'
+      bufferRadius: 5000
+    }
+  }}
+/>;
+```
+
   </tr>
 <table>
 

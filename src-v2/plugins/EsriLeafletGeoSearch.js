@@ -3,11 +3,19 @@ import * as ELG from 'esri-leaflet-geocoder';
 
 class GeoSearch extends MapControl {
 	createLeafletElement(props) {
+		let { providers } = props;
+
+		providers = Object.keys(providers).map((provider) => {
+			if (Object.keys(providers[provider]).length > 0) {
+				return ELG[provider](providers[provider]);
+			} else {
+				return ELG[provider]();
+			}
+		});
+
 		const searchOptions = {
 			...props,
-			providers: props.providers
-				? props.providers.map((provider) => ELG[provider]())
-				: null,
+			providers,
 		};
 
 		const GeoSearch = new ELG.Geosearch(searchOptions);

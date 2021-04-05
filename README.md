@@ -19,13 +19,9 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 
-## NOTE:
-
-With the new [ArcGIS Platform Launch](https://www.esri.com/about/newsroom/announcements/esri-launches-arcgis-platform/), there are many breaking changes to esri-leaflet. The revised documentation was [just released](https://github.com/Esri/esri-leaflet/issues/1262).  I will update this package for esri-leaflet v3 compatibility as soon as possible.
-
 ## Requirements
 
-Requires react-leaflet version ^3 and esri-leaflet v2^.
+Requires react-leaflet^3 and esri-leaflet^3.
 
 For use with react-leaflet version 2, see the [V2 README](https://github.com/slutske22/react-esri-leaflet/blob/master/README-V2.md).
 
@@ -34,7 +30,7 @@ For use with react-leaflet version 2, see the [V2 README](https://github.com/slu
 To use these components you must install certain dependencies yourself:
 
 ```javascript
-npm i react react-dom leaflet react-leaflet esri-leaflet@^2
+npm i react react-dom leaflet react-leaflet esri-leaflet
 ```
 
 with all of your underlying packages installed,
@@ -43,20 +39,61 @@ with all of your underlying packages installed,
 npm i react-esri-leaflet
 ```
 
+## Components
+
+react-esri-leaflet offers the following components:
+
+Native Components:
+
+- &lt;BasemapLayer /&gt;
+- &lt;FeatureLayer /&gt;
+- &lt;TiledMapLayer /&gt;
+- &lt;ImageMapLayer /&gt;
+- &lt;DynamicMapLayer /&gt;
+
+Plugins:
+
+- &lt;EsriLeafletGeoSearch /&gt;
+- &lt;HeatmapLayer /&gt;
+- &lt;ClusterLayer /&gt;
+- &lt;VectorBasemapLayer /&gt;
+- &lt;VectorTileLayer /&gt;
+
+## Use
+
+Import any of the components and use them in a `<MapContainer />`:
+
+```javascript
+import React from "react";
+import { MapContainer } from "react-leaflet";
+import { BasemapLayer, FeatureLayer } from "react-esri-leaflet";
+import EsriLeafletGeoSearch from "react-esri-leaflet/plugins/GeoSearch";
+
+const Map = () => {
+  return (
+    <MapContainer zoom={zoom} center={center}>
+      <BasemapLayer name="DarkGray" />
+      <FeatureLayer url={featureLayerURL} />
+      <EsriLeafletGeoSearch useMapBounds={false} position="topright" />
+    </MapContainer>
+  );
+};
+```
+
 ### Using esri-leaflet Plugins
 
 If you want to use any of the esri-leaflet plugins, you must first install their underlying packages and any associated css. Each plugin has its own requirements, which you can find in the esri-leaflet docs.  Plugins are imported not from the main package, but from the `/plugins/<PluginName>` subfolder, like this:
 
-````javascript
+```javascript
 import EsriLeafletGeoSearch from "react-esri-leaflet/plugins/EsriLeafletGeoSearch";
-````
+```
 
 #### `EsriLeafletGeoSearch`
 
 You must first install the underlying `esri-leaflet-geocoder`:
 
 ```javscript
-npm i esri-leaflet-geocoder@^2
+npm i esri-leaflet-geocoder
 ```
 
 You will also need to include the css in your html header, as explained [in the esri-leaflet-geocoder documentation](https://github.com/Esri/esri-leaflet-geocoder). You can then use the `<EsriLeafletGeoSearch />` component. See the Use section for examples.
@@ -81,70 +118,88 @@ npm i leaflet.markercluster esri-leaflet-cluster
 
 You can then use the `<ClusterLayer />` component.
 
-**Note: Support for Vector Layer and Vector Basemap not available, as even esri does not recommend using these in production applications.  Open an issue if you have a dire need for these.
+#### VectorBasemapLayer and VectorTileLayer
 
-## Components
+First install the underlying dependencies:
 
-react-esri-leaflet offers the following components:
-
-Native Components:
-
-- &lt;BasemapLayer /&gt;
-- &lt;FeatureLayer /&gt;
-- &lt;TiledMapLayer /&gt;
-- &lt;ImageMapLayer /&gt;
-- &lt;DynamicMapLayer /&gt;
-
-Plugins:
-
-- &lt;EsriLeafletGeoSearch /&gt;
-- &lt;HeatmapLayer /&gt;
-- &lt;ClusterLayer /&gt;
-
-## Use
-
-Import any of the components and use them in a `<MapContainer />`:
-
-```javascript
-import React from "react";
-import { MapContainer } from "react-leaflet";
-import { BasemapLayer, FeatureLayer } from "react-esri-leaflet";
-import EsriLeafletGeoSearch from "react-esri-leaflet/plugins/GeoSearch";
-
-const Map = () => {
-
-  return (
-
-    <MapContainer zoom={zoom} center={center}>
-
-      <BasemapLayer name="DarkGray" />
-
-      <FeatureLayer url={featureLayerURL} />
-
-      <EsriLeafletGeoSearch useMapBounds={false} position="topright" />
-
-    </MapContainer>
-
-  );
-
-};
+```javscript
+npm i esri-leaflet-vector
 ```
+
+You can then use the `<VectorBasemapLayer />` and `<VectorTileLater />` components.
 
 ## Props
 
 All react-esri-leaflet components inherit their props from the underlying esri-leaflet component options. You can find the options for each esri-leaflet layer [in their documentation](https://esri.github.io/esri-leaflet/api-reference/#layers). However, certain options are available or necessary for react-esri-leaflet components:
 
-### BasemapLayer
+<table>
+  <tr>
+    <td>component</td>
+    <td><b>prop<b></td>
+    <td><b>type<b></td>
+    <td><b>description<b></td>
+    <td><b>required<b></td>
+  </tr>
+  <tr>
+    <td><b>BasemapLayer</b></td>
+    <td>name</td>
+    <td>string</td>
+    <td>one of the <a href="https://esri.github.io/esri-leaflet/api-reference/layers/basemap-layer.html">esri accepted baselayer names</a></td>
+    <td style="font-weight: bold; color: red;">yes</td>
+  </tr>
+  <tr>
+    <td><b>VectorBasemapLayer</b></td>
+    <td>name</td>
+    <td>string</td>
+    <td>one of the <a href="https://esri.github.io/esri-leaflet/api-reference/layers/vector-basemap.html#constructor">esri accepted vector basemap names</a></td>
+    <td style="font-weight: bold; color: red;">yes</td>
+  </tr>
+  <tr>
+    <td><b>VectorTileLayer</b></td>
+    <td>url</td>
+    <td>string</td>
+    <td>the url of the vector tile layer service</td>
+    <td style="font-weight: bold; color: red;">yes</td>
+  </tr>
+  <tr>
+    <td><b>EsriLeafletGeoSearch</b></td>
+    <td>onResult</td>
+    <td>function(results)</td>
+    <td>fires when geosearch returns results, takes the <a href="https://esri.github.io/esri-leaflet/api-reference/controls/geosearch.html#events">results event</a> as an argument</td>
+    <td>no</td>
+  </tr>
+  <tr>
+    <td style="vertical-align: top;"><b>EsriLeafletGeoSearch</b></td>
+    <td style="vertical-align: top;">providers</td>
+    <td style="vertical-align: top;">object</td>
+    <td>
+      An object defining the providers to be used for the geosearch component.  The object keys are the names of one of the <a href="https://esri.github.io/esri-leaflet/api-reference/controls/geosearch.html#providers">possible providers</a>, and the values are objects containing the options to configure that provider.  See below for an example.
+    </td>
+    <td style="vertical-align: top; font-weight: bold; color: red;">yes</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td colspan="4">
 
-| prop | type   | description                                                                                                             | required |
-| ---- | ------ | ----------------------------------------------------------------------------------------------------------------------- | -------- |
-| name | string | One of the [esri accepted baselayer names](https://esri.github.io/esri-leaflet/api-reference/layers/basemap-layer.html) | yes      |
+```javascript
+<EsriLeafletGeoSearch 
+  providers={{
+    arcgisOnlineProvider: {
+      token: your_token,
+      label: "ArcGIS Online Results",
+      maxResults: 10
+    },
+    featureLayerProvider: {
+      url: feature_layer_url,
+      label: 'Featurelayer Provider Results'
+      bufferRadius: 5000
+    }
+  }}
+/>;
+```
 
-### EsriLeafletGeoSearch
-
-| prop     | type              | description                                                                                                                                                      | required |
-| -------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| onResult | function(results) | fires when geosearch returns results, takes the [results event](https://esri.github.io/esri-leaflet/api-reference/controls/geosearch.html#events) as an argument | no       |
+  </tr>
+<table>
 
 ## Events
 
@@ -214,25 +269,20 @@ const Map = () => {
   };
 
   return (
-
     <MapContainer zoom={zoom} center={center}>
-
       <FeatureLayer ref={featureLayerRef} url={featureLayerURL} />
-
       <button onClick={queryFeature}>Run a Query</button>
-
     </MapContainer>
-
   );
 
 };
-````
+```
 
 ## Using Authenticated Layers
 
 Any esri layers that require authentication accept a `token` prop.  A react-esri-leaflet layer that requires a `token` should be conditionally rendered based on the availability of the token.  For example, a typical token getting function is as follows:
 
-````Javascript
+```Javascript
 async function authenticateEsri(client_id, client_secret, expiration) {
 
   const authservice = "https://www.arcgis.com/sharing/rest/oauth2/token";
@@ -254,11 +304,11 @@ async function authenticateEsri(client_id, client_secret, expiration) {
   return token;
 
 }
-````
+```
 
 On component mount, you can call this function, save the token to state, and conditionally render the layer based on the state variable:
 
-````Javascript
+```Javascript
 const Map = (props) => {
 
   const [token, setToken] = useState(null);
@@ -273,32 +323,33 @@ const Map = (props) => {
 
   return (
     <MapContainer zoom center>
-
       {token && (
-        <ImageMapLayer
-          token={token}
-          url="https://landscape6.arcgis.com/arcgis/rest/services/World_Land_Cover_30m_BaseVue_2013/ImageServer"
-        />
+        <>
+          <ImageMapLayer
+            token={token}
+            url="https://landscape6.arcgis.com/arcgis/rest/services/World_Land_Cover_30m_BaseVue_2013/ImageServer"
+          />
+          <VectorBasemapLayer name="ArcGIS:Streets" token={token} />
+        </>
       )}
-
     </MapContainer>
   );
   
 };
-````
+```
 
 ## Alternatives
 
 You don't necesarily need an esri-leaflet component to bring esri layers into leaflet.  You can use an esri service url with a react-leaflet `TileLayer`.  For example:
 
-````javascript
+```javascript
 <TileLayer url="https://server.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/{z}/{y}/{x}">
-````
+```
 is equivalent to
 
-````javascript
+```javascript
 <Basemap name="Oceans">
-````
+```
 
 
 Esri also offers [react-arcgis](https://github.com/Esri/react-arcgis), which is a react wrapper for the ArcGIS Javascript API, but that takes you outside the realm of leaflet.

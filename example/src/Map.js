@@ -5,31 +5,19 @@ import {
 	useMapEvents,
 } from '../../node_modules/react-leaflet';
 
-// import {
-// 	BasemapLayer,
-// 	FeatureLayer,
-// 	DynamicMapLayer,
-// 	TiledMapLayer,
-// 	ImageMapLayer,
-// } from 'react-esri-leaflet';
-
-// import EsriLeafletGeoSearch from 'react-esri-leaflet/plugins/EsriLeafletGeoSearch';
-// import HeatmapLayer from 'react-esri-leaflet/plugins/HeatmapLayer';
-// import ClusterLayer from 'react-esri-leaflet/plugins/ClusterLayer';
-
 import {
 	BasemapLayer,
 	FeatureLayer,
 	DynamicMapLayer,
 	TiledMapLayer,
 	ImageMapLayer,
-} from '../../build';
+} from 'react-esri-leaflet';
 
-import EsriLeafletGeoSearch from '../../plugins/EsriLeafletGeoSearch';
-import HeatmapLayer from '../../plugins/HeatmapLayer';
-import ClusterLayer from '../../plugins/ClusterLayer';
-import VectorBasemapLayer from '../../plugins/VectorBasemapLayer';
-import VectorTileLayer from '../../plugins/VectorTileLayer';
+import EsriLeafletGeoSearch from 'react-esri-leaflet/plugins/EsriLeafletGeoSearch';
+import HeatmapLayer from 'react-esri-leaflet/plugins/HeatmapLayer';
+import ClusterLayer from 'react-esri-leaflet/plugins/ClusterLayer';
+import VectorBasemapLayer from 'react-esri-leaflet/plugins/VectorBasemapLayer';
+import VectorTileLayer from 'react-esri-leaflet/plugins/VectorTileLayer';
 
 const MapEvents = () => {
 	const map = useMapEvents({

@@ -18,13 +18,9 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 
-## NOTE:
-
-With the new [ArcGIS Platform Launch](https://www.esri.com/about/newsroom/announcements/esri-launches-arcgis-platform/), there are many breaking changes to esri-leaflet. The revised documentation was [just released](https://github.com/Esri/esri-leaflet/issues/1262).  I will update this package for esri-leaflet v3 compatibility as soon as possible.
-
 ## Requirements
 
-Requires react-leaflet version ^3 and esri-leaflet v2^.
+Requires react-leaflet^3 and esri-leaflet^3.
 
 For use with react-leaflet version 2, see the [V2 README](https://github.com/slutske22/react-esri-leaflet/blob/master/README-V2.md).
 
@@ -33,7 +29,7 @@ For use with react-leaflet version 2, see the [V2 README](https://github.com/slu
 To use these components you must install certain dependencies yourself:
 
 ```javascript
-npm i react react-dom leaflet react-leaflet esri-leaflet@^2
+npm i react react-dom leaflet react-leaflet esri-leaflet
 ```
 
 with all of your underlying packages installed,
@@ -41,46 +37,6 @@ with all of your underlying packages installed,
 ```javascript
 npm i react-esri-leaflet
 ```
-
-### Using esri-leaflet Plugins
-
-If you want to use any of the esri-leaflet plugins, you must first install their underlying packages and any associated css. Each plugin has its own requirements, which you can find in the esri-leaflet docs.  Plugins are imported not from the main package, but from the `/plugins/<PluginName>` subfolder, like this:
-
-````javascript
-import EsriLeafletGeoSearch from "react-esri-leaflet/plugins/EsriLeafletGeoSearch";
-````
-
-#### `EsriLeafletGeoSearch`
-
-You must first install the underlying `esri-leaflet-geocoder`:
-
-```javscript
-npm i esri-leaflet-geocoder@^2
-```
-
-You will also need to include the css in your html header, as explained [in the esri-leaflet-geocoder documentation](https://github.com/Esri/esri-leaflet-geocoder). You can then use the `<EsriLeafletGeoSearch />` component. See the Use section for examples.
-
-#### `HeatmapLayer`
-
-First install the underlying dependencies:
-
-```javscript
-npm i leaflet.heat esri-leaflet-heatmap
-```
-
-You can then use the `<HeatmapLayer />` component.
-
-#### `ClusterLayer`
-
-First install the underlying dependencies:
-
-```javscript
-npm i leaflet.markercluster esri-leaflet-cluster
-```
-
-You can then use the `<ClusterLayer />` component.
-
-**Note: Support for Vector Layer and Vector Basemap not available, as even esri does not recommend using these in production applications.  Open an issue if you have a dire need for these.
 
 ## Components
 
@@ -99,6 +55,8 @@ Plugins:
 - &lt;EsriLeafletGeoSearch /&gt;
 - &lt;HeatmapLayer /&gt;
 - &lt;ClusterLayer /&gt;
+- &lt;VectorBasemapLayer /&gt;
+- &lt;VectorTileLayer /&gt;
 
 ## Use
 
@@ -129,6 +87,54 @@ const Map = () => {
 };
 ```
 
+### Using esri-leaflet Plugins
+
+If you want to use any of the esri-leaflet plugins, you must first install their underlying packages and any associated css. Each plugin has its own requirements, which you can find in the esri-leaflet docs.  Plugins are imported not from the main package, but from the `/plugins/<PluginName>` subfolder, like this:
+
+````javascript
+import EsriLeafletGeoSearch from "react-esri-leaflet/plugins/EsriLeafletGeoSearch";
+````
+
+#### `EsriLeafletGeoSearch`
+
+You must first install the underlying `esri-leaflet-geocoder`:
+
+```javscript
+npm i esri-leaflet-geocoder
+```
+
+You will also need to include the css in your html header, as explained [in the esri-leaflet-geocoder documentation](https://github.com/Esri/esri-leaflet-geocoder). You can then use the `<EsriLeafletGeoSearch />` component. See the Use section for examples.
+
+#### `HeatmapLayer`
+
+First install the underlying dependencies:
+
+```javscript
+npm i leaflet.heat esri-leaflet-heatmap
+```
+
+You can then use the `<HeatmapLayer />` component.
+
+#### `ClusterLayer`
+
+First install the underlying dependencies:
+
+```javscript
+npm i leaflet.markercluster esri-leaflet-cluster
+```
+
+You can then use the `<ClusterLayer />` component.
+
+#### VectorBasemapLayer and VectorTileLayer
+
+First install the underlying dependencies:
+
+```javscript
+npm i esri-leaflet-vector
+```
+
+You can then use the `<VectorBasemapLayer />` and `<VectorTileLater />` components.
+
 ## Props
 
 All react-esri-leaflet components inherit their props from the underlying esri-leaflet component options. You can find the options for each esri-leaflet layer [in their documentation](https://esri.github.io/esri-leaflet/api-reference/#layers). However, certain options are available or necessary for react-esri-leaflet components:
@@ -138,6 +144,18 @@ All react-esri-leaflet components inherit their props from the underlying esri-l
 | prop | type   | description                                                                                                             | required |
 | ---- | ------ | ----------------------------------------------------------------------------------------------------------------------- | -------- |
 | name | string | One of the [esri accepted baselayer names](https://esri.github.io/esri-leaflet/api-reference/layers/basemap-layer.html) | yes      |
+
+### VectorBasemapLayer
+
+| prop | type   | description                                                                                                             | required |
+| ---- | ------ | ----------------------------------------------------------------------------------------------------------------------- | -------- |
+| name | string | One of the [esri accepted vector-basemap names](https://esri.github.io/esri-leaflet/api-reference/layers/vector-basemap.html#constructor) | yes      |
+
+### VectorTileLayer
+
+| prop | type   | description                                                                                                             | required |
+| ---- | ------ | ----------------------------------------------------------------------------------------------------------------------- | -------- |
+| url  | string | the url of the vector tile layer                                                                                        | yes      |
 
 ### EsriLeafletGeoSearch
 

@@ -215,27 +215,7 @@ All react-esri-leaflet components inherit their props from the underlying esri-l
     <td style="vertical-align: top;">providers</td>
     <td style="vertical-align: top;">object</td>
     <td>
-      An object defining the providers to be used for the geosearch component.  The object keys are the names of one of the <a href="https://esri.github.io/esri-leaflet/api-reference/controls/geosearch.html#providers">possible providers</a>, and the values are objects containing the options to configure that provider.  For example:<br><br>
-
-
-```javascript
-<EsriLeafletGeoSearch 
-  providers={{
-    arcgisOnlineProvider: {
-      token: your_token,
-      label: "ArcGIS Online Results",
-      maxResults: 10
-    },
-    featureLayerProvider: {
-      url: feature_layer_url,
-      label: 'Featurelayer Provider Results'
-      bufferRadius: 5000
-    }
-  }}
-/>
-```
-
-
+      An object defining the providers to be used for the geosearch component.  The object keys are the names of one of the <a href="https://esri.github.io/esri-leaflet/api-reference/controls/geosearch.html#providers">possible providers</a>, and the values are objects containing the options to configure that provider.
     </td>
     <td style="vertical-align: top; font-weight: bold; color: red;">yes</td>
   </tr>

@@ -139,48 +139,6 @@ You can then use the `<VectorBasemapLayer />` and `<VectorTileLater />` componen
 
 All react-esri-leaflet components inherit their props from the underlying esri-leaflet component options. You can find the options for each esri-leaflet layer [in their documentation](https://esri.github.io/esri-leaflet/api-reference/#layers). However, certain options are available or necessary for react-esri-leaflet components:
 
-### BasemapLayer
-
-| prop | type   | description                                                                                                             | required |
-| ---- | ------ | ----------------------------------------------------------------------------------------------------------------------- | -------- |
-| name | string | One of the [esri accepted baselayer names](https://esri.github.io/esri-leaflet/api-reference/layers/basemap-layer.html) | yes      |
-
-### VectorBasemapLayer
-
-| prop | type   | description                                                                                                             | required |
-| ---- | ------ | ----------------------------------------------------------------------------------------------------------------------- | -------- |
-| name | string | One of the [esri accepted vector-basemap names](https://esri.github.io/esri-leaflet/api-reference/layers/vector-basemap.html#constructor) | yes      |
-
-### VectorTileLayer
-
-| prop | type   | description                                                                                                             | required |
-| ---- | ------ | ----------------------------------------------------------------------------------------------------------------------- | -------- |
-| url  | string | the url of the vector tile layer                                                                                        | yes      |
-
-### EsriLeafletGeoSearch
-
-| prop     | type              | description                                                                                                                                                      | required |
-| -------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| onResult | function(results) | fires when geosearch returns results, takes the [results event](https://esri.github.io/esri-leaflet/api-reference/controls/geosearch.html#events) as an argument | no       |
-| providers | object |  An object defining the providers to be used for the geosearch component.  The object keys are the names of one of the <a href="https://esri.github.io/esri-leaflet/api-reference/controls/geosearch.html#providers">possible providers</a>, and the values are objects containing the options to configure that provider.  For example:
- ```javascript
-<EsriLeafletGeoSearch 
-  providers={{
-    arcgisOnlineProvider: {
-      token: your_token,
-      label: "ArcGIS Online Results",
-      maxResults: 10
-    },
-    featureLayerProvider: {
-      url: feature_layer_url,
-      label: 'Featurelayer Provider Results'
-      bufferRadius: 5000
-    }
-  }}
-/>
-```
-| yes |
-
 <table>
   <tr>
     <td>component</td>

@@ -1,6 +1,7 @@
 language: node_js
 node_js:
-   - 12
+  - 12
 
 before_install:
-   - npm i -g npm@6.9.0
+  - npm i -g npm@6.9.0
+  - npm run build

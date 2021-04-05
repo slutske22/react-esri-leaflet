@@ -83,9 +83,9 @@ const Map = () => {
 
 If you want to use any of the esri-leaflet plugins, you must first install their underlying packages and any associated css. Each plugin has its own requirements, which you can find in the esri-leaflet docs.  Plugins are imported not from the main package, but from the `/plugins/<PluginName>` subfolder, like this:
 
-````javascript
+```javascript
 import EsriLeafletGeoSearch from "react-esri-leaflet/plugins/EsriLeafletGeoSearch";
-````
+```
 
 #### `EsriLeafletGeoSearch`
 
@@ -281,7 +281,7 @@ const Map = () => {
 
 Any esri layers that require authentication accept a `token` prop.  A react-esri-leaflet layer that requires a `token` should be conditionally rendered based on the availability of the token.  For example, a typical token getting function is as follows:
 
-````Javascript
+```Javascript
 async function authenticateEsri(client_id, client_secret, expiration) {
 
   const authservice = "https://www.arcgis.com/sharing/rest/oauth2/token";
@@ -303,11 +303,11 @@ async function authenticateEsri(client_id, client_secret, expiration) {
   return token;
 
 }
-````
+```
 
 On component mount, you can call this function, save the token to state, and conditionally render the layer based on the state variable:
 
-````Javascript
+```Javascript
 const Map = (props) => {
 
   const [token, setToken] = useState(null);
@@ -341,14 +341,14 @@ const Map = (props) => {
 
 You don't necesarily need an esri-leaflet component to bring esri layers into leaflet.  You can use an esri service url with a react-leaflet `TileLayer`.  For example:
 
-````javascript
+```javascript
 <TileLayer url="https://server.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/{z}/{y}/{x}">
-````
+```
 is equivalent to
 
-````javascript
+```javascript
 <Basemap name="Oceans">
-````
+```
 
 
 Esri also offers [react-arcgis](https://github.com/Esri/react-arcgis), which is a react wrapper for the ArcGIS Javascript API, but that takes you outside the realm of leaflet.

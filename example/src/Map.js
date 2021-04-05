@@ -101,25 +101,25 @@ const Map = ({ apikey }) => {
 						? 'Search for places or addresses'
 						: 'Enter an API key in the upper right corner'
 				}
-				providers={{
-					arcgisOnlineProvider: {
-						apikey,
-					},
-					featureLayerProvider: {
-						url:
-							'https://services.arcgis.com/BG6nSlhZSAWtExvp/ArcGIS/rest/services/GIS_Day_Registration_Form_2019_Hosted_View_Layer/FeatureServer/0',
-						searchFields: ['event_name', 'host_organization'],
-						label: 'GIS Day Events 2019',
-						bufferRadius: 5000,
-						formatSuggestion: function (feature) {
-							return (
-								feature.properties.event_name +
-								' - ' +
-								feature.properties.host_organization
-							);
-						},
-					},
-				}}
+				// providers={{
+				// 	arcgisOnlineProvider: {
+				// 		apikey,
+				// 	},
+				// 	featureLayerProvider: {
+				// 		url:
+				// 			'https://services.arcgis.com/BG6nSlhZSAWtExvp/ArcGIS/rest/services/GIS_Day_Registration_Form_2019_Hosted_View_Layer/FeatureServer/0',
+				// 		searchFields: ['event_name', 'host_organization'],
+				// 		label: 'GIS Day Events 2019',
+				// 		bufferRadius: 5000,
+				// 		formatSuggestion: function (feature) {
+				// 			return (
+				// 				feature.properties.event_name +
+				// 				' - ' +
+				// 				feature.properties.host_organization
+				// 			);
+				// 		},
+				// 	},
+				// }}
 				eventHandlers={{
 					requeststart: () => console.log('Started request...'),
 					requestend: () => console.log('Ended request...'),

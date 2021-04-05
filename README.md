@@ -163,6 +163,69 @@ All react-esri-leaflet components inherit their props from the underlying esri-l
 | -------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | onResult | function(results) | fires when geosearch returns results, takes the [results event](https://esri.github.io/esri-leaflet/api-reference/controls/geosearch.html#events) as an argument | no       |
 
+<table>
+  <tr>
+    <td>component</td>
+    <td><b>prop<b></td>
+    <td><b>type<b></td>
+    <td><b>description<b></td>
+    <td><b>required<b></td>
+  </tr>
+  <tr>
+    <td><b>BasemapLayer</b></td>
+    <td>name</td>
+    <td>string</td>
+    <td>one of the <a href="https://esri.github.io/esri-leaflet/api-reference/layers/basemap-layer.html">esri accepted baselayer names</a></td>
+    <td style="font-weight: bold; color: red;">yes</td>
+  </tr>
+  <tr>
+    <td><b>VectorBasemapLayer</b></td>
+    <td>name</td>
+    <td>string</td>
+    <td>one of the <a href="https://esri.github.io/esri-leaflet/api-reference/layers/vector-basemap.html#constructor">esri accepted vector basemap names</a></td>
+    <td style="font-weight: bold; color: red;">yes</td>
+  </tr>
+  <tr>
+    <td><b>VectorTileLayer</b></td>
+    <td>url</td>
+    <td>string</td>
+    <td>the url of the vector tile layer service</td>
+    <td style="font-weight: bold; color: red;">yes</td>
+  </tr>
+  <tr>
+    <td style="vertical-align: top;"><b>EsriLeafletGeoSearch</b></td>
+    <td style="vertical-align: top;">providers</td>
+    <td style="vertical-align: top;">object</td>
+    <td>
+      An object defining the providers to be used for the geosearch component.  The object keys are the names of one of the <a href="https://esri.github.io/esri-leaflet/api-reference/controls/geosearch.html#providers">possible providers</a>, and the values are objects containing the options to configure that provider.  For example:<br><br>
+      <pre><code>
+        &lt;EsriLeafletGeoSearch 
+          providers={{
+            arcgisOnlineProvider: {
+              token: your_token,
+              label: "ArcGIS Online Results",
+              maxResults: 10
+            },
+            featureLayerProvider: {
+              url: feature_layer_url,
+              label: 'Featurelayer Provider Results'
+              bufferRadius: 5000
+            }
+          }}
+        /&gt;
+      </code></pre>
+    </td>
+    <td style="vertical-align: top; font-weight: bold; color: red;">yes</td>
+  </tr>
+  <tr>
+    <td><b>EsriLeafletGeoSearch</b></td>
+    <td>onResult</td>
+    <td>function(results)</td>
+    <td>fires when geosearch returns results, takes the <a href="https://esri.github.io/esri-leaflet/api-reference/controls/geosearch.html#events">results event</a> as an argument</td>
+    <td>no</td>
+  </tr>
+<table>
+
 ## Events
 
 Events can be accessed in the same way as described in the [react-leaflet documentation](https://react-leaflet-v3.now.sh/docs/api-components#evented-behavior), using the `eventHandlers` prop. All events are inherited from their underlying esri-leaflet component. For example:

@@ -1,9 +1,5 @@
-import React, { useState } from 'react';
-import {
-	MapContainer,
-	LayersControl,
-	useMapEvents,
-} from '../../node_modules/react-leaflet';
+import React from 'react';
+import { MapContainer, LayersControl, useMapEvents } from 'react-leaflet';
 
 import {
 	BasemapLayer,

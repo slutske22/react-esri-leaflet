@@ -69,21 +69,13 @@ import { BasemapLayer, FeatureLayer } from "react-esri-leaflet";
 import EsriLeafletGeoSearch from "react-esri-leaflet/plugins/GeoSearch";
 
 const Map = () => {
-
   return (
-
     <MapContainer zoom={zoom} center={center}>
-
       <BasemapLayer name="DarkGray" />
-
       <FeatureLayer url={featureLayerURL} />
-
       <EsriLeafletGeoSearch useMapBounds={false} position="topright" />
-
     </MapContainer>
-
   );
-
 };
 ```
 
@@ -276,19 +268,14 @@ const Map = () => {
   };
 
   return (
-
     <MapContainer zoom={zoom} center={center}>
-
       <FeatureLayer ref={featureLayerRef} url={featureLayerURL} />
-
       <button onClick={queryFeature}>Run a Query</button>
-
     </MapContainer>
-
   );
 
 };
-````
+```
 
 ## Using Authenticated Layers
 
@@ -335,19 +322,20 @@ const Map = (props) => {
 
   return (
     <MapContainer zoom center>
-
       {token && (
-        <ImageMapLayer
-          token={token}
-          url="https://landscape6.arcgis.com/arcgis/rest/services/World_Land_Cover_30m_BaseVue_2013/ImageServer"
-        />
+        <>
+          <ImageMapLayer
+            token={token}
+            url="https://landscape6.arcgis.com/arcgis/rest/services/World_Land_Cover_30m_BaseVue_2013/ImageServer"
+          />
+          <VectorBasemapLayer name="ArcGIS:Streets" token={token} />
+        </>
       )}
-
     </MapContainer>
   );
   
 };
-````
+```
 
 ## Alternatives
 

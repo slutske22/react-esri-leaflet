@@ -1,6 +1,6 @@
 import * as Vector from 'esri-leaflet-vector';
 import { createLayerComponent } from '@react-leaflet/core';
-import { updateEsriLayer } from '../src/EsriLeafletLayer';
+import { updateEsriLayer } from '../build/EsriLeafletLayer';
 
 const createEsriLayer = (props, context) => {
 	const instance = Vector.vectorBasemapLayer(props.name, { ...props });

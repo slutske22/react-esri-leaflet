@@ -5,7 +5,7 @@ import './styles.css';
 
 export default function App() {
 	const [apikey, setApikey] = useState(process.env.ARCGIS_API_KEY);
-	const [keyModalOpen, setKeyModalOpen] = useState(false);
+	const [keyModalOpen, setKeyModalOpen] = useState(true);
 
 	return (
 		<div className="App">

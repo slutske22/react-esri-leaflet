@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import CodesandboxLogo from './codesandbox-logo.png';
-import KeyLogo from './key.png';
+import CodesandboxLogo from './assets/codesandbox-logo.png';
+import KeyLogo from './assets/key.png';
+import ReactLogo from './assets/react-logo.png';
+import EsriLogo from './assets/esri-logo.png';
+import LeafletLogo from './assets/leaflet-logo.png';
 
 const UI = ({ setApikey, keyModalOpen, setKeyModalOpen }) => {
 	const [input, setInput] = useState('');
@@ -10,6 +13,11 @@ const UI = ({ setApikey, keyModalOpen, setKeyModalOpen }) => {
 			{keyModalOpen && (
 				<div id="key-modal">
 					<div class="form">
+						<div className="icon-wrapper">
+							<img src={ReactLogo} className="icon" />
+							<img src={EsriLogo} className="icon" />
+							<img src={LeafletLogo} className="icon" />
+						</div>
 						<h2>react-esri-leaflet</h2>
 						<p>
 							Enter a valid ArcGIS Developers apikey to use key-protected
@@ -28,7 +36,7 @@ const UI = ({ setApikey, keyModalOpen, setKeyModalOpen }) => {
 						</textarea>
 						<div class="bottom">
 							<button id="cancel-submit" onClick={() => setKeyModalOpen(false)}>
-								Cancel
+								Continue without API key
 							</button>
 							<button
 								id="key-submit"
@@ -45,7 +53,7 @@ const UI = ({ setApikey, keyModalOpen, setKeyModalOpen }) => {
 			)}
 			<div id="codesandbox-container">
 				<a
-					href="https://codesandbox.io/s/github/slutske22/leaflet-topography/tree/main/example"
+					href="https://codesandbox.io/s/github/slutske22/react-esri-leaflet/tree/master/example"
 					target="_blank"
 				>
 					<img src={CodesandboxLogo} />

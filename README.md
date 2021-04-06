@@ -10,7 +10,7 @@
 
 <p align="center">
    <i>quickly and easily bring esri-leaflet components into your react-leaflet application</i>
-   <h2 align="center"><a href="https://codesandbox.io/s/react-esri-leaflet-example-n15yn">&#128064; Demo &#128064;</a></h2>
+   <h2 align="center"><a href="https://codesandbox.io/s/github/slutske22/react-esri-leaflet/tree/master/example">&#128064; Demo &#128064;</a></h2>
 </p>
 
 [![Build Status](https://travis-ci.org/slutske22/react-esri-leaflet.svg?branch=master)](https://travis-ci.org/slutske22/react-esri-leaflet)

@@ -141,3 +141,14 @@ body,
 	cursor: pointer;
 	filter: invert(1);
 }
+
+.icon-wrapper {
+	display: flex;
+	justify-content: center;
+}
+
+.icon-wrapper .icon {
+	width: 50px;
+	height: 50px;
+	margin: 10px;
+}

@@ -1,0 +1,12 @@
+{
+	"compilerOptions": {
+		"moduleResolution": "node",
+		"target": "es5",
+		"allowJs": true,
+		"module": "esnext",
+		"declaration": true,
+		"jsx": "react",
+		"outDir": "tsc-build"
+	},
+	"exclude": ["node_modules"]
+}

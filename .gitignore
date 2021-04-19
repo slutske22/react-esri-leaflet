@@ -3,9 +3,6 @@ build
 v2
 /plugins
 
-tsc-build
-tsc-plugins
-
 .env
 .envv
 .envvv

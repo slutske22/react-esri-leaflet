@@ -7,7 +7,7 @@
 		"declaration": true,
 		"jsx": "react",
 		"allowSyntheticDefaultImports": true,
-		"outDir": "tsc-build"
+		"outDir": "build"
 	},
 	"exclude": ["node_modules"]
 }

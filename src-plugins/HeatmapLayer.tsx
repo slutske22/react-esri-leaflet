@@ -1,9 +1,24 @@
 import * as EL from 'esri-leaflet';
 import 'leaflet.heat';
-import Heatmap from 'esri-leaflet-heatmap';
+import * as Heatmap from 'esri-leaflet-heatmap';
 import { createLayerComponent } from '@react-leaflet/core';
+import { HeatMapOptions } from 'leaflet';
 
-const createEsriLayer = (props, context) => {
+interface Props extends HeatMapOptions {
+	url: string;
+	where?: string;
+	fields?: string[];
+	from?: Date | string;
+	to?: Date | string;
+	timeField?: boolean;
+	timeFilterMode?: 'server' | 'client';
+	precision?: number;
+	token?: string;
+	proxy?: string;
+	useCors?: boolean;
+}
+
+const createEsriLayer = (props: Props, context) => {
 	const instance = new Heatmap.featureLayer({
 		...props,
 	});

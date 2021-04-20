@@ -4,7 +4,7 @@
 	"description": "react components for esri-leaflet",
 	"main": "build/index.js",
 	"scripts": {
-		"build": "npm run clean && npm run transpile",
+		"build:babel": "npm run clean && npm run transpile",
 		"transpile": "npm run transpile:main && npm run transpile:plugins && npm run transpile:v2",
 		"transpile:main": "./node_modules/.bin/babel src --out-dir build",
 		"transpile:plugins": "./node_modules/.bin/babel src-plugins --out-dir plugins",
@@ -14,7 +14,7 @@
 		"test": "BABEL_ENV=development NODE_ENV=test jest --runInBand",
 		"tsc:src": "tsc --p ./src/tsconfig.json",
 		"tsc:plugins": "tsc --p ./src-plugins/tsconfig.json",
-		"tsc:build": "npm run clean && npm run tsc:src && npm run tsc:plugins"
+		"build": "npm run clean && npm run tsc:src && npm run tsc:plugins"
 	},
 	"files": [
 		"/build",

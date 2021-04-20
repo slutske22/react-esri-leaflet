@@ -30,6 +30,8 @@ interface Props
 const createGeoSearch = (props: Props) => {
 	const { providers: providersObj } = props;
 
+	console.log('EL', EL);
+
 	const providers = Object.keys(providersObj).map(
 		(provider): EL.Geocoding.GeosearchProvider => {
 			if (Object.keys(providersObj[provider]).length > 0) {

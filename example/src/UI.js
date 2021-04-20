@@ -12,7 +12,7 @@ const UI = ({ setApikey, keyModalOpen, setKeyModalOpen }) => {
 		<div id="ui">
 			{keyModalOpen && (
 				<div id="key-modal">
-					<div class="form">
+					<div className="form">
 						<div className="icon-wrapper">
 							<img src={ReactLogo} className="icon" />
 							<img src={EsriLogo} className="icon" />
@@ -31,10 +31,9 @@ const UI = ({ setApikey, keyModalOpen, setKeyModalOpen }) => {
 							id="key-input"
 							onChange={(e) => setInput(e.target.value)}
 							placeholder="Enter a valid ArcGIS Developers api key or token"
-						>
-							{input}
-						</textarea>
-						<div class="bottom">
+							defaultValue={input}
+						/>
+						<div className="bottom">
 							<button id="cancel-submit" onClick={() => setKeyModalOpen(false)}>
 								Continue without API key
 							</button>

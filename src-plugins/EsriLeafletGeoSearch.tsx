@@ -1,7 +1,7 @@
 import { createControlComponent } from '@react-leaflet/core';
 import * as L from 'leaflet';
-import * as EL from 'esri-leaflet';
-import 'esri-leaflet-geocoder';
+import 'esri-leaflet';
+import * as ELG from 'esri-leaflet-geocoder';
 
 type GeosearchEvents =
 	| 'requeststart'
@@ -12,14 +12,14 @@ type GeosearchEvents =
 	| 'results';
 
 interface Providers {
-	arcgisOnlineProvider?: EL.Geocoding.ArcgisOnlineProviderOptions;
-	featureLayerProvider?: EL.Geocoding.FeatureLayerProviderOptions;
-	mapServiceProvider?: EL.Geocoding.MapServiceProviderOptions;
-	geocodeServiceProvider?: EL.Geocoding.GeocodeServiceProviderOptions;
+	arcgisOnlineProvider?: L.esri.Geocoding.ArcgisOnlineProviderOptions;
+	featureLayerProvider?: L.esri.Geocoding.FeatureLayerProviderOptions;
+	mapServiceProvider?: L.esri.Geocoding.MapServiceProviderOptions;
+	geocodeServiceProvider?: L.esri.Geocoding.GeocodeServiceProviderOptions;
 }
 
 interface Props
-	extends Omit<EL.Geocoding.GeosearchObject, 'providers'>,
+	extends Omit<L.esri.Geocoding.GeosearchObject, 'providers'>,
 		L.Evented {
 	eventHandlers?: {
 		[key in GeosearchEvents]: Function;
@@ -28,25 +28,24 @@ interface Props
 }
 
 const createGeoSearch = (props: Props) => {
-	const { providers: providersObj } = props;
+	let { providers } = props;
 
-	console.log('EL', EL);
-
-	const providers = Object.keys(providersObj).map(
-		(provider): EL.Geocoding.GeosearchProvider => {
-			if (Object.keys(providersObj[provider]).length > 0) {
-				return EL.Geocoding[provider](providersObj[provider]);
-			}
-			return EL.Geocoding[provider]();
+	// @ts-ignore
+	providers = Object.keys(providers).map((provider) => {
+		if (Object.keys(providers[provider]).length > 0) {
+			return ELG[provider](providers[provider]);
+		} else {
+			return ELG[provider]();
 		}
-	);
+	});
 
 	const searchOptions = {
 		...props,
 		providers,
 	};
 
-	const geoSearch = new EL.Geocoding.Geosearch(searchOptions);
+	// @ts-ignore
+	const geoSearch = new ELG.Geosearch(searchOptions);
 
 	if (props.eventHandlers) {
 		const events = Object.keys(props.eventHandlers);

@@ -28,12 +28,11 @@ interface Props
 }
 
 const createGeoSearch = (props: Props) => {
-	let { providers } = props;
+	const { providers: providersProp } = props;
 
-	// @ts-ignore
-	providers = Object.keys(providers).map((provider) => {
-		if (Object.keys(providers[provider]).length > 0) {
-			return ELG[provider](providers[provider]);
+	const providers = Object.keys(providersProp).map((provider) => {
+		if (Object.keys(providersProp[provider]).length > 0) {
+			return ELG[provider](providersProp[provider]);
 		} else {
 			return ELG[provider]();
 		}

@@ -14,7 +14,9 @@
 		"test": "BABEL_ENV=development NODE_ENV=test jest --runInBand",
 		"tsc:src": "tsc --p ./src/tsconfig.json",
 		"tsc:plugins": "tsc --p ./src-plugins/tsconfig.json",
-		"tsc:v2": "tsc --p ./v2/tsconfig.json",
+		"babel:v2": "./node_modules/.bin/babel ./src-v2 --out-dir v2 --extensions \".tsx\"",
+		"tsc:v2:declarations": "tsc --p ./src-v2/tsconfig.json",
+		"build:v2": "npm run babel:v2 && npm run tsc:v2:declarations",
 		"build": "npm run clean && npm run tsc:src && npm run tsc:plugins"
 	},
 	"files": [
@@ -69,6 +71,7 @@
 		"babel-jest": "^26.6.3",
 		"babel-loader": "^8.2.2",
 		"babel-plugin-transform-react-jsx": "^6.24.1",
+		"babel-plugin-transform-rename-import": "^2.3.0",
 		"babel-preset-env": "^1.7.0",
 		"esri-leaflet": "^3.0.1",
 		"esri-leaflet-cluster": "^2.1.0",

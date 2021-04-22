@@ -1,13 +1,25 @@
-import { withLeaflet, MapLayer } from 'react-leaflet';
+import { withLeaflet, MapLayer } from 'react-leaflet-v2';
+import * as L from 'leaflet';
 import * as EL from 'esri-leaflet';
 
-class EsriLeafletLayer extends MapLayer {
+interface Props extends EL.BasemapLayerOptions {
+	layerType: string;
+	name: string;
+	leaflet: {
+		map: L.Map;
+	};
+}
+
+class EsriLeafletLayer extends MapLayer<Props, any> {
+	leafletElement: EL.BasemapLayer;
+	props: Props;
+
 	createLeafletElement(props) {
 		var layer;
 
 		switch (props.layerType) {
 			case 'basemapLayer':
-				layer = new EL.basemapLayer(props.name, { ...props });
+				layer = EL.basemapLayer(props.name, { ...props });
 				break;
 
 			default:

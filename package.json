@@ -14,6 +14,7 @@
 		"test": "BABEL_ENV=development NODE_ENV=test jest --runInBand",
 		"tsc:src": "tsc --p ./src/tsconfig.json",
 		"tsc:plugins": "tsc --p ./src-plugins/tsconfig.json",
+		"tsc:v2": "tsc --p ./v2/tsconfig.json",
 		"build": "npm run clean && npm run tsc:src && npm run tsc:plugins"
 	},
 	"files": [
@@ -65,7 +66,6 @@
 		"@types/leaflet.heat": "^0.2.0",
 		"@types/leaflet.markercluster": "^1.4.4",
 		"@types/react": "^17.0.3",
-		"@types/react-leaflet": "^2.8.1",
 		"babel-jest": "^26.6.3",
 		"babel-loader": "^8.2.2",
 		"babel-plugin-transform-react-jsx": "^6.24.1",
@@ -82,6 +82,7 @@
 		"react": "^17.0.2",
 		"react-dom": "^17.0.2",
 		"react-leaflet": "^3.1.0",
+		"react-leaflet-v2": "npm:react-leaflet@^2.8.0",
 		"rimraf": "^3.0.2",
 		"typescript": "^4.2.4"
 	},

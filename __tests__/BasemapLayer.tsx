@@ -11,6 +11,7 @@ describe('BasemapLayer', () => {
 		render(
 			<MapContainer
 				whenCreated={(map) => {
+					// @ts-ignore // leaflet typings dont account for private properties like _layers
 					const addedLayer = Object.values(map._layers)[0];
 					expect(addedLayer).toBeInstanceOf(VanillaBL);
 				}}

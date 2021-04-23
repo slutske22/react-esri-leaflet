@@ -18,7 +18,7 @@
 		"babel:v2": "./node_modules/.bin/babel ./src-v2 --out-dir v2 --extensions \".tsx\"",
 		"tsc:v2:declarations": "tsc --p ./src-v2/tsconfig.json",
 		"build:v2": "npm run babel:v2 && npm run tsc:v2:declarations",
-		"build": "npm run clean && npm run tsc:src && npm run tsc:plugins"
+		"build": "npm run clean && npm run tsc:src && npm run tsc:plugins && npm run build:v2"
 	},
 	"files": [
 		"/build",

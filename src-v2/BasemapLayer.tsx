@@ -6,7 +6,7 @@ interface Props extends BasemapLayerOptions {
 	name: Basemaps;
 }
 
-const BasemapLayer = (props: Props) => (
+const BasemapLayer: React.FC<Props> = (props: Props) => (
 	<Layer layerType="basemapLayer" {...props} />
 );
 

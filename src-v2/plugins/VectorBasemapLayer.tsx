@@ -47,7 +47,8 @@ type BasemapStyles =
 	| 'ArcGIS:ChartedTerritory:Base'
 	| 'ArcGIS:Newspaper'
 	| 'ArcGIS:ModernAntique	'
-	| 'ArcGIS:ModernAntique:Base';
+	| 'ArcGIS:ModernAntique:Base'
+	| string;
 
 interface VectorBasemapLayerProps extends L.Layer {
 	name: BasemapStyles;

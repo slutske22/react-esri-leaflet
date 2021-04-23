@@ -1,7 +1,22 @@
-import { withLeaflet, MapLayer } from 'react-leaflet';
+import { withLeaflet, MapLayer } from 'react-leaflet-v2';
+import * as L from 'leaflet';
 import * as Vector from 'esri-leaflet-vector';
 
-class VectorTileLayer extends MapLayer {
+interface VectorTileLayerProps extends L.Layer {
+	url: string;
+	apiKey?: string;
+	token?: string;
+	style?: Function;
+}
+
+class VectorTileLayer extends MapLayer<VectorTileLayerProps, any> {
+	leafletElement;
+	props: {
+		leaflet: {
+			map: L.Map;
+		};
+	};
+
 	createLeafletElement(props) {
 		const layer = new Vector.vectorTileLayer(props.url, { ...props });
 

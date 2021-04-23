@@ -1,10 +1,31 @@
 import * as EL from 'esri-leaflet';
-import 'leaflet.heat';
-import Heatmap from 'esri-leaflet-heatmap';
+import 'leaflet.markercluster/dist/leaflet.markercluster.js';
+import 'leaflet.markercluster/dist/MarkerCluster.css';
+import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
+import Cluster from 'esri-leaflet-cluster';
 import { createLayerComponent } from '@react-leaflet/core';
+import { MarkerClusterGroupOptions } from 'leaflet';
 
-const createEsriLayer = (props, context) => {
-	const instance = new Heatmap.featureLayer({
+interface Props extends MarkerClusterGroupOptions {
+	url: string;
+	pointToLayer?: Function;
+	style?: Function;
+	onEachFeature?: Function;
+	where?: string;
+	fields?: string[];
+	from?: Date | string;
+	to?: Date | string;
+	timeField?: boolean;
+	timeFilterMode?: 'server' | 'client';
+	simplifyFactor?: number;
+	precision?: number;
+	token?: string;
+	proxy?: string;
+	useCors?: boolean;
+}
+
+const createEsriLayer = (props: Props, context) => {
+	const instance = Cluster({
 		...props,
 	});
 
@@ -42,6 +63,6 @@ const updateEsriLayer = (instance, props, prevProps) => {
 	}
 };
 
-const HeatmapLayer = createLayerComponent(createEsriLayer, updateEsriLayer);
+const ClusterLayer = createLayerComponent(createEsriLayer, updateEsriLayer);
 
-export default HeatmapLayer;
+export default ClusterLayer;

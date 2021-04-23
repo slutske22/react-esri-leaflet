@@ -1,16 +1,23 @@
 import * as EL from 'esri-leaflet';
 import { createLayerComponent } from '@react-leaflet/core';
+import { BasemapLayerOptions, Basemaps } from 'esri-leaflet';
 
-const createEsriLayer = (props, context) => {
+interface Props extends BasemapLayerOptions {
+	layerType: string;
+	name?: Basemaps;
+}
+
+const createEsriLayer = (props: Props, context) => {
 	var instance;
+	const { layerType, name } = props;
 
-	switch (props.layerType) {
+	switch (layerType) {
 		case 'basemapLayer':
-			instance = new EL.basemapLayer(props.name, { ...props });
+			instance = EL.basemapLayer(name, { ...props });
 			break;
 
 		default:
-			instance = new EL[props.layerType]({ ...props });
+			instance = new EL[layerType]({ ...props });
 	}
 
 	return { instance, context };

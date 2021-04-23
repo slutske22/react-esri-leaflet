@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import 'leaflet/dist/leaflet.css';
 import 'esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css';
 
 const rootElement = document.getElementById('root');

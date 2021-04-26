@@ -74,4 +74,6 @@ class GeoSearch extends MapControl {
 	}
 }
 
-export default withLeaflet(GeoSearch);
+const GeoSearchWrapped: React.ComponentType<Props> = withLeaflet(GeoSearch);
+
+export default GeoSearchWrapped;

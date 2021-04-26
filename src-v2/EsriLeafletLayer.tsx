@@ -1,11 +1,12 @@
+import * as React from 'react';
 import { withLeaflet, MapLayer } from 'react-leaflet-v2';
 import * as L from 'leaflet';
 import * as EL from 'esri-leaflet';
 
 interface Props extends EL.BasemapLayerOptions {
 	layerType: string;
-	name: string;
-	leaflet: {
+	name?: string;
+	leaflet?: {
 		map: L.Map;
 	};
 }
@@ -46,4 +47,6 @@ class EsriLeafletLayer extends MapLayer<Props, any> {
 	}
 }
 
-export default withLeaflet(EsriLeafletLayer);
+const RELLayer: React.ComponentType<Props> = withLeaflet(EsriLeafletLayer);
+
+export default RELLayer;

@@ -7,6 +7,9 @@ interface VectorTileLayerProps extends L.Layer {
 	apiKey?: string;
 	token?: string;
 	style?: Function;
+	eventHandlers?: {
+		[key: string]: Function;
+	};
 }
 
 class VectorTileLayer extends MapLayer<VectorTileLayerProps, any> {
@@ -17,7 +20,7 @@ class VectorTileLayer extends MapLayer<VectorTileLayerProps, any> {
 		};
 	};
 
-	createLeafletElement(props) {
+	createLeafletElement(props: VectorTileLayerProps) {
 		const layer = new Vector.vectorTileLayer(props.url, { ...props });
 
 		if (props.eventHandlers) {
@@ -40,4 +43,8 @@ class VectorTileLayer extends MapLayer<VectorTileLayerProps, any> {
 	}
 }
 
-export default withLeaflet(VectorTileLayer);
+const VectorTileLayerWrapped: React.ComponentType<VectorTileLayerProps> = withLeaflet(
+	VectorTileLayer
+);
+
+export default VectorTileLayerWrapped;

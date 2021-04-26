@@ -57,4 +57,8 @@ class ClusterLayer extends MapLayer<Props, any> {
 	}
 }
 
-export default withLeaflet(ClusterLayer);
+const ClusterLayerWrapped: React.ComponentType<Props> = withLeaflet(
+	ClusterLayer
+);
+
+export default ClusterLayerWrapped;

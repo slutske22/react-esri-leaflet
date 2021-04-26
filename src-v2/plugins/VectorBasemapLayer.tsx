@@ -54,6 +54,9 @@ interface VectorBasemapLayerProps extends L.Layer {
 	name: BasemapStyles;
 	apiKey?: string;
 	token?: string;
+	eventHandlers?: {
+		[key: string]: Function;
+	};
 }
 
 class VectorBasemapLayer extends MapLayer<VectorBasemapLayerProps, any> {
@@ -64,7 +67,7 @@ class VectorBasemapLayer extends MapLayer<VectorBasemapLayerProps, any> {
 		};
 	};
 
-	createLeafletElement(props) {
+	createLeafletElement(props: VectorBasemapLayerProps) {
 		const layer = new Vector.vectorBasemapLayer(props.name, { ...props });
 
 		if (props.eventHandlers) {
@@ -87,4 +90,8 @@ class VectorBasemapLayer extends MapLayer<VectorBasemapLayerProps, any> {
 	}
 }
 
-export default withLeaflet(VectorBasemapLayer);
+const VectorBasemapLayerWrapped: React.ComponentType<VectorBasemapLayerProps> = withLeaflet(
+	VectorBasemapLayer
+);
+
+export default VectorBasemapLayerWrapped;

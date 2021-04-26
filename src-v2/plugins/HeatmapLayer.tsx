@@ -51,4 +51,8 @@ class HeatmapLayer extends MapLayer<Props, any> {
 	}
 }
 
-export default withLeaflet(HeatmapLayer);
+const HeamapLayerWrapped: React.ComponentType<Props> = withLeaflet(
+	HeatmapLayer
+);
+
+export default HeamapLayerWrapped;

@@ -3,7 +3,7 @@
 		"moduleResolution": "node",
 		"target": "es5",
 		"allowJs": true,
-		"module": "esnext",
+		"module": "commonjs",
 		"declaration": true,
 		"jsx": "react",
 		"allowSyntheticDefaultImports": true,

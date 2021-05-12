@@ -15,6 +15,28 @@ import ClusterLayer from 'react-esri-leaflet/plugins/ClusterLayer';
 import VectorBasemapLayer from 'react-esri-leaflet/plugins/VectorBasemapLayer';
 import VectorTileLayer from 'react-esri-leaflet/plugins/VectorTileLayer';
 
+// Alternative imports for local build tests:
+
+// import {
+// 	MapContainer,
+// 	LayersControl,
+// 	useMapEvents,
+// } from '../../node_modules/react-leaflet';
+
+// import {
+// 	BasemapLayer,
+// 	FeatureLayer,
+// 	DynamicMapLayer,
+// 	TiledMapLayer,
+// 	ImageMapLayer,
+// } from '../../build';
+
+// import EsriLeafletGeoSearch from '../../plugins/EsriLeafletGeoSearch';
+// import HeatmapLayer from '../..//plugins/HeatmapLayer';
+// import ClusterLayer from '../..//plugins/ClusterLayer';
+// import VectorBasemapLayer from '../..//plugins/VectorBasemapLayer';
+// import VectorTileLayer from '../..//plugins/VectorTileLayer';
+
 const MapEvents = () => {
 	const map = useMapEvents({
 		click: (e) => console.log(e.latlng, map.getZoom()),
@@ -90,8 +112,7 @@ const Map = ({ apikey }) => {
 						apikey,
 					},
 					featureLayerProvider: {
-						url:
-							'https://services.arcgis.com/BG6nSlhZSAWtExvp/ArcGIS/rest/services/GIS_Day_Registration_Form_2019_Hosted_View_Layer/FeatureServer/0',
+						url: 'https://services.arcgis.com/BG6nSlhZSAWtExvp/ArcGIS/rest/services/GIS_Day_Registration_Form_2019_Hosted_View_Layer/FeatureServer/0',
 						searchFields: ['event_name', 'host_organization'],
 						label: 'GIS Day Events 2019',
 						bufferRadius: 5000,

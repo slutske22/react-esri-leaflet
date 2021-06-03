@@ -10,5 +10,6 @@
 		"allowJs": true,
 		"allowSyntheticDefaultImports": true,
 		"experimentalDecorators": true
-	}
+	},
+	"include": ["src/index.d.ts"]
 }

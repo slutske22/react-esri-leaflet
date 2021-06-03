@@ -1,0 +1,154 @@
+.App {
+	font-family: sans-serif;
+	position: relative;
+}
+
+html,
+body,
+#root,
+.App,
+#mapId {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#ui {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 100000;
+	pointer-events: none;
+}
+
+#ui > * {
+	pointer-events: auto;
+}
+
+#key-modal {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+#key-modal ul {
+	margin-top: 0;
+}
+
+#title {
+	display: flex;
+	align-items: center;
+	position: absolute;
+	top: 10px;
+	left: 60px;
+	color: white;
+}
+
+#title img {
+	width: 50px;
+	height: 35px;
+	margin-right: 10px;
+	filter: invert(1);
+}
+
+.form {
+	background-color: white;
+	padding: 2em;
+	padding-top: 1em;
+	width: 50%;
+	min-width: 300px;
+	display: flex;
+	flex-direction: column;
+}
+
+.form h2 {
+	text-align: center;
+}
+
+.form img {
+	align-self: center;
+	width: 150px;
+	height: 90px;
+}
+
+#key-input {
+	width: 100%;
+	height: 4em;
+	font-family: 'Courier New', Courier, monospace;
+}
+
+.form .bottom {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
+}
+
+#codesandbox-container,
+#key-container {
+	align-self: flex-start;
+	margin-top: 15px;
+	margin-right: 20px;
+	position: absolute;
+	right: 10px;
+	align-items: center;
+	justify-content: center;
+	pointer-events: auto;
+}
+
+#codesandbox-container {
+	top: 10px;
+}
+#key-container {
+	top: 80px;
+}
+
+#codesandbox-container h4,
+#key-container h4 {
+	font-size: 1.2em;
+	text-align: right;
+	position: absolute;
+	margin: 0;
+	top: 0;
+	left: -180px;
+	opacity: 0;
+	transition: all 0.5s;
+	pointer-events: auto;
+	color: white;
+}
+
+#codesandbox-container:hover h4,
+#key-container:hover h4 {
+	text-justify: right;
+	position: absolute;
+	left: -185px;
+	opacity: 1;
+	transition: all 0.5s;
+}
+
+#codesandbox-container img,
+#key-container img {
+	width: 35px;
+	height: 40px;
+	pointer-events: auto;
+	cursor: pointer;
+	filter: invert(1);
+}
+
+.icon-wrapper {
+	display: flex;
+	justify-content: center;
+}
+
+.icon-wrapper .icon {
+	width: 50px;
+	height: 50px;
+	margin: 10px;
+}

@@ -1,9 +1,32 @@
 import * as React from 'react';
 import Layer from './EsriLeafletLayer';
 import { FeatureLayerOptions } from 'esri-leaflet';
+import { EsriServiceEvent } from './types';
 
-const FeatureLayer: React.FC<FeatureLayerOptions> = (
-	props: FeatureLayerOptions
+type FeatureLayerEvents =
+	| EsriServiceEvent
+	| 'loading'
+	| 'load'
+	| 'createfeature'
+	| 'removefeature'
+	| 'addfeature'
+	| 'click'
+	| 'dblclick'
+	| 'mouseover'
+	| 'mouseout'
+	| 'mousemove'
+	| 'contextmenu'
+	| 'popupopen'
+	| 'popupclose';
+
+interface FeatureLayerProps extends FeatureLayerOptions {
+	eventHandlers?: {
+		[key in FeatureLayerEvents]?: Function;
+	};
+}
+
+const FeatureLayer: React.FC<FeatureLayerProps> = (
+	props: FeatureLayerProps
 ) => <Layer layerType="featureLayer" {...props} />;
 
 export default FeatureLayer;

@@ -3,7 +3,7 @@
 	"version": "1.0.1",
 	"description": "",
 	"keywords": [],
-	"main": "src/index.js",
+	"main": "src/index.tsx",
 	"dependencies": {
 		"dotenv": "^8.2.0",
 		"esri-leaflet": "^3.0.1",

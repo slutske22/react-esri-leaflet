@@ -3,7 +3,7 @@ import Map from './Map';
 import UI from './UI';
 import './styles.css';
 
-export default function App() {
+const App = () => {
 	const [apikey, setApikey] = useState(process.env.ARCGIS_API_KEY);
 	const [keyModalOpen, setKeyModalOpen] = useState(true);
 
@@ -17,4 +17,6 @@ export default function App() {
 			/>
 		</div>
 	);
-}
+};
+
+export default App;

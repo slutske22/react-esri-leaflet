@@ -7,7 +7,7 @@ import { EsriServiceEvent } from '../build/types';
 type GeosearchEvents = EsriServiceEvent | 'results';
 
 interface ApiKey {
-	apiKey?: string;
+	apikey?: string;
 }
 
 interface Providers {
@@ -18,9 +18,7 @@ interface Providers {
 		ApiKey;
 }
 
-interface Props
-	extends Omit<L.esri.Geocoding.GeosearchObject, 'providers'>,
-		L.Evented {
+interface Props extends Omit<L.esri.Geocoding.GeosearchObject, 'providers'> {
 	eventHandlers?: {
 		[key in GeosearchEvents]?: Function;
 	};

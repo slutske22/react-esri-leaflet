@@ -2,27 +2,25 @@ import { createControlComponent } from '@react-leaflet/core';
 import * as L from 'leaflet';
 import 'esri-leaflet';
 import * as ELG from 'esri-leaflet-geocoder';
+import { EsriServiceEvent } from '../build/types';
 
-type GeosearchEvents =
-	| 'requeststart'
-	| 'requestend'
-	| 'requestsuccess'
-	| 'requesterror'
-	| 'authenticationrequired'
-	| 'results';
+type GeosearchEvents = EsriServiceEvent | 'results';
 
-interface Providers {
-	arcgisOnlineProvider?: L.esri.Geocoding.ArcgisOnlineProviderOptions;
-	featureLayerProvider?: L.esri.Geocoding.FeatureLayerProviderOptions;
-	mapServiceProvider?: L.esri.Geocoding.MapServiceProviderOptions;
-	geocodeServiceProvider?: L.esri.Geocoding.GeocodeServiceProviderOptions;
+interface ApiKey {
+	apikey?: string;
 }
 
-interface Props
-	extends Omit<L.esri.Geocoding.GeosearchObject, 'providers'>,
-		L.Evented {
+interface Providers {
+	arcgisOnlineProvider?: L.esri.Geocoding.ArcgisOnlineProviderOptions & ApiKey;
+	featureLayerProvider?: L.esri.Geocoding.FeatureLayerProviderOptions & ApiKey;
+	mapServiceProvider?: L.esri.Geocoding.MapServiceProviderOptions & ApiKey;
+	geocodeServiceProvider?: L.esri.Geocoding.GeocodeServiceProviderOptions &
+		ApiKey;
+}
+
+interface Props extends Omit<L.esri.Geocoding.GeosearchObject, 'providers'> {
 	eventHandlers?: {
-		[key in GeosearchEvents]: Function;
+		[key in GeosearchEvents]?: Function;
 	};
 	providers?: Providers;
 }

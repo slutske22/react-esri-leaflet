@@ -21,7 +21,7 @@ import VectorTileLayer from 'react-esri-leaflet/plugins/VectorTileLayer';
 // 	MapContainer,
 // 	LayersControl,
 // 	useMapEvents,
-// } from '../../node_modules/react-leaflet';
+// } from '../../../node_modules/react-leaflet';
 
 // import {
 // 	BasemapLayer,
@@ -29,13 +29,13 @@ import VectorTileLayer from 'react-esri-leaflet/plugins/VectorTileLayer';
 // 	DynamicMapLayer,
 // 	TiledMapLayer,
 // 	ImageMapLayer,
-// } from '../../build';
+// } from '../../../build';
 
-// import EsriLeafletGeoSearch from '../../plugins/EsriLeafletGeoSearch';
-// import HeatmapLayer from '../..//plugins/HeatmapLayer';
-// import ClusterLayer from '../..//plugins/ClusterLayer';
-// import VectorBasemapLayer from '../..//plugins/VectorBasemapLayer';
-// import VectorTileLayer from '../..//plugins/VectorTileLayer';
+// import EsriLeafletGeoSearch from '../../../plugins/EsriLeafletGeoSearch';
+// import HeatmapLayer from '../../../plugins/HeatmapLayer';
+// import ClusterLayer from '../../../plugins/ClusterLayer';
+// import VectorBasemapLayer from '../../../plugins/VectorBasemapLayer';
+// import VectorTileLayer from '../../../plugins/VectorTileLayer';
 
 const MapEvents = () => {
 	const map = useMapEvents({

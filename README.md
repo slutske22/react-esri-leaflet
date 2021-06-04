@@ -21,7 +21,7 @@
 
 ## Requirements
 
-Requires react-leaflet^3 and esri-leaflet^3.
+Requires react-leaflet^3 and esri-leaflet^3. 
 
 For use with react-leaflet version 2, see the [V2 README](https://github.com/slutske22/react-esri-leaflet/blob/master/README-V2.md).
 

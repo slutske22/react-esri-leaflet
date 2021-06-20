@@ -25,8 +25,10 @@ interface FeatureLayerProps extends FeatureLayerOptions {
 	};
 }
 
-const FeatureLayer: React.FC<FeatureLayerProps> = (
-	props: FeatureLayerProps
-) => <Layer layerType="featureLayer" {...props} />;
+const FeatureLayer: React.FC<FeatureLayerProps> = React.forwardRef(
+	(props: FeatureLayerProps, ref) => (
+		<Layer ref={ref} layerType="featureLayer" {...props} />
+	)
+);
 
 export default FeatureLayer;

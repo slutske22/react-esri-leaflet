@@ -18,8 +18,8 @@ interface Props extends RasterLayerOptions {
 	from?: Date;
 }
 
-const ImageMapLayer: React.FC<Props> = (props: Props) => (
-	<Layer layerType="imageMapLayer" {...props} />
-);
+const ImageMapLayer: React.FC<Props> = React.forwardRef((props: Props, ref) => (
+	<Layer ref={ref} layerType="imageMapLayer" {...props} />
+));
 
 export default ImageMapLayer;

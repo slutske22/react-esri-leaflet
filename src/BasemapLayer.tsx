@@ -6,8 +6,8 @@ interface Props extends BasemapLayerOptions {
 	name: Basemaps;
 }
 
-const BasemapLayer: React.FC<Props> = (props: Props) => (
-	<Layer layerType="basemapLayer" {...props} />
-);
+const BasemapLayer: React.FC<Props> = React.forwardRef((props: Props, ref) => (
+	<Layer ref={ref} layerType="basemapLayer" {...props} />
+));
 
 export default BasemapLayer;

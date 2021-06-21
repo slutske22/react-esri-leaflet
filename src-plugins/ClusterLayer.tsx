@@ -1,3 +1,4 @@
+import 'leaflet';
 import * as EL from 'esri-leaflet';
 import 'leaflet.markercluster/dist/leaflet.markercluster.js';
 import 'leaflet.markercluster/dist/MarkerCluster.css';

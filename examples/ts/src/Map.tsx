@@ -16,6 +16,7 @@ import VectorBasemapLayer from 'react-esri-leaflet/plugins/VectorBasemapLayer';
 import VectorTileLayer from 'react-esri-leaflet/plugins/VectorTileLayer';
 
 // Alternative imports for local build tests:
+// import 'leaflet';
 
 // import {
 // 	MapContainer,
@@ -45,6 +46,8 @@ const MapEvents = () => {
 };
 
 const Map = ({ apikey }) => {
+	const featureLayerRef = React.useRef();
+
 	return (
 		<MapContainer
 			id="mapId"
@@ -60,7 +63,10 @@ const Map = ({ apikey }) => {
 					<BasemapLayer name="DarkGray" />
 				</LayersControl.BaseLayer>
 				<LayersControl.BaseLayer name="Dynamic Map Layer">
-					<DynamicMapLayer url="https://services.arcgisonline.com/arcgis/rest/services/Specialty/Soil_Survey_Map/MapServer" />
+					<DynamicMapLayer
+						// ref={dmlRef}
+						url="https://maps7.arcgisonline.com/arcgis/rest/services/USDA_USFS_2014_Wildfire_Hazard_Potential/MapServer"
+					/>
 				</LayersControl.BaseLayer>
 				<LayersControl.BaseLayer name="Image Map Layer">
 					<ImageMapLayer
@@ -75,10 +81,19 @@ const Map = ({ apikey }) => {
 				</LayersControl.BaseLayer>
 				<LayersControl.Overlay name="Esri Feature Layer">
 					<FeatureLayer
+						ref={featureLayerRef}
 						url="https://services8.arcgis.com/3Y7J7SmaNLGLT6ec/arcgis/rest/services/2020_Protests_with_Location/FeatureServer/0"
 						eventHandlers={{
 							loading: () => console.log('featurelayer loading'),
-							load: () => console.log('featurelayer loaded'),
+							load: () => {
+								console.log('featurelayer loaded');
+								if (featureLayerRef && featureLayerRef.current) {
+									// @ts-ignore
+									featureLayerRef.current.metadata((error, data) => {
+										console.log('featurelayer metadata:', data);
+									});
+								}
+							},
 						}}
 					/>
 				</LayersControl.Overlay>

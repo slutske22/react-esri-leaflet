@@ -1,27 +1,5 @@
 import React from 'react';
-import { MapContainer, LayersControl, useMapEvents } from 'react-leaflet';
-
-import {
-	BasemapLayer,
-	FeatureLayer,
-	DynamicMapLayer,
-	TiledMapLayer,
-	ImageMapLayer,
-} from 'react-esri-leaflet';
-
-import EsriLeafletGeoSearch from 'react-esri-leaflet/plugins/EsriLeafletGeoSearch';
-import HeatmapLayer from 'react-esri-leaflet/plugins/HeatmapLayer';
-import ClusterLayer from 'react-esri-leaflet/plugins/ClusterLayer';
-import VectorBasemapLayer from 'react-esri-leaflet/plugins/VectorBasemapLayer';
-import VectorTileLayer from 'react-esri-leaflet/plugins/VectorTileLayer';
-
-// Alternative imports for local build tests:
-
-// import {
-// 	MapContainer,
-// 	LayersControl,
-// 	useMapEvents,
-// } from '../../../node_modules/react-leaflet';
+// import { MapContainer, LayersControl, useMapEvents } from 'react-leaflet';
 
 // import {
 // 	BasemapLayer,
@@ -29,13 +7,37 @@ import VectorTileLayer from 'react-esri-leaflet/plugins/VectorTileLayer';
 // 	DynamicMapLayer,
 // 	TiledMapLayer,
 // 	ImageMapLayer,
-// } from '../../build';
+// } from 'react-esri-leaflet';
 
-// import EsriLeafletGeoSearch from '../../plugins/EsriLeafletGeoSearch';
-// import HeatmapLayer from '../..//plugins/HeatmapLayer';
-// import ClusterLayer from '../..//plugins/ClusterLayer';
-// import VectorBasemapLayer from '../..//plugins/VectorBasemapLayer';
-// import VectorTileLayer from '../..//plugins/VectorTileLayer';
+// import EsriLeafletGeoSearch from 'react-esri-leaflet/plugins/EsriLeafletGeoSearch';
+// import HeatmapLayer from 'react-esri-leaflet/plugins/HeatmapLayer';
+// import ClusterLayer from 'react-esri-leaflet/plugins/ClusterLayer';
+// import VectorBasemapLayer from 'react-esri-leaflet/plugins/VectorBasemapLayer';
+// import VectorTileLayer from 'react-esri-leaflet/plugins/VectorTileLayer';
+
+// Alternative imports for local build tests:
+
+import 'leaflet';
+
+import {
+	MapContainer,
+	LayersControl,
+	useMapEvents,
+} from '../../../node_modules/react-leaflet';
+
+import {
+	BasemapLayer,
+	FeatureLayer,
+	DynamicMapLayer,
+	TiledMapLayer,
+	ImageMapLayer,
+} from '../../../build';
+
+import EsriLeafletGeoSearch from '../../../plugins/EsriLeafletGeoSearch';
+import HeatmapLayer from '../../../plugins/HeatmapLayer';
+import ClusterLayer from '../../../plugins/ClusterLayer';
+import VectorBasemapLayer from '../../../plugins/VectorBasemapLayer';
+import VectorTileLayer from '../../../plugins/VectorTileLayer';
 
 const MapEvents = () => {
 	const map = useMapEvents({
@@ -45,6 +47,8 @@ const MapEvents = () => {
 };
 
 const Map = ({ apikey }) => {
+	const featureLayerRef = React.useRef();
+
 	return (
 		<MapContainer
 			id="mapId"
@@ -75,10 +79,18 @@ const Map = ({ apikey }) => {
 				</LayersControl.BaseLayer>
 				<LayersControl.Overlay name="Esri Feature Layer">
 					<FeatureLayer
+						ref={featureLayerRef}
 						url="https://services8.arcgis.com/3Y7J7SmaNLGLT6ec/arcgis/rest/services/2020_Protests_with_Location/FeatureServer/0"
 						eventHandlers={{
 							loading: () => console.log('featurelayer loading'),
-							load: () => console.log('featurelayer loaded'),
+							load: () => {
+								console.log('featurelayer loaded');
+								if (featureLayerRef && featureLayerRef.current) {
+									featureLayerRef.current.metadata((error, data) => {
+										console.log('featurelayer metadata:', data);
+									});
+								}
+							},
 						}}
 					/>
 				</LayersControl.Overlay>

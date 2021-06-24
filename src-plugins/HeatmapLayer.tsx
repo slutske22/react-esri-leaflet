@@ -1,3 +1,4 @@
+import 'leaflet';
 import * as EL from 'esri-leaflet';
 import 'leaflet.heat';
 import * as Heatmap from 'esri-leaflet-heatmap';

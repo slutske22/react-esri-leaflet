@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Layer from './EsriLeafletLayer';
+import * as EsriLeaflet from 'esri-leaflet';
 import { RasterLayerOptions } from 'esri-leaflet';
 
 interface Props extends RasterLayerOptions {
@@ -18,8 +19,11 @@ interface Props extends RasterLayerOptions {
 	from?: Date;
 }
 
-const ImageMapLayer: React.FC<Props> = (props: Props) => (
-	<Layer layerType="imageMapLayer" {...props} />
-);
+const ImageMapLayer = React.forwardRef<
+	React.RefObject<EsriLeaflet.RasterLayer>,
+	Props
+>((props: Props, ref) => (
+	<Layer ref={ref} layerType="imageMapLayer" {...props} />
+));
 
 export default ImageMapLayer;

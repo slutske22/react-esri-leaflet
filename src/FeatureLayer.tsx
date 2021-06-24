@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Layer from './EsriLeafletLayer';
+import * as EsriLeaflet from 'esri-leaflet';
 import { FeatureLayerOptions } from 'esri-leaflet';
 import { EsriServiceEvent } from './types';
 
@@ -25,8 +26,11 @@ interface FeatureLayerProps extends FeatureLayerOptions {
 	};
 }
 
-const FeatureLayer: React.FC<FeatureLayerProps> = (
-	props: FeatureLayerProps
-) => <Layer layerType="featureLayer" {...props} />;
+const FeatureLayer = React.forwardRef<
+	React.RefObject<EsriLeaflet.FeatureLayer>,
+	FeatureLayerProps
+>((props: FeatureLayerProps, ref) => (
+	<Layer ref={ref} layerType="featureLayer" {...props} />
+));
 
 export default FeatureLayer;

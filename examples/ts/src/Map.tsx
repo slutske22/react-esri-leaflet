@@ -46,7 +46,7 @@ const MapEvents = () => {
 };
 
 const Map = ({ apikey }) => {
-	const dmlRef = React.useRef();
+	const featureLayerRef = React.useRef();
 
 	return (
 		<MapContainer
@@ -81,10 +81,19 @@ const Map = ({ apikey }) => {
 				</LayersControl.BaseLayer>
 				<LayersControl.Overlay name="Esri Feature Layer">
 					<FeatureLayer
+						ref={featureLayerRef}
 						url="https://services8.arcgis.com/3Y7J7SmaNLGLT6ec/arcgis/rest/services/2020_Protests_with_Location/FeatureServer/0"
 						eventHandlers={{
 							loading: () => console.log('featurelayer loading'),
-							load: () => console.log('featurelayer loaded'),
+							load: () => {
+								console.log('featurelayer loaded');
+								if (featureLayerRef && featureLayerRef.current) {
+									// @ts-ignore
+									featureLayerRef.current.metadata((error, data) => {
+										console.log('featurelayer metadata:', data);
+									});
+								}
+							},
 						}}
 					/>
 				</LayersControl.Overlay>

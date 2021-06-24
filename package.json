@@ -1,6 +1,6 @@
 {
 	"name": "react-esri-leaflet",
-	"version": "1.2.2-next.1",
+	"version": "1.2.2-next.2",
 	"description": "react components for esri-leaflet",
 	"main": "build/index.js",
 	"scripts": {

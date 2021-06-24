@@ -9,7 +9,7 @@ interface Props extends BasemapLayerOptions {
 
 const BasemapLayer = React.forwardRef<
 	React.RefObject<EsriLeaflet.BasemapLayer>,
-	BasemapLayerOptions
+	Props
 >((props: Props, ref) => (
 	<Layer ref={ref} layerType="basemapLayer" {...props} />
 ));

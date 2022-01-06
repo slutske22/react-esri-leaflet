@@ -1,4 +1,5 @@
 node_modules
 build
 v2
+.DS_Store
 /plugins

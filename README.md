@@ -356,4 +356,4 @@ Esri also offers [react-arcgis](https://github.com/Esri/react-arcgis), which is 
 
 ## License
 
-GNU General Public License v3.0
+MIT

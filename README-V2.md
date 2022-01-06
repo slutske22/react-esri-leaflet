@@ -282,4 +282,4 @@ Currently the V2 version of react-esri-leaflet layers is not playing nice with a
 
 ## License
 
-GNU General Public License v3.0
+MIT

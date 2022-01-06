@@ -1,6 +1,6 @@
 {
 	"name": "react-esri-leaflet",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "react components for esri-leaflet",
 	"main": "build/index.js",
 	"scripts": {
@@ -30,7 +30,7 @@
 		"esri-leaflet"
 	],
 	"author": "Seth Lutske",
-	"license": "ISC",
+	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/slutske22/react-esri-leaflet/issues"
 	},

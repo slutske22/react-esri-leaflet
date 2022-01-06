@@ -20,7 +20,8 @@ class EsriLeafletLayer extends MapLayer<Props, any> {
 
 		switch (props.layerType) {
 			case 'basemapLayer':
-				layer = EL.basemapLayer(props.name, { ...props });
+				// @ts-ignore
+				layer = new EL.basemapLayer(props.name, { ...props });
 				break;
 
 			default:

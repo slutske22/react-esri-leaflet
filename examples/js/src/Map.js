@@ -1,5 +1,5 @@
 import React from "react";
-import { MapContainer, LayersControl, useMapEvents } from "react-leaflet";
+// import { MapContainer, LayersControl, useMapEvents } from "react-leaflet";
 
 // import {
 // 	BasemapLayer,
@@ -19,11 +19,11 @@ import { MapContainer, LayersControl, useMapEvents } from "react-leaflet";
 
 import "leaflet";
 
-// import {
-//   MapContainer,
-//   LayersControl,
-//   useMapEvents,
-// } from "../../../node_modules/react-leaflet";
+import {
+  MapContainer,
+  LayersControl,
+  useMapEvents,
+} from "../../../node_modules/react-leaflet";
 
 import {
   BasemapLayer,

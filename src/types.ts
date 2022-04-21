@@ -1,6 +1,6 @@
 export type EsriServiceEvent =
-	| 'requeststart'
-	| 'requestend'
-	| 'requestsuccess'
-	| 'requesterror'
-	| 'authenticationrequired';
+  | "requeststart"
+  | "requestend"
+  | "requestsuccess"
+  | "requesterror"
+  | "authenticationrequired";

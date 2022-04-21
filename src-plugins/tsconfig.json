@@ -1,7 +1,7 @@
 {
-	"extends": "../tsconfig.json",
-	"compilerOptions": {
-		"outDir": "../plugins"
-	},
-	"include": ["../src-plugins"]
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../plugins"
+  },
+  "include": ["../src-plugins"]
 }

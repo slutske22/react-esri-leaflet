@@ -57,7 +57,7 @@ const UI = ({ setApikey, keyModalOpen, setKeyModalOpen }) => {
         >
           <img src={CodesandboxLogo} />
         </a>
-        <h4>
+        <h4 style={{ pointerEvents: "none" }}>
           Edit this demo
           <br />
           on CodeSandbox
@@ -65,7 +65,7 @@ const UI = ({ setApikey, keyModalOpen, setKeyModalOpen }) => {
       </div>
       <div id="key-container" onClick={() => setKeyModalOpen(true)}>
         <img src={KeyLogo} />
-        <h4>Add your API key</h4>
+        <h4 style={{ pointerEvents: "none" }}>Add your API key</h4>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import * as Vector from "esri-leaflet-vector";
-import { createLayerComponent } from "@react-leaflet/core";
+import { createLayerComponent, LayerProps } from "@react-leaflet/core";
 import { updateEsriLayer } from "../build/EsriLeafletLayer";
 
 type BasemapStyles =
@@ -50,7 +50,7 @@ type BasemapStyles =
   | "ArcGIS:ModernAntique:Base"
   | string;
 
-interface VectorBasemapLayerProps extends L.Layer {
+interface VectorBasemapLayerProps extends LayerProps {
   name: BasemapStyles;
   apiKey?: string;
   token?: string;
@@ -66,9 +66,9 @@ const createEsriLayer = (props: VectorBasemapLayerProps, context) => {
  *
  * For more info: https://github.com/slutske22/react-esri-leaflet#vectorbasemaplayer-and-vectortilelayer
  */
-const VectorBasemapLayer = createLayerComponent(
-  createEsriLayer,
-  updateEsriLayer
-);
+const VectorBasemapLayer = createLayerComponent<
+  Vector.vectorBasemapLayer,
+  VectorBasemapLayerProps
+>(createEsriLayer, updateEsriLayer);
 
 export default VectorBasemapLayer;

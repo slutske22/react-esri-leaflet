@@ -67,7 +67,7 @@ const Map = ({ apikey }) => {
           position="topleft"
           collapsed={false}
           ref={(ref) => {
-            // @ts-expect-error
+            // @ts-ignore
             layerControlRef.current = ref;
             setRefReady(true);
           }}

@@ -1,8 +1,9 @@
 import * as React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import * as ReactDOM from "react-dom";
 import Highlight from "react-highlight";
-import "../node_modules/highlight.js/styles/atelier-cave-dark.css";
+import "../node_modules/highlight.js/styles/agate.css";
 
 interface Props {
   container: HTMLElement;
@@ -218,13 +219,125 @@ const samples = {
   },
   vectorbasemaplayer: {
     title: `<VectorBasemapLayer />`,
-    js: ``,
-    ts: ``,
+    js: `
+  import React from 'react';
+  import { MapContainer } from 'react-leaflet';
+  import VectorBasemapLayer from 'react-esri-leaflet/plugins/VectorBasemapLayer';
+
+  const MyMap = () => {
+
+    const layerRef = useRef();
+
+    layerRef.current.on('remove', () => {
+      console.log("Layer has been removed");
+    });
+
+    return (
+      <MapContainer>
+        <VectorBasemapLayer
+          ref={layerRef}
+          name="ArcGIS:Streets"
+          token={ARCGIS_TOKEN}
+        />
+      </MapContainer>
+    );
+  };
+    `,
+    ts: `
+  import * as React from 'react';
+  import * as Vector from "esri-leaflet-vector";
+  import { MapContainer } from 'react-leaflet';
+  import VectorBasemapLayer from 'react-esri-leaflet/plugins/VectorBasemapLayer';
+
+  const MyMap: React.FC = () => {
+
+    const layerRef = useRef<Vector.vectorBasemapLayer>();
+
+    layerRef.current.on('remove', () => {
+      console.log("Layer has been removed");
+    });
+
+    return (
+      <MapContainer>
+        <VectorBasemapLayer
+          ref={layerRef}
+          name="ArcGIS:Streets"
+          token={ARCGIS_TOKEN}
+        />
+      </MapContainer>
+    );
+  };
+    `,
   },
   featurelayer: {
     title: `<FeatureLayer />`,
-    js: ``,
-    ts: ``,
+    js: `
+  import React from 'react';
+  import { MapContainer } from 'react-leaflet';
+  import { FeatureLayer } from 'react-esri-leaflet';
+
+  const MyMap = ({ city }) => {
+
+    const layerRef = useRef();
+
+    return (
+      <MapContainer>
+        <FeatureLayer
+          ref={layerRef}
+          where={\`CITY = $\{city\}\`}
+          url="https://services8.arcgis.com/.../2020_Protests_with_Location/FeatureServer/0"
+          eventHandlers={{
+            loading: () => {
+              console.log("featurelayer loading")
+            },
+            load: () => {
+              console.log("featurelayer loaded");
+              if (layerRef && layerRef.current) {
+                layerRef.current.metadata((error, data) => {
+                  console.log("featurelayer metadata:", data);
+                });
+              }
+            },
+          }}
+        />
+      </MapContainer>
+    );
+  };
+    `,
+    ts: `
+  import * as React from 'react';
+  import * as EL from "esri-leaflet";
+  import { MapContainer } from 'react-leaflet';
+  import { FeatureLayer } from 'react-esri-leaflet';
+
+  const MyMap: React.FC<{ city: string; }> = ({ city }) => {
+
+    const layerRef = useRef<EL.FeatureLayer>();
+
+    return (
+      <MapContainer>
+        <FeatureLayer
+          ref={layerRef}
+          where={\`CITY = $\{city\}\`}
+          url="https://services8.arcgis.com/.../2020_Protests_with_Location/FeatureServer/0"
+          eventHandlers={{
+            loading: () => {
+              console.log("featurelayer loading")
+            },
+            load: () => {
+              console.log("featurelayer loaded");
+              if (layerRef && layerRef.current) {
+                layerRef.current.metadata((error, data) => {
+                  console.log("featurelayer metadata:", data);
+                });
+              }
+            },
+          }}
+        />
+      </MapContainer>
+    );
+  };
+    `,
   },
   heatmaplayer: {
     title: `<HeatmapLayer />`,
@@ -236,13 +349,71 @@ const samples = {
     js: ``,
     ts: ``,
   },
+  vectortilelayer: {
+    title: `<VectorTileLayer />`,
+    js: `
+  import React from 'react';
+  import { MapContainer } from 'react-leaflet';
+  import VectorTileLayer from 'react-esri-leaflet/plugins/VectorTileLayer';
+
+  const MyMap = () => {
+
+    const layerRef = useRef();
+
+    layerRef.current.on('remove', () => {
+      console.log("Layer has been removed");
+    });
+
+    return (
+      <MapContainer>
+        <VectorTileLayer
+          ref={layerRef}
+          url="https://vectortileservices3.arcgis.com/.../VectorTileServer"
+          token={ARCGIS_TOKEN}
+        />
+      </MapContainer>
+    );
+  };
+    `,
+    ts: `
+  import * as React from 'react';
+  import * as Vector from "esri-leaflet-vector";
+  import { MapContainer } from 'react-leaflet';
+  import VectorTileLayer from 'react-esri-leaflet/plugins/VectorTileLayer';
+
+  const MyMap: React.FC = () => {
+
+    const layerRef = useRef<Vector.vectorTileLayer>();
+
+    layerRef.current.on('remove', () => {
+      console.log("Layer has been removed");
+    });
+
+    return (
+      <MapContainer>
+        <VectorTileLayer
+          ref={layerRef}
+          url="https://vectortileservices3.arcgis.com/.../VectorTileServer"
+          token={ARCGIS_TOKEN}
+        />
+      </MapContainer>
+    );
+  };
+    `,
+  },
 };
 
 export const CodeSamples: React.FC<Props> = ({ container, apikey }: Props) => {
   const [sample, setSample] = useState("");
-  const [lang, setLang] = useState("js");
+  const [lang, setLang] = useState<"js" | "ts">("js");
 
   const handleClick = (e) => setSample(e.target.id);
+
+  useEffect(() => {
+    if (!sample) {
+      setLang("js");
+    }
+  }, [sample]);
 
   const controls = (
     <div id="code-sample-controls">
@@ -292,7 +463,7 @@ export const CodeSamples: React.FC<Props> = ({ container, apikey }: Props) => {
       </div>
 
       {sample && (
-        <div className="modal">
+        <div className="modal" style={{ zIndex: 1000000 }}>
           <div className="code-sample-inner">
             <h4>
               {samples[sample].title}{" "}
@@ -317,9 +488,7 @@ export const CodeSamples: React.FC<Props> = ({ container, apikey }: Props) => {
                 </span>
               </div>
             </h4>
-            <Highlight className="typescript">
-              {samples[sample][lang]}
-            </Highlight>
+            <Highlight className="tsx">{samples[sample][lang]}</Highlight>
           </div>
         </div>
       )}

@@ -27,11 +27,12 @@ body,
   pointer-events: auto;
 }
 
-#key-modal {
-  position: absolute;
+.modal {
+  position: fixed;
   top: 0;
-  width: 100%;
-  height: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -151,4 +152,57 @@ body,
   width: 50px;
   height: 50px;
   margin: 10px;
+}
+
+
+#code-sample-controls {
+  background-clip: padding-box;
+  border-radius: 5px;
+  background-color: white;
+  padding: 6px 10px;
+  position: absolute;
+  top: 0;
+  right: -100px
+}
+
+.see-code-button {
+  cursor: pointer;
+  height: 20.5px;
+  font-family: monospace;
+}
+
+.see-code-button:hover {
+  color:green;
+}
+
+.code-sample-inner {
+  background-color: white;
+  padding: 10px;
+}
+
+.code-sample-inner h4 {
+  margin: 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.language-button {
+  margin-left: 5px;
+  padding: 3px;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.language-button.active {
+  border: 2px solid black;
+}
+
+.language-button.js {
+  background-color: #FFFF00;
+}
+
+.language-button.ts {
+  background-color:  #007acc;
+  color: white;
 }

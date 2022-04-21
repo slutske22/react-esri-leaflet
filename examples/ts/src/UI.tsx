@@ -11,7 +11,7 @@ const UI = ({ setApikey, keyModalOpen, setKeyModalOpen }) => {
   return (
     <div id="ui">
       {keyModalOpen && (
-        <div id="key-modal">
+        <div id="key-modal" className="modal">
           <div className="form">
             <div className="icon-wrapper">
               <img src={ReactLogo} className="icon" />

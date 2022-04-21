@@ -1,12 +1,15 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import App from './App';
-import 'esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css';
+import React from "react";
+import * as ReactDOMClient from "react-dom/client";
+import App from "./App";
+import "leaflet/dist/leaflet.css";
+import "esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css";
 
-const rootElement = document.getElementById('root');
-ReactDOM.render(
-	<React.StrictMode>
-		<App />
-	</React.StrictMode>,
-	rootElement
+const rootElement = document.getElementById("root");
+
+const root = ReactDOMClient.createRoot(rootElement);
+
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
 );

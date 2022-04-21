@@ -64,6 +64,11 @@ const updateEsriLayer = (instance, props, prevProps) => {
   }
 };
 
+/**
+ * Cluster.FeatureLayer component, react-leaflet wrapper for [L.esri.Cluster.FeatureLayer](https://developers.arcgis.com/esri-leaflet/api-reference/layers/cluster-feature-layer/).
+ *
+ * For more info: https://github.com/slutske22/react-esri-leaflet#clusterlayer
+ */
 const ClusterLayer = createLayerComponent(createEsriLayer, updateEsriLayer);
 
 export default ClusterLayer;

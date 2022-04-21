@@ -14,6 +14,11 @@ const createEsriLayer = (props: VectorTileLayerProps, context) => {
   return { instance, context };
 };
 
+/**
+ * VectorTileLayer component, react-leaflet wrapper for [L.esri.Vector.vectorTileLayer](https://developers.arcgis.com/esri-leaflet/api-reference/layers/vector-layer/).
+ *
+ * For more info: https://github.com/slutske22/react-esri-leaflet#vectorbasemaplayer-and-vectortilelayer
+ */
 const VectorTileLayer = createLayerComponent(createEsriLayer, updateEsriLayer);
 
 export default VectorTileLayer;

@@ -58,6 +58,11 @@ const updateEsriLayer = (instance, props, prevProps) => {
   }
 };
 
+/**
+ * Heat.FeatureLayer component, react-leaflet wrapper for [L.esri.Heat.FeatureLayer](https://developers.arcgis.com/esri-leaflet/api-reference/layers/heatmap-feature-layer/).
+ *
+ * For more info: https://github.com/slutske22/react-esri-leaflet#heatmaplayer
+ */
 const HeatmapLayer = createLayerComponent(createEsriLayer, updateEsriLayer);
 
 export default HeatmapLayer;

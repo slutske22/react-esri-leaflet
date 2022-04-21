@@ -54,6 +54,11 @@ const createGeoSearch = (props: Props) => {
   return geoSearch;
 };
 
+/**
+ * EsriLeaflet GeoSearch control component, react-leaflet wrapper for [L.esri.Geocoding.Geosearch](https://developers.arcgis.com/esri-leaflet/api-reference/controls/geosearch/).
+ *
+ * For more info: https://github.com/slutske22/react-esri-leaflet#esrileafletgeosearch
+ */
 const EsriLeafletGeoSearch = createControlComponent(createGeoSearch);
 
 export default EsriLeafletGeoSearch;

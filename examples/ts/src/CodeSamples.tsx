@@ -20,7 +20,7 @@ const samples = {
   const MyMap = () => {
 
     const layerRef = useRef();
-    tileLayerRef.current.on('tileload', (e) => {
+    layerRef.current.on('tileload', (e) => {
       console.log('The underlying leaflet tileload event is:', e);
     });
 
@@ -43,7 +43,7 @@ const samples = {
   const MyMap: React.FC = () => {
 
     const layerRef = useRef<EL.TiledMapLayer>();
-    tileLayerRef.current.on('tileload', (e: L.LeafletEvent) => {
+    layerRef.current.on('tileload', (e: L.LeafletEvent) => {
       console.log('The underlying leaflet tileload event is:', e);
     });
 
@@ -68,7 +68,7 @@ const samples = {
   const MyMap = () => {
 
     const layerRef = useRef();
-    tileLayerRef.current.on('tileload', (e) => {
+    layerRef.current.on('tileload', (e) => {
       console.log('The underlying leaflet tileload event is:', e);
     });
 
@@ -88,7 +88,7 @@ const samples = {
   const MyMap: React.FC = () => {
 
     const layerRef = useRef<EL.BasemapLayer>();
-    tileLayerRef.current.on('tileload', (e: L.LeafletEvent) => {
+    layerRef.current.on('tileload', (e: L.LeafletEvent) => {
       console.log('The underlying leaflet tileload event is:', e);
     });
 
@@ -102,8 +102,67 @@ const samples = {
   },
   dynamicmaplayer: {
     title: `<DynamicMapLayer />`,
-    js: ``,
-    ts: ``,
+    js: `
+  import React from 'react';
+  import { MapContainer } from 'react-leaflet';
+  import { DynamicMapLayer } from 'react-esri-leaflet';
+
+  const MyMap = () => {
+
+    const mapRef = useRef();
+    const layerRef = useRef();
+
+    layerRef.current.on('load', () => {
+      layerRef.current.identify()
+        .at(mapRef.current.getCenter())
+        .run(function(error, featureCollection){
+          console.log("The available features at the map center are:", featureCollection);
+        });
+    })
+
+    return (
+      <MapContainer ref={mapRef}>
+        <DynamicMapLayer 
+          ref={layerRef} 
+          url={DYNAMIC_MAP_LAYER_URL} 
+          f="image"
+          layers={[3]}
+        />
+      </MapContainer>
+    );
+  };
+    `,
+    ts: `
+  import * as React from 'react';
+  import * as EL from 'esri-leaflet';
+  import { MapContainer } from 'react-leaflet';
+  import { DynamicMapLayer } from 'react-esri-leaflet';
+
+  const MyMap: React.FC = () => {
+
+    const mapRef = useRef<L.Map>();
+    const layerRef = useRef<EL.DynamicMapLayer>();
+
+    layerRef.current.on('load', () => {
+      layerRef.current.identify()
+        .at(mapRef.current.getCenter())
+        .run(function(error, featureCollection){
+          console.log("The available features at the map center are:", featureCollection);
+        });
+    })
+
+    return (
+      <MapContainer ref={mapRef}>
+        <DynamicMapLayer 
+          ref={layerRef} 
+          url={DYNAMIC_MAP_LAYER_URL} 
+          f="image"
+          layers={[3]}
+        />
+      </MapContainer>
+    );
+  };
+    `,
   },
   imagemaplayer: {
     title: `<ImageMapLayer />`,

@@ -26,8 +26,13 @@ interface FeatureLayerProps extends FeatureLayerOptions {
   };
 }
 
+/**
+ * FeatureLayer component, react-leaflet wrapper for [L.esri.FeatureLayer](https://developers.arcgis.com/esri-leaflet/api-reference/layers/feature-layer/).
+ *
+ * For more info: https://github.com/slutske22/react-esri-leaflet#components
+ */
 const FeatureLayer = React.forwardRef<
-  React.RefObject<EsriLeaflet.FeatureLayer>,
+  EsriLeaflet.FeatureLayer,
   FeatureLayerProps
 >((props: FeatureLayerProps, ref) => (
   <Layer ref={ref} layerType="featureLayer" {...props} />

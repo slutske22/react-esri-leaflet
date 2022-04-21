@@ -13,14 +13,21 @@ const samples = {
   tiledmaplayer: {
     title: `<TiledMapLayer />`,
     js: `
-  import React from 'react';
+  import React, { useRef } from 'react';
   imoprt { MapContainer } from 'react-leaflet';
   import { TiledMapLayer } from 'react-esri-leaflet';
 
   const MyMap = () => {
+
+    const layerRef = useRef();
+    tileLayerRef.current.on('tileload', (e) => {
+      console.log('The underlying leaflet tileload event is:', e);
+    });
+
     return (
       <MapContainer>
         <TiledMapLayer 
+          ref={layerRef}
           url="https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_WUI_2010_01/MapServer" 
         />
       </MapContainer>
@@ -29,13 +36,21 @@ const samples = {
     `,
     ts: `
   import * as React from 'react';
+  import * as EL from 'esri-leaflet';
   imoprt { MapContainer } from 'react-leaflet';
   import { TiledMapLayer } from 'react-esri-leaflet';
 
-  const MyMap = () => {
+  const MyMap: React.FC = () => {
+
+    const layerRef = useRef<EL.TiledMapLayer>();
+    tileLayerRef.current.on('tileload', (e: L.LeafletEvent) => {
+      console.log('The underlying leaflet tileload event is:', e);
+    });
+
     return (
       <MapContainer>
         <TiledMapLayer 
+          ref={layerRef}
           url="https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_WUI_2010_01/MapServer" 
         />
       </MapContainer>
@@ -159,7 +174,9 @@ export const CodeSamples: React.FC<Props> = ({ container, apikey }: Props) => {
                 </span>
               </div>
             </h4>
-            <Highlight>{samples[sample][lang]}</Highlight>
+            <Highlight className="typescript">
+              {samples[sample][lang]}
+            </Highlight>
           </div>
         </div>
       )}

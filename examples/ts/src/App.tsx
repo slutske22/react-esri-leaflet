@@ -11,11 +11,11 @@ const App = () => {
    * Helpful for dev - pop a .env file in your codebase with an ARCGIS_API_KEY, and you
    * won't have to enter it every time!
    */
-  // useEffect(() => {
-  //   if (process.env.ARCGIS_API_KEY) {
-  //     setKeyModalOpen(false);
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (process.env.ARCGIS_API_KEY) {
+      setKeyModalOpen(false);
+    }
+  }, []);
 
   return (
     <div className="App">

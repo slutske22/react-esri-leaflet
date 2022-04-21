@@ -72,7 +72,6 @@ const Map = ({ apikey }) => {
             setRefReady(true);
           }}
         >
-          <div>something</div>
           <LayersControl.BaseLayer name="Tiled Map Layer">
             <TiledMapLayer url="https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_WUI_2010_01/MapServer" />
           </LayersControl.BaseLayer>

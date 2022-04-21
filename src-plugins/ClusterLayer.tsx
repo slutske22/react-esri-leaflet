@@ -1,13 +1,12 @@
 import "leaflet";
-import * as EL from "esri-leaflet";
 import "leaflet.markercluster/dist/leaflet.markercluster.js";
 import "leaflet.markercluster/dist/MarkerCluster.css";
 import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 import Cluster from "esri-leaflet-cluster";
-import { createLayerComponent } from "@react-leaflet/core";
+import { createLayerComponent, LayerProps } from "@react-leaflet/core";
 import { MarkerClusterGroupOptions } from "leaflet";
 
-interface Props extends MarkerClusterGroupOptions {
+interface Props extends MarkerClusterGroupOptions, LayerProps {
   url: string;
   pointToLayer?: Function;
   style?: Function;
@@ -69,6 +68,9 @@ const updateEsriLayer = (instance, props, prevProps) => {
  *
  * For more info: https://github.com/slutske22/react-esri-leaflet#clusterlayer
  */
-const ClusterLayer = createLayerComponent(createEsriLayer, updateEsriLayer);
+const ClusterLayer = createLayerComponent<Cluster, Props>(
+  createEsriLayer,
+  updateEsriLayer
+);
 
 export default ClusterLayer;

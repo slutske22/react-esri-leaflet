@@ -1,11 +1,10 @@
 import "leaflet";
-import * as EL from "esri-leaflet";
 import "leaflet.heat";
 import * as Heatmap from "esri-leaflet-heatmap";
-import { createLayerComponent } from "@react-leaflet/core";
+import { createLayerComponent, LayerProps } from "@react-leaflet/core";
 import { HeatMapOptions } from "leaflet";
 
-interface Props extends HeatMapOptions {
+interface Props extends HeatMapOptions, LayerProps {
   url: string;
   where?: string;
   fields?: string[];
@@ -63,6 +62,9 @@ const updateEsriLayer = (instance, props, prevProps) => {
  *
  * For more info: https://github.com/slutske22/react-esri-leaflet#heatmaplayer
  */
-const HeatmapLayer = createLayerComponent(createEsriLayer, updateEsriLayer);
+const HeatmapLayer = createLayerComponent<Heatmap.featureLayer, Props>(
+  createEsriLayer,
+  updateEsriLayer
+);
 
 export default HeatmapLayer;

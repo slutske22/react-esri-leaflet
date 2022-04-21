@@ -14,7 +14,7 @@ const samples = {
     title: `<TiledMapLayer />`,
     js: `
   import React, { useRef } from 'react';
-  imoprt { MapContainer } from 'react-leaflet';
+  import { MapContainer } from 'react-leaflet';
   import { TiledMapLayer } from 'react-esri-leaflet';
 
   const MyMap = () => {
@@ -31,13 +31,13 @@ const samples = {
           url="https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_WUI_2010_01/MapServer" 
         />
       </MapContainer>
-    )
-  }
+    );
+  };
     `,
     ts: `
   import * as React from 'react';
   import * as EL from 'esri-leaflet';
-  imoprt { MapContainer } from 'react-leaflet';
+  import { MapContainer } from 'react-leaflet';
   import { TiledMapLayer } from 'react-esri-leaflet';
 
   const MyMap: React.FC = () => {
@@ -54,14 +54,51 @@ const samples = {
           url="https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_WUI_2010_01/MapServer" 
         />
       </MapContainer>
-    )
-  }
+    );
+  };
     `,
   },
   basemaplayer: {
     title: `<BasemapLayer />`,
-    js: ``,
-    ts: ``,
+    js: `
+  import React, { useRef } from 'react';
+  import { MapContainer } from 'react-leaflet';
+  import { BasemapLayer } from 'react-esri-leaflet';
+
+  const MyMap = () => {
+
+    const layerRef = useRef();
+    tileLayerRef.current.on('tileload', (e) => {
+      console.log('The underlying leaflet tileload event is:', e);
+    });
+
+    return (
+      <MapContainer>
+        <BasemapLayer ref={layerRef} name="DarkGray" />
+      </MapContainer>
+    );
+  };
+    `,
+    ts: `
+  import * as React from 'react';
+  import * as EL from 'esri-leaflet';
+  import { MapContainer } from 'react-leaflet';
+  import { BasemapLayer } from 'react-esri-leaflet';
+
+  const MyMap: React.FC = () => {
+
+    const layerRef = useRef<EL.BasemapLayer>();
+    tileLayerRef.current.on('tileload', (e: L.LeafletEvent) => {
+      console.log('The underlying leaflet tileload event is:', e);
+    });
+
+    return (
+      <MapContainer>
+        <BasemapLayer ref={layerRef} name="DarkGray" />
+      </MapContainer>
+    );
+  };
+    `,
   },
   dynamicmaplayer: {
     title: `<DynamicMapLayer />`,

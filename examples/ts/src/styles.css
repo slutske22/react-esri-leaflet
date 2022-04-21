@@ -206,3 +206,7 @@ body,
   background-color:  #007acc;
   color: white;
 }
+
+.typescript.hljs {
+  padding-right: 40px;
+}

@@ -1,8 +1,0 @@
-{
-	"extends": "../tsconfig.json",
-	"compilerOptions": {
-		"outDir": "../v2",
-		"emitDeclarationOnly": true
-	},
-	"include": ["./**/*"]
-}

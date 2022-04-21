@@ -166,8 +166,55 @@ const samples = {
   },
   imagemaplayer: {
     title: `<ImageMapLayer />`,
-    js: ``,
-    ts: ``,
+    js: `
+  import React from 'react';
+  import { MapContainer } from 'react-leaflet';
+  import { ImageMapLayer } from 'react-esri-leaflet';
+
+  const MyMap = () => {
+
+    const layerRef = useRef();
+
+    layerRef.current.on('load', () => {
+      console.log("Image service has loaded");
+    });
+
+    return (
+      <MapContainer>
+        <ImageMapLayer
+          url="https://elevation.arcgis.com/arcgis/rest/services/WorldElevation/Terrain/ImageServer"
+          renderingRule={{ rasterFunction: "Aspect_Map" }}
+          token={ARCGIS_TOKEN}
+        />
+      </MapContainer>
+    );
+  };
+    `,
+    ts: `
+  import * as React from 'react';
+  import * as EL from 'esri-leaflet';
+  import { MapContainer } from 'react-leaflet';
+  import { ImageMapLayer } from 'react-esri-leaflet';
+
+  const MyMap: React.FC = () => {
+
+    const layerRef = useRef<EL.ImageMapLayer>();
+
+    layerRef.current.on('load', () => {
+      console.log("Image service has loaded");
+    });
+
+    return (
+      <MapContainer>
+        <ImageMapLayer
+          url="https://elevation.arcgis.com/arcgis/rest/services/WorldElevation/Terrain/ImageServer"
+          renderingRule={{ rasterFunction: "Aspect_Map" }}
+          token={ARCGIS_TOKEN}
+        />
+      </MapContainer>
+    );
+  };
+    `,
   },
   vectorbasemaplayer: {
     title: `<VectorBasemapLayer />`,

@@ -87,6 +87,10 @@ export const updateEsriLayer = (instance, props, prevProps) => {
   }
 };
 
+/**
+ * Base esri-leaflet layer component from which many other react-esri-leaflet components are built.
+ * Should not be used directly
+ */
 const EsriLeafletLayer = createLayerComponent(createEsriLayer, updateEsriLayer);
 
 export default EsriLeafletLayer;

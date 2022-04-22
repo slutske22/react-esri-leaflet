@@ -575,6 +575,9 @@ const samples = {
 
   const MyMap: React.FC = () => {
 
+    /**
+     * Ref is typed as EL.Geocoding.GeosearchControl
+     */
     const geosearchControlRef = useRef<EL.Geocoding.GeosearchControl>();
 
     const handleClick = () => {

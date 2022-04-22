@@ -2,6 +2,7 @@ import { createControlComponent } from "@react-leaflet/core";
 import * as L from "leaflet";
 import "esri-leaflet";
 import * as ELG from "esri-leaflet-geocoder";
+import * as EL from "esri-leaflet";
 import { EsriServiceEvent } from "../build/types";
 
 type GeosearchEvents = EsriServiceEvent | "results";
@@ -59,6 +60,9 @@ const createGeoSearch = (props: Props) => {
  *
  * For more info: https://github.com/slutske22/react-esri-leaflet#esrileafletgeosearch
  */
-const EsriLeafletGeoSearch = createControlComponent(createGeoSearch);
+const EsriLeafletGeoSearch = createControlComponent<
+  EL.Geocoding.GeosearchControl,
+  Props
+>(createGeoSearch);
 
 export default EsriLeafletGeoSearch;

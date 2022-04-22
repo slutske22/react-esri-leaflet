@@ -16,33 +16,20 @@
 // // import VectorTileLayer from 'react-esri-leaflet/plugins/VectorTileLayer';
 
 // Alternative imports for local build tests:
-import * as React from "react";
-import * as ReactDOM from "react-dom";
+import React, { useState } from "react";
+import { Control } from "leaflet";
 
 import {
   MapContainer,
-  LayersControl,
   useMapEvents,
 } from "../../../node_modules/react-leaflet";
 
-import {
-  BasemapLayer,
-  FeatureLayer,
-  DynamicMapLayer,
-  TiledMapLayer,
-  ImageMapLayer,
-} from "../../../build";
-
-import EsriLeafletGeoSearch from "../../../plugins/EsriLeafletGeoSearch";
-import HeatmapLayer from "../../../plugins/HeatmapLayer";
-import ClusterLayer from "../../../plugins/ClusterLayer";
-import VectorBasemapLayer from "../../../plugins/VectorBasemapLayer";
-import VectorTileLayer from "../../../plugins/VectorTileLayer";
-import { useState, useRef } from "react";
 import { CodeSamples } from "./CodeSamples";
-import { Control } from "leaflet";
 import { GeoSearch, Layers } from "./MapComponents";
 
+/**
+ * Convenience component to track events on map
+ */
 const MapEvents = () => {
   const map = useMapEvents({
     click: (e) => console.log(e.latlng, map.getZoom()),

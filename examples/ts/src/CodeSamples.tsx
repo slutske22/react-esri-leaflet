@@ -517,8 +517,107 @@ const samples = {
   },
   geosearch: {
     title: `<EsriLeafletGeoSearch />`,
-    js: ``,
-    ts: ``,
+    js: `
+  import * as React from 'react';
+  import { MapContainer } from 'react-leaflet';
+  import EsriLeafletGeoSearch from 'react-esri-leaflet/plugins/EsriLeafletGeoSearch';
+
+  const MyMap = () => {
+
+    const geosearchControlRef = useRef();
+
+    const handleClick = () => {
+      geosearchControlRef.current.disable()
+    };
+
+    return (
+      <MapContainer>
+        <button onClick={handleClick}>Disable Geosearch</button>
+        <EsriLeafletGeoSearch
+          ref={geosearchControlRef}
+          position="topleft"
+          useMapBounds={false}
+          placeholder="Search for places or addresses"
+          providers={{
+            arcgisOnlineProvider: {
+              apikey: ARCGIS_API_KEY,
+           },
+            featureLayerProvider: {
+              url: "https://services.arcgis.com/...FeatureServer/0",
+              searchFields: ["event_name", "host_organization"],
+              label: "GIS Day Events 2019",
+              bufferRadius: 5000,
+              formatSuggestion: function (feature) {
+                return (
+                  feature.properties.event_name +
+                  " - " +
+                  feature.properties.host_organization
+                );
+              },
+            },
+          }}
+          eventHandlers={{
+            requeststart: () => console.log("Started request..."),
+            requestend: () => console.log("Ended request..."),
+            results: (r) => console.log(r),
+          }}
+          key={ARCGIS_API_KEY}
+        />
+      </MapContainer>
+    );
+  };
+    `,
+    ts: `
+  import * as React from 'react';
+  import * as EL from "esri-leaflet";
+  import { MapContainer } from 'react-leaflet';
+  import EsriLeafletGeoSearch from 'react-esri-leaflet/plugins/EsriLeafletGeoSearch';
+
+  const MyMap: React.FC = () => {
+
+    const geosearchControlRef = useRef<EL.Geocoding.GeosearchControl>();
+
+    const handleClick = () => {
+      geosearchControlRef.current.disable()
+    };
+
+    return (
+      <MapContainer>
+        <button onClick={handleClick}>Disable Geosearch</button>
+        <EsriLeafletGeoSearch
+          ref={geosearchControlRef}
+          position="topleft"
+          useMapBounds={false}
+          placeholder="Search for places or addresses"
+          providers={{
+            arcgisOnlineProvider: {
+              apikey: ARCGIS_API_KEY,
+           },
+            featureLayerProvider: {
+              url: "https://services.arcgis.com/...FeatureServer/0",
+              searchFields: ["event_name", "host_organization"],
+              label: "GIS Day Events 2019",
+              bufferRadius: 5000,
+              formatSuggestion: function (feature) {
+                return (
+                  feature.properties.event_name +
+                  " - " +
+                  feature.properties.host_organization
+                );
+              },
+            },
+          }}
+          eventHandlers={{
+            requeststart: () => console.log("Started request..."),
+            requestend: () => console.log("Ended request..."),
+            results: (r) => console.log(r),
+          }}
+          key={ARCGIS_API_KEY}
+        />
+      </MapContainer>
+    );
+  };
+    `,
   },
 };
 

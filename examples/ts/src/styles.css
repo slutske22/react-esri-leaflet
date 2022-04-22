@@ -176,12 +176,17 @@ body,
 
 #geosearch.see-code-button {
   position: absolute;
-  top: -30px;
+  top: -40px;
   right: 20px;
   color: white;
   text-shadow: black 0 0 2px;
   width: 300px;
   transition: all 200ms;
+}
+
+.geocoder-control {
+  z-index: 10000000;
+  margin-bottom: 10px;
 }
 
 .geocoder-control-expanded ~ .leaflet-control-layers #geosearch.see-code-button  {
@@ -203,6 +208,10 @@ body,
   display: flex;
   width: 100%;
   justify-content: space-between;
+}
+
+.code-sample-inner pre {
+  max-height: 75vh;overflow: scroll;
 }
 
 .language-button {

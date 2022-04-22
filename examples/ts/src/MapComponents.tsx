@@ -53,8 +53,10 @@ export const GeoSearch: React.FC<Props> = ({ apikey }: Props) => {
         },
       }}
       eventHandlers={{
-        requeststart: () => console.log("Started request..."),
-        requestend: () => console.log("Ended request..."),
+        requeststart: () =>
+          console.log("<EsriLeafletGeoSearch />: Started request..."),
+        requestend: () =>
+          console.log("<EsriLeafletGeoSearch />: Ended request..."),
         results: (r) => console.log(r),
       }}
       key={apikey}

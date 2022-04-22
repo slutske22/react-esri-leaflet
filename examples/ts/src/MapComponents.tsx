@@ -40,7 +40,11 @@ export const GeoSearch: React.FC<Props> = ({ apikey }: Props) => {
    * Ref is typed as EL.Geocoding.GeosearchControl
    */
   const geosearchControlRef = useRef<EL.Geocoding.GeosearchControl>();
-  // geosearchControlRef.current?.disable(); // works!
+  if (!apikey) {
+    geosearchControlRef.current?.disable();
+  } else {
+    geosearchControlRef.current?.enable();
+  }
 
   return (
     <EsriLeafletGeoSearch

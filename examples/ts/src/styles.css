@@ -175,13 +175,17 @@ body,
 }
 
 #geosearch.see-code-button {
-  position: absolute;
-  top: -40px;
-  right: 20px;
+  position: fixed;
+  top: 293px;
+  left: 55px;
   color: white;
   text-shadow: black 0 0 2px;
   width: 300px;
   transition: all 200ms;
+}
+
+#geosearch.see-code-button.apikey {
+  top: 313px;
 }
 
 .geocoder-control {
@@ -189,10 +193,10 @@ body,
   margin-bottom: 10px;
 }
 
-.geocoder-control-expanded ~ .leaflet-control-layers #geosearch.see-code-button  {
+/* .geocoder-control-expanded ~ .leaflet-control-layers #geosearch.see-code-button  {
   right: -220px;
   transition: all 200ms;
-}
+} */
 
 .see-code-button:hover {
   color:green;

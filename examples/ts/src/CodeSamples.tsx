@@ -686,7 +686,11 @@ export const CodeSamples: React.FC<Props> = ({ container, apikey }: Props) => {
         {`</>`} See Code
       </div>
 
-      <div className="see-code-button" id="geosearch" onClick={handleClick}>
+      <div
+        className={`see-code-button ${apikey && "apikey"}`}
+        id="geosearch"
+        onClick={handleClick}
+      >
         {`</>`} See Code
       </div>
 

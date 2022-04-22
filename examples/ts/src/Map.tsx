@@ -54,8 +54,8 @@ const Map = ({ apikey }) => {
         center={{ lat: 33.97180352632852, lng: -118.43073695898059 }}
       >
         <MapEvents />
-        <GeoSearch apikey={apikey} />
         <Layers apikey={apikey} setLayersControlRef={setLayersControlRef} />
+        <GeoSearch apikey={apikey} />
       </MapContainer>
 
       {layersControlRef && (

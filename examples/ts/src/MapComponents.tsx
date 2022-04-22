@@ -71,10 +71,18 @@ export const GeoSearch: React.FC<Props> = ({ apikey }: Props) => {
         },
       }}
       eventHandlers={{
-        requeststart: () =>
-          console.log("<EsriLeafletGeoSearch />: Started request..."),
-        requestend: () =>
-          console.log("<EsriLeafletGeoSearch />: Ended request..."),
+        requeststart: () => {
+          console.log(
+            `%c <EsriLeafletGeoSearch />: Started request...`,
+            "font-weight: bold"
+          );
+        },
+        requestend: () => {
+          console.log(
+            `%c <EsriLeafletGeoSearch />: Ended request...`,
+            "font-weight: bold"
+          );
+        },
         results: (r) => console.log(r),
       }}
       key={apikey}
@@ -114,35 +122,44 @@ export const Layers: React.FC<LayersProps> = ({
   const heatmapLayerRef = useRef();
 
   tiledMapLayerRef.current?.once("add", () => {
-    console.log(`<TiledMapLayer /> added:`, tiledMapLayerRef.current);
+    console.log(`%c <TiledMapLayer /> added:`, "font-weight: bold");
+    console.log(tiledMapLayerRef.current);
   });
   featureLayerRef.current?.once("add", () => {
-    console.log(`<FeatureLayer /> added:`, featureLayerRef.current);
+    console.log(`%c <FeatureLayer /> added:`, "font-weight: bold");
+    console.log(featureLayerRef.current);
   });
   dynamicMapLayerRef.current?.once("add", () => {
-    console.log(`<DynamicMapLayer /> added:`, dynamicMapLayerRef.current);
+    console.log(`%c <DynamicMapLayer /> added:`, "font-weight: bold");
+    console.log(dynamicMapLayerRef.current);
   });
   basemapLayerRef.current?.once("add", () => {
-    console.log(`<BaseMapLayer /> added:`, basemapLayerRef.current);
+    console.log(`%c <BaseMapLayer /> added:`, "font-weight: bold");
+    console.log(basemapLayerRef.current);
   });
   imageMapLayerRef.current?.once("add", () => {
-    console.log(`<ImageMapLayer /> added:`, imageMapLayerRef.current);
+    console.log(`%c <ImageMapLayer /> added:`, "font-weight: bold");
+    console.log(imageMapLayerRef.current);
   });
   // @ts-expect-error No TS defs available
   vectorBasemapLayerRef.current?.once("add", () => {
-    console.log(`<VectorBasemapLayer /> added:`, vectorBasemapLayerRef.current);
+    console.log(`%c <VectorBasemapLayer /> added:`, "font-weight: bold");
+    console.log(vectorBasemapLayerRef.current);
   });
   // @ts-expect-error No TS defs available
   vectorTileLayerRef.current?.once("add", () => {
-    console.log(`<VectorTileLayer /> added:`, vectorTileLayerRef.current);
+    console.log(`%c <VectorTileLayer /> added:`, "font-weight: bold");
+    console.log(vectorTileLayerRef.current);
   });
   // @ts-expect-error No TS defs available
   clusterLayerRef.current?.once("add", () => {
-    console.log(`<ClusterLayer /> added:`, clusterLayerRef.current);
+    console.log(`%c <ClusterLayer /> added:`, "font-weight: bold");
+    console.log(clusterLayerRef.current);
   });
   // @ts-expect-error No TS defs available
   heatmapLayerRef.current?.once("add", () => {
-    console.log(`<HeatmapLayer /> added:`, heatmapLayerRef.current);
+    console.log(`%c <HeatmapLayer /> added:`, "font-weight: bold");
+    console.log(heatmapLayerRef.current);
   });
 
   return (

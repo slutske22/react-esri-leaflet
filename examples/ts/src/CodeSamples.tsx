@@ -515,8 +515,16 @@ const samples = {
   };
     `,
   },
+  geosearch: {
+    title: `<EsriLeafletGeoSearch />`,
+    js: ``,
+    ts: ``,
+  },
 };
 
+/**
+ * Logic and markup to inject and render code samples
+ */
 export const CodeSamples: React.FC<Props> = ({ container, apikey }: Props) => {
   const [sample, setSample] = useState("");
   const [lang, setLang] = useState<"js" | "ts">("js");
@@ -573,6 +581,10 @@ export const CodeSamples: React.FC<Props> = ({ container, apikey }: Props) => {
         id="vectortilelayer"
         onClick={handleClick}
       >
+        {`</>`} See Code
+      </div>
+
+      <div className="see-code-button" id="geosearch" onClick={handleClick}>
         {`</>`} See Code
       </div>
 

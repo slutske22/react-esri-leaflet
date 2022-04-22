@@ -174,6 +174,21 @@ body,
   font-family: monospace;
 }
 
+#geosearch.see-code-button {
+  position: absolute;
+  top: -30px;
+  right: 20px;
+  color: white;
+  text-shadow: black 0 0 2px;
+  width: 300px;
+  transition: all 200ms;
+}
+
+.geocoder-control-expanded ~ .leaflet-control-layers #geosearch.see-code-button  {
+  right: -220px;
+  transition: all 200ms;
+}
+
 .see-code-button:hover {
   color:green;
 }

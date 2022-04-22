@@ -341,13 +341,127 @@ const samples = {
   },
   heatmaplayer: {
     title: `<HeatmapLayer />`,
-    js: ``,
-    ts: ``,
+    js: `
+  import React from 'react';
+  import { MapContainer } from 'react-leaflet';
+  import HeatmapLayer from 'react-esri-leaflet/plugins/HeatmapLayer';
+
+  const MyMap = ({ city }) => {
+
+    const layerRef = useRef();
+    const handleClick = () => {
+      layerRef.current.query()
+        .within(LATLNG_BOUNDS)
+        .where("POPULATION > '10_000'")
+        .run(function(error, featureCollection){
+            console.log(featureCollection);
+        });
+    };
+
+    return (
+      <MapContainer>
+        <button onClick={handleClick}>Run query</button>
+        <HeatmapLayer
+          ref={layerRef}
+          url="https://services8.arcgis.com/.../2020_Protests_with_Location/FeatureServer/0"
+          where={\`CITY = $\{city\}\`}
+          radius={20}
+          eventHandlers={{
+            loading: () => console.log("loading heatmap"),
+          }}
+        />
+      </MapContainer>
+    );
+  };
+      `,
+    ts: `
+  import * as React from 'react';
+  import * as Heatmap from "esri-leaflet-heatmap";
+  import { MapContainer } from 'react-leaflet';
+  import HeatmapLayer from 'react-esri-leaflet/plugins/HeatmapLayer';
+
+  const MyMap: React.FC<{ city: string; }> = ({ city }) => {
+
+    const layerRef = useRef<Heatmap.featureLayer>();
+    const handleClick = () => {
+      layerRef.current.query()
+        .within(LATLNG_BOUNDS)
+        .where("POPULATION > '10_000'")
+        .run(function(error, featureCollection){
+            console.log(featureCollection);
+        });
+    };
+
+    return (
+      <MapContainer>
+        <button onClick={handleClick}>Run query</button>
+        <HeatmapLayer
+          ref={layerRef}
+          url="https://services8.arcgis.com/.../2020_Protests_with_Location/FeatureServer/0"
+          where={\`CITY = $\{city\}\`}
+          radius={20}
+          eventHandlers={{
+            loading: () => console.log("loading heatmap"),
+          }}
+        />
+      </MapContainer>
+    );
+  };
+    `,
   },
   clusterlayer: {
     title: `<ClusterLayer />`,
-    js: ``,
-    ts: ``,
+    js: `
+  import from 'react';
+  import { MapContainer } from 'react-leaflet';
+  import ClusterLayer from 'react-esri-leaflet/plugins/ClusterLayer';
+
+  const MyMap = ({) => {
+
+    const layerRef = useRef();
+    const handleClick = () => {
+      layerRef.current.eachFeature(function(layer){
+        console.log(layer.feature.properties.NAME);
+      });
+    };
+
+    return (
+      <MapContainer>
+        <button onClick={handleClick}>Print all features</button>
+        <ClusterLayer
+          ref={layerRef}
+          url="https://services8.arcgis.com/.../2020_Protests_with_Location/FeatureServer/0"
+        />
+      </MapContainer>
+    );
+  };
+    `,
+    ts: `
+  import * as React from 'react';
+  import Cluster from "esri-leaflet-cluster";
+  import { MapContainer } from 'react-leaflet';
+  import ClusterLayer from 'react-esri-leaflet/plugins/ClusterLayer';
+
+  const MyMap: React.FC = ({) => {
+
+    const layerRef = useRef<Cluster>();
+    const handleClick = () => {
+      layerRef.current.eachFeature(function(layer){
+        console.log(layer.feature.properties.NAME);
+      });
+    };
+
+    return (
+      <MapContainer>
+        <button onClick={handleClick}>Print all features</button>
+        <ClusterLayer
+          ref={layerRef}
+          url="https://services8.arcgis.com/.../2020_Protests_with_Location/FeatureServer/0"
+        />
+      </MapContainer>
+    );
+  };
+    `,
   },
   vectortilelayer: {
     title: `<VectorTileLayer />`,

@@ -1,31 +1,33 @@
-// import React from 'react';
-// import { MapContainer, LayersControl, useMapEvents } from 'react-leaflet';
-
-// // import {
-// // 	BasemapLayer,
-// // 	FeatureLayer,
-// // 	DynamicMapLayer,
-// // 	TiledMapLayer,
-// // 	ImageMapLayer,
-// // } from 'react-esri-leaflet';
-
-// // import EsriLeafletGeoSearch from 'react-esri-leaflet/plugins/EsriLeafletGeoSearch';
-// // import HeatmapLayer from 'react-esri-leaflet/plugins/HeatmapLayer';
-// // import ClusterLayer from 'react-esri-leaflet/plugins/ClusterLayer';
-// // import VectorBasemapLayer from 'react-esri-leaflet/plugins/VectorBasemapLayer';
-// // import VectorTileLayer from 'react-esri-leaflet/plugins/VectorTileLayer';
-
-// Alternative imports for local build tests:
-import React, { useState } from "react";
+import React from "react";
+import { MapContainer, useMapEvents } from "react-leaflet";
 import { Control } from "leaflet";
 
-import {
-  MapContainer,
-  useMapEvents,
-} from "../../../node_modules/react-leaflet";
+// import {
+// 	BasemapLayer,
+// 	FeatureLayer,
+// 	DynamicMapLayer,
+// 	TiledMapLayer,
+// 	ImageMapLayer,
+// } from 'react-esri-leaflet';
+
+// import EsriLeafletGeoSearch from 'react-esri-leaflet/plugins/EsriLeafletGeoSearch';
+// import HeatmapLayer from 'react-esri-leaflet/plugins/HeatmapLayer';
+// import ClusterLayer from 'react-esri-leaflet/plugins/ClusterLayer';
+// import VectorBasemapLayer from 'react-esri-leaflet/plugins/VectorBasemapLayer';
+// import VectorTileLayer from 'react-esri-leaflet/plugins/VectorTileLayer';
+
+// Alternative imports for local build tests:
+// import React, { useState } from "react";
+// import { Control } from "leaflet";
+
+// import {
+//   MapContainer,
+//   useMapEvents,
+// } from "../../../node_modules/react-leaflet";
 
 import { CodeSamples } from "./CodeSamples";
 import { GeoSearch, Layers } from "./MapComponents";
+import { useState } from "react";
 
 /**
  * Convenience component to track events on map

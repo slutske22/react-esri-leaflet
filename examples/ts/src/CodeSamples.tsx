@@ -399,6 +399,7 @@ const samples = {
           ref={layerRef}
           url="https://services8.arcgis.com/.../2020_Protests_with_Location/FeatureServer/0"
           where={\`CITY = $\{city\}\`}
+          // @ts-ignore // radius doesn't exist on this because there are no typings for it
           radius={20}
           eventHandlers={{
             loading: () => console.log("loading heatmap"),
@@ -641,7 +642,12 @@ export const CodeSamples: React.FC<Props> = ({ container, apikey }: Props) => {
 
   const controls = (
     <div id="code-sample-controls">
-      <div className="see-code-button" id="tiledmaplayer" onClick={handleClick}>
+      <div
+        className="see-code-button"
+        id="tiledmaplayer"
+        onClick={handleClick}
+        style={{ marginTop: "4px" }}
+      >
         {`</>`} See Code
       </div>
       <div className="see-code-button" id="basemaplayer" onClick={handleClick}>

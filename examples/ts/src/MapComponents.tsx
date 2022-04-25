@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { Control } from "leaflet";
 
-import { LayersControl } from "../../../node_modules/react-leaflet";
+import { LayersControl } from "react-leaflet";
 import * as EL from "esri-leaflet";
 
 import {
@@ -10,13 +10,13 @@ import {
   DynamicMapLayer,
   TiledMapLayer,
   ImageMapLayer,
-} from "../../../build";
+} from "react-esri-leaflet";
 
-import HeatmapLayer from "../../../plugins/HeatmapLayer";
-import ClusterLayer from "../../../plugins/ClusterLayer";
-import VectorBasemapLayer from "../../../plugins/VectorBasemapLayer";
-import VectorTileLayer from "../../../plugins/VectorTileLayer";
-import EsriLeafletGeoSearch from "../../../plugins/EsriLeafletGeoSearch";
+import HeatmapLayer from "react-esri-leaflet/plugins/HeatmapLayer";
+import ClusterLayer from "react-esri-leaflet/plugins/ClusterLayer";
+import VectorBasemapLayer from "react-esri-leaflet/plugins/VectorBasemapLayer";
+import VectorTileLayer from "react-esri-leaflet/plugins/VectorTileLayer";
+import EsriLeafletGeoSearch from "react-esri-leaflet/plugins/EsriLeafletGeoSearch";
 import {
   CL_URL,
   DML_URL,
@@ -225,6 +225,7 @@ export const Layers: React.FC<LayersProps> = ({
         <HeatmapLayer
           ref={heatmapLayerRef}
           url={HML_URL}
+          // @ts-ignore // radius doesn't exist on this because there are no typings for it
           radius={20}
           eventHandlers={{
             loading: () => console.log("loading heatmap"),

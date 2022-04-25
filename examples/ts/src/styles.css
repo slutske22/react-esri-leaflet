@@ -162,9 +162,10 @@ body,
   border-radius: 0 5px 5px 0;
   margin-top: -2px;
   background-color: white;
-  padding: 6px 10px;
+  padding: 0px 10px;
   position: absolute;
   top: 0;
+  height: 100%;
   right: -100px
 }
 
@@ -176,7 +177,7 @@ body,
 
 #geosearch.see-code-button {
   position: fixed;
-  top: 293px;
+  top: 285px;
   left: 55px;
   color: white;
   text-shadow: black 0 0 2px;

@@ -16,7 +16,7 @@
     "leaflet.markercluster": "^1.5.3",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-esri-leaflet": "^1.3.1",
+    "react-esri-leaflet": "^2.0.0",
     "react-highlight": "^0.14.0",
     "react-leaflet": "^4.0.0",
     "react-scripts": "5.0.1"

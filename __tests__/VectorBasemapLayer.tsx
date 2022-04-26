@@ -21,14 +21,13 @@ describe("VectorBasemapLayer", () => {
     }));
   });
 
-  it("creates an instance of esri-leaflet vectorBasemapLayer and adds it to the map", () => {
+  it.only("creates an instance of esri-leaflet vectorBasemapLayer and adds it to the map", () => {
+    let mapRef;
+
     render(
       <MapContainer
-        whenCreated={(map) => {
-          // @ts-ignore // leaflet typings dont account for private properties like _layers
-          const addedLayer = Object.values(map._layers)[0];
-          // @ts-ignore // leaflet typings dont account for private properties like _check
-          expect(addedLayer._check).toEqual(vectorBasemapLayer()._check);
+        ref={(ref) => {
+          mapRef = ref;
         }}
         center={[32, -117]}
         zoom={6}
@@ -36,6 +35,11 @@ describe("VectorBasemapLayer", () => {
         <VectorBasemapLayer name="ArcGIS:Streets" token="some_api_key" />
       </MapContainer>
     );
+
+    // @ts-ignore // leaflet typings dont account for private properties like _layers
+    const addedLayer = Object.values(mapRef._layers)[0];
+    // @ts-ignore // leaflet typings dont account for private properties like _check
+    expect(addedLayer._check).toEqual(vectorBasemapLayer()._check);
   });
 
   it("creates the same layer every time", () => {

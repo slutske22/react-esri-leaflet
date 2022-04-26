@@ -6,14 +6,13 @@ import { render } from "@testing-library/react";
 import TiledMapLayer from "../src/TiledMapLayer";
 
 describe("TiledMapLayer", () => {
-  //
+  let mapRef;
+
   it("creates an instance of esri-leaflet tiledMapLayer and adds it to the map", () => {
     render(
       <MapContainer
-        whenCreated={(map) => {
-          // @ts-ignore // leaflet typings dont account for private properties like _layers
-          const addedLayer = Object.values(map._layers)[0];
-          expect(addedLayer).toBeInstanceOf(VanillaTL);
+        ref={(ref) => {
+          mapRef = ref;
         }}
         center={[32, -117]}
         zoom={6}
@@ -21,6 +20,9 @@ describe("TiledMapLayer", () => {
         <TiledMapLayer url="https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_WUI_2010_01/MapServer" />
       </MapContainer>
     );
+
+    const addedLayer = Object.values(mapRef._layers)[0];
+    expect(addedLayer).toBeInstanceOf(VanillaTL);
   });
 
   it("creates the same layer every time", () => {

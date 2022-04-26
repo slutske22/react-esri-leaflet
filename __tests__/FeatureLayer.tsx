@@ -7,18 +7,21 @@ import FeatureLayer from "../src/FeatureLayer";
 
 describe("FeatureLayer", () => {
   it("creates an instance of esri-leaflet featurelayer and adds it to the map", () => {
+    let mapRef;
+
     render(
       <MapContainer
-        // whenCreated={(map) => {
-        //   // @ts-ignore // leaflet typings dont account for private properties like _layers
-        //   const addedLayer = Object.values(map._layers)[0];
-        //   expect(addedLayer).toBeInstanceOf(VanillaFL);
-        // }}
+        ref={(ref) => {
+          mapRef = ref;
+        }}
         center={[32, -117]}
         zoom={6}
       >
         <FeatureLayer url="https://sampleserver6.arcgisonline.com/arcgis/rest/services/Earthquakes_Since1970/MapServer/0" />
       </MapContainer>
     );
+
+    const addedLayer = Object.values(mapRef._layers)[0];
+    expect(addedLayer).toBeInstanceOf(VanillaFL);
   });
 });

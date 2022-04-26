@@ -22,13 +22,12 @@ describe("VectorTileLayer", () => {
   });
 
   it("creates an instance of esri-leaflet vectorTileLayer and adds it to the map", () => {
+    let mapRef;
+
     render(
       <MapContainer
-        whenCreated={(map) => {
-          // @ts-ignore // leaflet typings dont account for private properties like _layers
-          const addedLayer = Object.values(map._layers)[0];
-          // @ts-ignore // leaflet typings dont account for private properties like _check
-          expect(addedLayer._check).toEqual(vectorTileLayer()._check);
+        ref={(ref) => {
+          mapRef = ref;
         }}
         center={[32, -117]}
         zoom={6}
@@ -36,6 +35,10 @@ describe("VectorTileLayer", () => {
         <VectorTileLayer url="some_url" />
       </MapContainer>
     );
+
+    const addedLayer = Object.values(mapRef._layers)[0];
+    // @ts-ignore // leaflet typings dont account for private properties like _check
+    expect(addedLayer._check).toEqual(vectorTileLayer()._check);
   });
 
   it("creates the same layer every time", () => {

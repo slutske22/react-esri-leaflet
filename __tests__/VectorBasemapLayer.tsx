@@ -36,7 +36,6 @@ describe("VectorBasemapLayer", () => {
       </MapContainer>
     );
 
-    // @ts-ignore // leaflet typings dont account for private properties like _layers
     const addedLayer = Object.values(mapRef._layers)[0];
     // @ts-ignore // leaflet typings dont account for private properties like _check
     expect(addedLayer._check).toEqual(vectorBasemapLayer()._check);

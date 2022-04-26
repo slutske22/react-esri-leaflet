@@ -6,14 +6,13 @@ import { render } from "@testing-library/react";
 import BasemapLayer from "../src/BasemapLayer";
 
 describe("BasemapLayer", () => {
-  //
+  let mapRef;
+
   it("creates an instance of esri-leaflet basemapLayer and adds it to the map", () => {
     render(
       <MapContainer
-        whenCreated={(map) => {
-          // @ts-ignore // leaflet typings dont account for private properties like _layers
-          const addedLayer = Object.values(map._layers)[0];
-          expect(addedLayer).toBeInstanceOf(VanillaBL);
+        ref={(ref) => {
+          mapRef = ref;
         }}
         center={[32, -117]}
         zoom={6}
@@ -21,6 +20,9 @@ describe("BasemapLayer", () => {
         <BasemapLayer name="Oceans" />
       </MapContainer>
     );
+
+    const addedLayer = Object.values(mapRef._layers)[0];
+    expect(addedLayer).toBeInstanceOf(VanillaBL);
   });
 
   it("creates the same layer every time", () => {

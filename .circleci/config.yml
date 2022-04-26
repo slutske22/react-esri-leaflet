@@ -1,7 +1,6 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/react-esri-leaflet
     docker:
       - image: circleci/node:16
     steps:

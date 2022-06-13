@@ -52,7 +52,7 @@ const UI = ({ setApikey, keyModalOpen, setKeyModalOpen }) => {
       )}
       <div id="codesandbox-container">
         <a
-          href="https://codesandbox.io/s/github/slutske22/react-esri-leaflet/tree/master/example"
+          href="https://codesandbox.io/s/github/slutske22/react-esri-leaflet/tree/master/examples/ts"
           target="_blank"
         >
           <img src={CodesandboxLogo} />

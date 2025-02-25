@@ -39,7 +39,9 @@ export const GeoSearch: React.FC<Props> = ({ apikey }: Props) => {
   /**
    * Ref is typed as EL.Geocoding.GeosearchControl
    */
-  const geosearchControlRef = useRef<EL.Geocoding.GeosearchControl>();
+  const geosearchControlRef = useRef<EL.Geocoding.GeosearchControl | null>(
+    null
+  );
   if (!apikey) {
     geosearchControlRef.current?.disable();
   } else {
@@ -95,7 +97,9 @@ export const GeoSearch: React.FC<Props> = ({ apikey }: Props) => {
 };
 
 interface LayersProps extends Props {
-  setLayersControlRef: React.Dispatch<React.SetStateAction<Control.Layers>>;
+  setLayersControlRef: React.Dispatch<
+    React.SetStateAction<Control.Layers | undefined>
+  >;
 }
 
 /**
@@ -106,24 +110,24 @@ export const Layers: React.FC<LayersProps> = ({
   setLayersControlRef,
 }: LayersProps) => {
   /** Ref to the leaflet Layers.Control control component */
-  const layerControlRef = useRef<Control.Layers>();
+  const layerControlRef = useRef<Control.Layers | null>(null);
 
   /**
    * Following list of refs shows how to properly type ref values in typescript
    */
-  const tiledMapLayerRef = useRef<EL.TiledMapLayer>();
-  const featureLayerRef = useRef<EL.FeatureLayer>();
-  const dynamicMapLayerRef = useRef<EL.DynamicMapLayer>();
-  const basemapLayerRef = useRef<EL.BasemapLayer>();
-  const imageMapLayerRef = useRef<EL.RasterLayer>();
+  const tiledMapLayerRef = useRef<EL.TiledMapLayer | null>(null);
+  const featureLayerRef = useRef<EL.FeatureLayer | null>(null);
+  const dynamicMapLayerRef = useRef<EL.DynamicMapLayer | null>(null);
+  const basemapLayerRef = useRef<EL.BasemapLayer | null>(null);
+  const imageMapLayerRef = useRef<EL.RasterLayer | null>(null);
 
   /**
    * The following plugins don't have TS definitions publicly available, so you're on your own!
    */
-  const vectorBasemapLayerRef = useRef();
-  const vectorTileLayerRef = useRef();
-  const clusterLayerRef = useRef();
-  const heatmapLayerRef = useRef();
+  const vectorBasemapLayerRef = useRef(null);
+  const vectorTileLayerRef = useRef(null);
+  const clusterLayerRef = useRef(null);
+  const heatmapLayerRef = useRef(null);
 
   tiledMapLayerRef.current?.once("add", () => {
     console.log(`%c <TiledMapLayer /> added:`, "font-weight: bold");
@@ -173,7 +177,7 @@ export const Layers: React.FC<LayersProps> = ({
       ref={(ref) => {
         // @ts-ignore refs are hard sometimes
         layerControlRef.current = ref;
-        setLayersControlRef(layerControlRef.current);
+        setLayersControlRef(layerControlRef.current as Control.Layers);
       }}
     >
       <LayersControl.BaseLayer name="Tiled Map Layer">

@@ -63,7 +63,7 @@ const Map = ({ apikey }) => {
       {layersControlRef && (
         <CodeSamples
           apikey={apikey}
-          container={layersControlRef.getContainer()}
+          container={layersControlRef.getContainer() as HTMLElement}
         />
       )}
     </>

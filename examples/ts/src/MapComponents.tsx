@@ -10,13 +10,21 @@ import {
   DynamicMapLayer,
   TiledMapLayer,
   ImageMapLayer,
-} from "react-esri-leaflet";
+  // } from "react-esri-leaflet";
+} from "../../../src";
 
-import HeatmapLayer from "react-esri-leaflet/plugins/HeatmapLayer";
-import ClusterLayer from "react-esri-leaflet/plugins/ClusterLayer";
-import VectorBasemapLayer from "react-esri-leaflet/plugins/VectorBasemapLayer";
-import VectorTileLayer from "react-esri-leaflet/plugins/VectorTileLayer";
-import EsriLeafletGeoSearch from "react-esri-leaflet/plugins/EsriLeafletGeoSearch";
+import HeatmapLayer from "../../../src-plugins/HeatmapLayer";
+import ClusterLayer from "../../../src-plugins/ClusterLayer";
+import VectorBasemapLayer from "../../../src-plugins/VectorBasemapLayer";
+import VectorTileLayer from "../../../src-plugins/VectorTileLayer";
+import EsriLeafletGeoSearch from "../../../src-plugins/EsriLeafletGeoSearch";
+
+// import HeatmapLayer from "react-esri-leaflet/plugins/HeatmapLayer";
+// import ClusterLayer from "react-esri-leaflet/plugins/ClusterLayer";
+// import VectorBasemapLayer from "react-esri-leaflet/plugins/VectorBasemapLayer";
+// import VectorTileLayer from "react-esri-leaflet/plugins/VectorTileLayer";
+// import EsriLeafletGeoSearch from "react-esri-leaflet/plugins/EsriLeafletGeoSearch";
+
 import {
   CL_URL,
   DML_URL,

@@ -12,7 +12,7 @@
     "tsc:plugins": "tsc --p ./src-plugins/tsconfig.json",
     "build": "npm run clean && npm run tsc:src && npm run tsc:plugins",
     "docs:deploy": "gh-pages -d examples/ts/dist",
-    "prepare": "npm run build"
+    "prepare": "npm install && npm run build"
   },
   "files": [
     "/build",

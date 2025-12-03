@@ -1,8 +1,6 @@
 node_modules
-build
 v2
 tsc-v2
-/plugins
 
 .env
 .envv

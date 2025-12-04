@@ -66,9 +66,9 @@ const createEsriLayer = (props: VectorBasemapLayerProps, context) => {
  *
  * For more info: https://github.com/slutske22/react-esri-leaflet#vectorbasemaplayer-and-vectortilelayer
  */
-const VectorBasemapLayer = createLayerComponent<any, VectorBasemapLayerProps>(
-  createEsriLayer,
-  updateEsriLayer
-);
+const VectorBasemapLayer = createLayerComponent<
+  Vector.vectorBasemapLayer,
+  VectorBasemapLayerProps
+>(createEsriLayer, updateEsriLayer);
 
 export default VectorBasemapLayer;

@@ -12,6 +12,14 @@ module.exports = {
     modules: [path.join(__dirname, "src"), "node_modules"],
     alias: {
       react: path.join(__dirname, "node_modules", "react"),
+      "react-dom": path.join(__dirname, "node_modules", "react-dom"),
+      "react-leaflet": path.join(__dirname, "node_modules", "react-leaflet"),
+      "@react-leaflet/core": path.join(
+        __dirname,
+        "node_modules",
+        "@react-leaflet/core"
+      ),
+      leaflet: path.join(__dirname, "node_modules", "leaflet"),
     },
     extensions: [".ts", ".tsx", ".js", ".jsx"],
   },

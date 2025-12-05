@@ -1,12 +1,11 @@
 import * as React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as ReactDOM from "react-dom";
 import Highlight from "react-highlight";
 import "../node_modules/highlight.js/styles/agate.css";
 
 interface Props {
-  container: HTMLElement;
+  container: HTMLElement | undefined;
   apikey?: string;
 }
 
@@ -27,9 +26,9 @@ const samples = {
 
     return (
       <MapContainer>
-        <TiledMapLayer 
+        <TiledMapLayer
           ref={layerRef}
-          url="https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_WUI_2010_01/MapServer" 
+          url="https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_WUI_2010_01/MapServer"
         />
       </MapContainer>
     );
@@ -50,9 +49,9 @@ const samples = {
 
     return (
       <MapContainer>
-        <TiledMapLayer 
+        <TiledMapLayer
           ref={layerRef}
-          url="https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_WUI_2010_01/MapServer" 
+          url="https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_WUI_2010_01/MapServer"
         />
       </MapContainer>
     );
@@ -123,9 +122,9 @@ const samples = {
 
     return (
       <MapContainer ref={mapRef}>
-        <DynamicMapLayer 
-          ref={layerRef} 
-          url={DYNAMIC_MAP_LAYER_URL} 
+        <DynamicMapLayer
+          ref={layerRef}
+          url={DYNAMIC_MAP_LAYER_URL}
           f="image"
           layers={[3]}
         />
@@ -154,9 +153,9 @@ const samples = {
 
     return (
       <MapContainer ref={mapRef}>
-        <DynamicMapLayer 
-          ref={layerRef} 
-          url={DYNAMIC_MAP_LAYER_URL} 
+        <DynamicMapLayer
+          ref={layerRef}
+          url={DYNAMIC_MAP_LAYER_URL}
           f="image"
           layers={[3]}
         />
@@ -733,5 +732,5 @@ export const CodeSamples: React.FC<Props> = ({ container, apikey }: Props) => {
     </div>
   );
 
-  return ReactDOM.createPortal(controls, container);
+  return ReactDOM.createPortal(controls, container!);
 };

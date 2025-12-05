@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 import CodesandboxLogo from "./assets/codesandbox-logo.png";
-import KeyLogo from "./assets/key.png";
-import ReactLogo from "./assets/react-logo.png";
 import EsriLogo from "./assets/esri-logo.png";
+import KeyLogo from "./assets/key.png";
 import LeafletLogo from "./assets/leaflet-logo.png";
+import ReactLogo from "./assets/react-logo.png";
 
-const UI = ({ setApikey, keyModalOpen, setKeyModalOpen }) => {
+const UI = ({
+  setApikey,
+  keyModalOpen,
+  setKeyModalOpen,
+}: {
+  setApikey: (apikey: string) => void;
+  keyModalOpen: boolean;
+  setKeyModalOpen: (open: boolean) => void;
+}) => {
   const [input, setInput] = useState("");
 
   return (

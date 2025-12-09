@@ -10,13 +10,13 @@ import {
   FeatureLayer,
   ImageMapLayer,
   TiledMapLayer,
-} from "../../../build";
+} from "react-esri-leaflet";
 
-import ClusterLayer from "../../../plugins/ClusterLayer";
-import EsriLeafletGeoSearch from "../../../plugins/EsriLeafletGeoSearch";
-import HeatmapLayer from "../../../plugins/HeatmapLayer";
-import VectorBasemapLayer from "../../../plugins/VectorBasemapLayer";
-import VectorTileLayer from "../../../plugins/VectorTileLayer";
+import ClusterLayer from "react-esri-leaflet/plugins/ClusterLayer";
+import EsriLeafletGeoSearch from "react-esri-leaflet/plugins/EsriLeafletGeoSearch";
+import HeatmapLayer from "react-esri-leaflet/plugins/HeatmapLayer";
+import VectorBasemapLayer from "react-esri-leaflet/plugins/VectorBasemapLayer";
+import VectorTileLayer from "react-esri-leaflet/plugins/VectorTileLayer";
 import {
   CL_URL,
   DML_URL,

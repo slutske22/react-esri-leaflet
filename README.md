@@ -21,7 +21,7 @@
 
 ## Requirements
 
-Requires react^18, react-leaflet^4, and esri-leaflet^3. 
+Requires react^19, react-leaflet^5, and esri-leaflet^3. 
 
 ## Installation
 

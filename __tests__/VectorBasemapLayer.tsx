@@ -1,3 +1,5 @@
+/* global jest */
+
 import { render } from "@testing-library/react";
 import { vectorBasemapLayer } from "esri-leaflet-vector";
 import React from "react";

@@ -154,9 +154,8 @@ body,
   margin: 10px;
 }
 
-
 #code-sample-controls {
-  border: 2px solid rgba(0,0,0,0.2);
+  border: 2px solid rgba(0, 0, 0, 0.2);
   border-left: none;
   background-clip: padding-box;
   border-radius: 0 5px 5px 0;
@@ -166,7 +165,7 @@ body,
   position: absolute;
   top: 0;
   height: 100%;
-  right: -100px
+  right: -100px;
 }
 
 .see-code-button {
@@ -199,8 +198,12 @@ body,
   transition: all 200ms;
 } */
 
+.leaflet-control-layers-list {
+  padding-right: 20px;
+}
+
 .see-code-button:hover {
-  color:green;
+  color: green;
 }
 
 .code-sample-inner {
@@ -216,7 +219,8 @@ body,
 }
 
 .code-sample-inner pre {
-  max-height: 75vh;overflow: scroll;
+  max-height: 75vh;
+  overflow: scroll;
 }
 
 .language-button {
@@ -231,11 +235,11 @@ body,
 }
 
 .language-button.js {
-  background-color: #FFFF00;
+  background-color: #ffff00;
 }
 
 .language-button.ts {
-  background-color:  #007acc;
+  background-color: #007acc;
   color: white;
 }
 

@@ -205,7 +205,7 @@ export const Layers: React.FC<LayersProps> = ({
           />
         )}
       </LayersControl.BaseLayer>
-      <LayersControl.Overlay name="Esri Feature Layer">
+      <LayersControl.Overlay name="Esri Feature Layer (Zip Code Centroids)">
         <FeatureLayer
           ref={featureLayerRef}
           url={FL_URL}
@@ -223,7 +223,7 @@ export const Layers: React.FC<LayersProps> = ({
           }}
         />
       </LayersControl.Overlay>
-      <LayersControl.Overlay name="Esri Heatmap Layer">
+      <LayersControl.Overlay name="Esri Heatmap Layer (Address Points)">
         <HeatmapLayer
           ref={heatmapLayerRef}
           url={HML_URL}
@@ -234,7 +234,7 @@ export const Layers: React.FC<LayersProps> = ({
           }}
         />
       </LayersControl.Overlay>
-      <LayersControl.Overlay name="Esri Cluster Layer">
+      <LayersControl.Overlay name="Esri Cluster Layer (Zip Code Centroids)">
         <ClusterLayer ref={clusterLayerRef} url={CL_URL} />
       </LayersControl.Overlay>
       <LayersControl.Overlay name="Vector Tile Layer">

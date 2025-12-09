@@ -8,13 +8,13 @@ export const IML_URL =
   "https://landsat.arcgis.com/arcgis/rest/services/Landsat/PS/ImageServer";
 
 export const FL_URL =
-  "https://services8.arcgis.com/3Y7J7SmaNLGLT6ec/arcgis/rest/services/2020_Protests_with_Location/FeatureServer/0";
+  "https://services.arcgis.com/VTyQ9soqVukalItT/arcgis/rest/services/ZIP_Code_Population_Weighted_Centroids/FeatureServer/0";
 
 export const HML_URL =
-  "https://services8.arcgis.com/3Y7J7SmaNLGLT6ec/arcgis/rest/services/2020_Protests_with_Location/FeatureServer/0";
+  "https://services.arcgis.com/RmCCgQtiZLDCtblq/arcgis/rest/services/eGIS_Addressing_ADDRESS_POINTSv2/FeatureServer/0";
 
 export const CL_URL =
-  "https://services8.arcgis.com/3Y7J7SmaNLGLT6ec/arcgis/rest/services/2020_Protests_with_Location/FeatureServer/0";
+  "https://services.arcgis.com/VTyQ9soqVukalItT/arcgis/rest/services/ZIP_Code_Population_Weighted_Centroids/FeatureServer/0";
 
 export const VTL_URL =
   "https://vectortileservices3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Santa_Monica_Mountains_Parcels_VTL/VectorTileServer";

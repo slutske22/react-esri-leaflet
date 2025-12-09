@@ -1,7 +1,9 @@
+/* global jest */
+
+import { render } from "@testing-library/react";
+import { vectorBasemapLayer } from "esri-leaflet-vector";
 import React from "react";
 import { MapContainer } from "react-leaflet";
-import { vectorBasemapLayer } from "esri-leaflet-vector";
-import { render } from "@testing-library/react";
 import VectorBasemapLayer from "../src-plugins/VectorBasemapLayer";
 
 jest.mock("esri-leaflet-vector", () => ({
@@ -13,15 +15,16 @@ describe("VectorBasemapLayer", () => {
   beforeEach(() => {
     jest.clearAllMocks();
 
-    vectorBasemapLayer.mockImplementation(() => ({
+    (vectorBasemapLayer as jest.Mock).mockImplementation(() => ({
       _layerAdd: jest.fn(),
       onRemove: jest.fn(),
+      remove: jest.fn(),
       fire: jest.fn(),
       _check: "this is the layer that was added",
     }));
   });
 
-  it.only("creates an instance of esri-leaflet vectorBasemapLayer and adds it to the map", () => {
+  it("creates an instance of esri-leaflet vectorBasemapLayer and adds it to the map", () => {
     let mapRef;
 
     render(

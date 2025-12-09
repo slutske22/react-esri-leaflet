@@ -1,6 +1,6 @@
+import { Control } from "leaflet";
 import React from "react";
 import { MapContainer, useMapEvents } from "react-leaflet";
-import { Control } from "leaflet";
 
 // import {
 // 	BasemapLayer,
@@ -25,9 +25,9 @@ import { Control } from "leaflet";
 //   useMapEvents,
 // } from "../../../node_modules/react-leaflet";
 
+import { useState } from "react";
 import { CodeSamples } from "./CodeSamples";
 import { GeoSearch, Layers } from "./MapComponents";
-import { useState } from "react";
 
 /**
  * Convenience component to track events on map
@@ -42,11 +42,13 @@ const MapEvents = () => {
 /**
  * Central map component of react-esri-leaflet example
  */
-const Map = ({ apikey }) => {
+const Map = ({ apikey }: { apikey: string | undefined }) => {
   /**
    * Create ref as state variable.  Once ready, we use a react portal to inject `See Code` markup
    */
-  const [layersControlRef, setLayersControlRef] = useState<Control.Layers>();
+  const [layersControlRef, setLayersControlRef] = useState<
+    Control.Layers | undefined
+  >(undefined);
 
   return (
     <>

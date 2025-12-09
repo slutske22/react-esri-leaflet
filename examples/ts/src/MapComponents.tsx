@@ -1,22 +1,22 @@
-import React, { useRef } from "react";
 import { Control } from "leaflet";
+import React, { useRef } from "react";
 
-import { LayersControl } from "react-leaflet";
 import * as EL from "esri-leaflet";
+import { LayersControl } from "react-leaflet";
 
 import {
   BasemapLayer,
-  FeatureLayer,
   DynamicMapLayer,
-  TiledMapLayer,
+  FeatureLayer,
   ImageMapLayer,
-} from "react-esri-leaflet";
+  TiledMapLayer,
+} from "../../../build";
 
-import HeatmapLayer from "react-esri-leaflet/plugins/HeatmapLayer";
-import ClusterLayer from "react-esri-leaflet/plugins/ClusterLayer";
-import VectorBasemapLayer from "react-esri-leaflet/plugins/VectorBasemapLayer";
-import VectorTileLayer from "react-esri-leaflet/plugins/VectorTileLayer";
-import EsriLeafletGeoSearch from "react-esri-leaflet/plugins/EsriLeafletGeoSearch";
+import ClusterLayer from "../../../plugins/ClusterLayer";
+import EsriLeafletGeoSearch from "../../../plugins/EsriLeafletGeoSearch";
+import HeatmapLayer from "../../../plugins/HeatmapLayer";
+import VectorBasemapLayer from "../../../plugins/VectorBasemapLayer";
+import VectorTileLayer from "../../../plugins/VectorTileLayer";
 import {
   CL_URL,
   DML_URL,
@@ -29,7 +29,7 @@ import {
 } from "./constants";
 
 interface Props {
-  apikey: string;
+  apikey: string | undefined;
 }
 
 /**
@@ -39,7 +39,7 @@ export const GeoSearch: React.FC<Props> = ({ apikey }: Props) => {
   /**
    * Ref is typed as EL.Geocoding.GeosearchControl
    */
-  const geosearchControlRef = useRef<EL.Geocoding.GeosearchControl>();
+  const geosearchControlRef = useRef<EL.Geocoding.GeosearchControl>(null);
   if (!apikey) {
     geosearchControlRef.current?.disable();
   } else {
@@ -95,7 +95,9 @@ export const GeoSearch: React.FC<Props> = ({ apikey }: Props) => {
 };
 
 interface LayersProps extends Props {
-  setLayersControlRef: React.Dispatch<React.SetStateAction<Control.Layers>>;
+  setLayersControlRef: React.Dispatch<
+    React.SetStateAction<Control.Layers | undefined>
+  >;
 }
 
 /**
@@ -106,24 +108,24 @@ export const Layers: React.FC<LayersProps> = ({
   setLayersControlRef,
 }: LayersProps) => {
   /** Ref to the leaflet Layers.Control control component */
-  const layerControlRef = useRef<Control.Layers>();
+  const layerControlRef = useRef<Control.Layers>(null);
 
   /**
    * Following list of refs shows how to properly type ref values in typescript
    */
-  const tiledMapLayerRef = useRef<EL.TiledMapLayer>();
-  const featureLayerRef = useRef<EL.FeatureLayer>();
-  const dynamicMapLayerRef = useRef<EL.DynamicMapLayer>();
-  const basemapLayerRef = useRef<EL.BasemapLayer>();
-  const imageMapLayerRef = useRef<EL.RasterLayer>();
+  const tiledMapLayerRef = useRef<EL.TiledMapLayer>(null);
+  const featureLayerRef = useRef<EL.FeatureLayer>(null);
+  const dynamicMapLayerRef = useRef<EL.DynamicMapLayer>(null);
+  const basemapLayerRef = useRef<EL.BasemapLayer>(null);
+  const imageMapLayerRef = useRef<EL.RasterLayer>(null);
 
   /**
    * The following plugins don't have TS definitions publicly available, so you're on your own!
    */
-  const vectorBasemapLayerRef = useRef();
-  const vectorTileLayerRef = useRef();
-  const clusterLayerRef = useRef();
-  const heatmapLayerRef = useRef();
+  const vectorBasemapLayerRef = useRef(null);
+  const vectorTileLayerRef = useRef(null);
+  const clusterLayerRef = useRef(null);
+  const heatmapLayerRef = useRef(null);
 
   tiledMapLayerRef.current?.once("add", () => {
     console.log(`%c <TiledMapLayer /> added:`, "font-weight: bold");
@@ -145,22 +147,22 @@ export const Layers: React.FC<LayersProps> = ({
     console.log(`%c <ImageMapLayer /> added:`, "font-weight: bold");
     console.log(imageMapLayerRef.current);
   });
-  // @ts-expect-error No TS defs available
+  // @ts-ignore No TS defs available
   vectorBasemapLayerRef.current?.once("add", () => {
     console.log(`%c <VectorBasemapLayer /> added:`, "font-weight: bold");
     console.log(vectorBasemapLayerRef.current);
   });
-  // @ts-expect-error No TS defs available
+  // @ts-ignore No TS defs available
   vectorTileLayerRef.current?.once("add", () => {
     console.log(`%c <VectorTileLayer /> added:`, "font-weight: bold");
     console.log(vectorTileLayerRef.current);
   });
-  // @ts-expect-error No TS defs available
+  // @ts-ignore No TS defs available
   clusterLayerRef.current?.once("add", () => {
     console.log(`%c <ClusterLayer /> added:`, "font-weight: bold");
     console.log(clusterLayerRef.current);
   });
-  // @ts-expect-error No TS defs available
+  // @ts-ignore No TS defs available
   heatmapLayerRef.current?.once("add", () => {
     console.log(`%c <HeatmapLayer /> added:`, "font-weight: bold");
     console.log(heatmapLayerRef.current);
@@ -173,7 +175,7 @@ export const Layers: React.FC<LayersProps> = ({
       ref={(ref) => {
         // @ts-ignore refs are hard sometimes
         layerControlRef.current = ref;
-        setLayersControlRef(layerControlRef.current);
+        setLayersControlRef(layerControlRef.current!);
       }}
     >
       <LayersControl.BaseLayer name="Tiled Map Layer">
@@ -203,7 +205,7 @@ export const Layers: React.FC<LayersProps> = ({
           />
         )}
       </LayersControl.BaseLayer>
-      <LayersControl.Overlay name="Esri Feature Layer">
+      <LayersControl.Overlay name="Esri Feature Layer (Zip Code Centroids)">
         <FeatureLayer
           ref={featureLayerRef}
           url={FL_URL}
@@ -221,7 +223,7 @@ export const Layers: React.FC<LayersProps> = ({
           }}
         />
       </LayersControl.Overlay>
-      <LayersControl.Overlay name="Esri Heatmap Layer">
+      <LayersControl.Overlay name="Esri Heatmap Layer (Address Points)">
         <HeatmapLayer
           ref={heatmapLayerRef}
           url={HML_URL}
@@ -232,7 +234,7 @@ export const Layers: React.FC<LayersProps> = ({
           }}
         />
       </LayersControl.Overlay>
-      <LayersControl.Overlay name="Esri Cluster Layer">
+      <LayersControl.Overlay name="Esri Cluster Layer (Zip Code Centroids)">
         <ClusterLayer ref={clusterLayerRef} url={CL_URL} />
       </LayersControl.Overlay>
       <LayersControl.Overlay name="Vector Tile Layer">

@@ -1,5 +1,6 @@
-import * as Vector from "esri-leaflet-vector";
 import { createLayerComponent, LayerProps } from "@react-leaflet/core";
+import * as Vector from "esri-leaflet-vector";
+import { VectorTileLayer as EsriLeafletVectorTileLayer } from "esri-leaflet-vector";
 import { updateEsriLayer } from "../build/EsriLeafletLayer";
 
 interface VectorTileLayerProps extends LayerProps {
@@ -20,7 +21,7 @@ const createEsriLayer = (props: VectorTileLayerProps, context) => {
  * For more info: https://github.com/slutske22/react-esri-leaflet#vectorbasemaplayer-and-vectortilelayer
  */
 const VectorTileLayer = createLayerComponent<
-  Vector.vectorTileLayer,
+  typeof EsriLeafletVectorTileLayer,
   VectorTileLayerProps
 >(createEsriLayer, updateEsriLayer);
 

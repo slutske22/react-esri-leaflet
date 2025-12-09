@@ -1,5 +1,6 @@
-import * as Vector from "esri-leaflet-vector";
 import { createLayerComponent, LayerProps } from "@react-leaflet/core";
+import * as Vector from "esri-leaflet-vector";
+import { VectorBasemapLayer as EsriLeafletVectorBasemapLayer } from "esri-leaflet-vector";
 import { updateEsriLayer } from "../build/EsriLeafletLayer";
 
 type BasemapStyles =
@@ -67,7 +68,7 @@ const createEsriLayer = (props: VectorBasemapLayerProps, context) => {
  * For more info: https://github.com/slutske22/react-esri-leaflet#vectorbasemaplayer-and-vectortilelayer
  */
 const VectorBasemapLayer = createLayerComponent<
-  Vector.vectorBasemapLayer,
+  typeof EsriLeafletVectorBasemapLayer,
   VectorBasemapLayerProps
 >(createEsriLayer, updateEsriLayer);
 

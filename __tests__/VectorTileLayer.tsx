@@ -1,7 +1,9 @@
+/* global jest */
+
+import { render } from "@testing-library/react";
+import { vectorTileLayer } from "esri-leaflet-vector";
 import React from "react";
 import { MapContainer } from "react-leaflet";
-import { vectorTileLayer } from "esri-leaflet-vector";
-import { render } from "@testing-library/react";
 import VectorTileLayer from "../src-plugins/VectorTileLayer";
 
 jest.mock("esri-leaflet-vector", () => ({
@@ -13,9 +15,10 @@ describe("VectorTileLayer", () => {
   beforeEach(() => {
     jest.clearAllMocks();
 
-    vectorTileLayer.mockImplementation(() => ({
+    (vectorTileLayer as jest.Mock).mockImplementation(() => ({
       _layerAdd: jest.fn(),
       onRemove: jest.fn(),
+      remove: jest.fn(),
       fire: jest.fn(),
       _check: "this is the layer that was added",
     }));
